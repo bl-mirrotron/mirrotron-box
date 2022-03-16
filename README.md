@@ -1,7 +1,7 @@
 # bl-mc box
 ## need to add .env file with the following
-PROJECT=blinky-lite-v2  
-ARCHIVETOPIC=blinky-lite-v2/+/+/reading  
+PROJECT=blinky-lite-v3  
+ARCHIVETOPIC=blinky-lite-v3/+/+/reading  
 MONGODBIP=mongodb+srv://blinky-lite...  
 MQTTCLIENTID=blinky-basic-box-local  
 MQTTSERVERIP=hhhh.cloudmqtt.com  
@@ -10,7 +10,7 @@ MQTTPASSWORD=yyy
 NEXMOAPIKEY=aaa  
 NEXMOAPISECRET=zzz  
 JWTKEYSECRET=bbb  
-MAXDBSIZE=300000000  
+MAXDBSIZE=450000000  
 IPREFWEB=https://blinky-lite.io  
 NODEREDCONFIGSECRET=ddd  
   
