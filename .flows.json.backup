@@ -717,6 +717,12 @@
         "wholemsg": "false"
     },
     {
+        "id": "e2674addbc6ccaef",
+        "type": "websocket-listener",
+        "path": "/core/websocket",
+        "wholemsg": "false"
+    },
+    {
         "id": "b9df3f26.ab53f",
         "type": "template",
         "z": "ca529822.9112f8",
@@ -1791,7 +1797,7 @@
         "name": "http://localhost:60427/cubeDisplay?appConfig=RK-PA&trays=RK-PA.C10720",
         "info": "http://localhost:60427/cubeDisplay?appConfig=RK-PA&trays=RK-PA.C10720",
         "x": 330,
-        "y": 820,
+        "y": 940,
         "wires": []
     },
     {
@@ -2237,6 +2243,102 @@
         "wires": [
             [
                 "c397f4613dec0684"
+            ]
+        ]
+    },
+    {
+        "id": "274767fc536e7aae",
+        "type": "inject",
+        "z": "9c854ea3.68416",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "619ed42fad60dd14"
+            ]
+        ]
+    },
+    {
+        "id": "619ed42fad60dd14",
+        "type": "function",
+        "z": "9c854ea3.68416",
+        "name": "Edit rfq-temp",
+        "func": "let appConfig = \n{\n    name:'rfq-temp',\n    title: 'RFQ Temperature',\n    pingInterval: 1000,\n    allowedRoles : ['appView'],\n    navbar :\n    {\n        config  :\n        {\n            imageHeight : '75px',\n            leftLink : \"/\",\n            rightLink : \"/apps\",\n            leftImage : \"/img/mirrotron.png\",\n            centerImage : \"/img/thermo.png\",\n            rightImage : \"/img/home.png\"\n        }\n    },\n    cards: \n    [\n        {\n            type        :   'CubeRowCard',\n            config      :   \n            {\n                title           :   \"Inlet\", \n                displayOnOpen   :   true,\n                cubeRows   :\n                [\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'watchdog'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'coupler'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'top'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'right'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'bottom'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'left'}\n                    }\n                ]\n            }\n        },\n        {\n            type        :   'CubeRowCard',\n            config      :   \n            {\n                title           :   \"Outlet\", \n                displayOnOpen   :   true,\n                cubeRows   :\n                [\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'watchdog'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'top'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'right'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'bottom'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'left'}\n                    }\n                ]\n            }\n        },\n        {\n            type        :   'ArchivePlotCard',\n            config      :   \n            {\n                title           :   \"Archive\", \n                displayOnOpen   :   true, \n                buttonNumbers   :   [2,4,8,24,72,168], \n                timeUnit        :   \"hour\", \n                initButtonIndex :   3,\n                cubeList        :   [\n                    [\n                        {name:'coupler',    color:'green',  yaxis:'y1'},\n                        {name:'top',        color:'red',    yaxis:'y1'},\n                        {name:'right',      color:'blue',   yaxis:'y1'},\n                        {name:'bottom',     color:'orange', yaxis:'y1'},\n                        {name:'left',       color:'purple', yaxis:'y1'}\n                    ],\n                    [\n                        {name:'top',        color:'red',    yaxis:'y1'},\n                        {name:'right',      color:'blue',   yaxis:'y1'},\n                        {name:'bottom',     color:'orange', yaxis:'y1'},\n                        {name:'left',       color:'purple', yaxis:'y1'}\n                    ]\n                ],\n                plotlyDisplay   :    {displayModeBar: true, staticPlot: false},\n                plotlyLayout    :   \n                {\n                    showlegend  : true,\n                    legend      : \n                    { \n                        x: 0, y: 1.15,\n                        font: {size:20}\n                    },\n                    height      : '600',\n                    width       : '',\n                    xaxis       :\n                    {\n                        type: 'date',\n                        tickangle       : '90',\n                        tickfont        : {size: 30},\n                        tickformat: \"%H:%M\\\\n%b-%d\"\n                    },\n                    yaxis:\n                    {\n                        title           : 'Power (kW)',\n                        titlefont       : {color: '#557a95',size: 30},\n                        tickfont        : {color: '#557a95',size: 30},\n                        gridcolor       : '#557a95',\n                        zerolinecolor   : '#557a95',\n                        linecolor       : '#557a95',\n//                        rangemode       : 'tozero'\n                        range: [18, 22],\n                    },\n                    yaxis2:\n                    {\n                        title           : 'Extra',\n                        titlefont       : {color: '#f2a31f',size: 30},\n                        tickfont        : {color: '#f2a31f',size: 30},\n                        gridcolor       : '#f2a31f',\n                        zerolinecolor   : '#f2a31f',\n                        linecolor       : '#f2a31f',\n//                        range: [0, 100],\n                        rangemode: 'tozero',\n                        autorange: true,\n                        overlaying: 'y',\n                        side: 'right'\n                    },\n        \n                    margin: \n                    {\n                        t: 30, //top margin\n                        l: 150, //left margin\n                        r: 100, //right margin\n                        b: 130 //bottom margin\n                    }\n                }\n            }\n        },\n        {\n            type        :   'UserCard',\n            config      :   \n            {\n                title           :   \"User\", \n                displayOnOpen   :   true \n            }\n        }\n    ],\n    styleSheets :\n    [\n        {\n            category:'base',\n            css:\n            [\n                {   \":root\": \n                    {\n                        \"--color1\"          :   \"#1c6e97\",\n                        \"--color2\"          :   \"#289dd7\",\n                        \"--color3\"          :   \"#e7e7e7\",\n                        \"--color4\"          :   \"#c6c2bb\",\n                        \"--color5\"          :   \"#ffffff\",\n                        \"--color6\"          :   \"#289dd7\",\n                    }\n                },\n                {\n                    \"body\":\n                    {\n                        \"background-color\"  :   \"white !important\",\n                        \"padding-left\"      :   \"25px\",\n                        \"padding-right\"     :   \"25px\",\n                    }\n                },\n                {\n                    \"img\" :\n                    {\n                        \"object-fit\"        :   \"contain\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'dialog',\n            css:\n            [\n                {\n                    \".dialog-modal\" : \n                    {\n                        \"display\"           :   \"none\", \n                        \"position\"          :   \"fixed\", \n                        \"z-index\"           :   \"1\", \n                        \"left\"              :   \"0\",\n                        \"top\"               :   \"0\",\n                        \"width\"             :   \"100%\", \n                        \"height\"            :   \"100%\", \n                        \"overflow\"          :   \"auto\", \n    //                        \"background-color\"  :   \"rgb(0,0,0)\", \n                        \"background-color\"  :   \"rgba(0,0,0,0.4)\" \n                    }\n                },\n                {\n                    \".dialog-modal-content\" :\n                    {\n                        \"margin\"            :   \"15% auto\", \n                        \"padding\"           :   \"20px\",\n                        \"border\"            :   \"1px solid #888\",\n                        \"width\"             :   \"80%\" \n                    }\n                }\n            ]\n        },\n        {\n            category:'navbar',\n            css:\n            [\n                {\n                    \".navbar\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"color\"             :   \"var(--color6)\",\n                        \"padding-top\"       :   \"25px\",\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".navbar-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'alarmLimit',\n            css:\n            [\n                {\n                    \".alarmLimit-card\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".alarmLimit-card-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".alarmLimit-card-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".alarmLimit-label-text\" :\n                    {\n                        \"color\"             :   \"var(--color6)\",\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\"\n                    }\n                },\n                {\n                    \".alarmLimit-input-text\" :\n                    {\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"300%\",\n                        \"width\"             :   \"100%\"\n                    }\n                },\n                {\n                    \".alarmLimit-button\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"80%  !important\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'archivePlotCard',\n            css:\n            [\n                {\n                    \".archivePlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".archivePlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".archivePlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".archivePlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".archivePlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".archiveCard-timeType-span\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".archive-button\" : \n                    {\n                        \"background-color\"  :   \"var(--color1)\",\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-size\"         :   \"200%\"\n                    }\n                },\n                {\n                    \".archive-button-pressed\" : \n                    {\n                        \"background-color\"  :   \"var(--color5)\",\n                        \"color\"             :   \"var(--color1)\",\n                        \"font-size\"         :   \"200%\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'timePlotCard',\n            css:\n            [\n                {\n                    \".timePlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".timePlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".timePlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".timePlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".timePlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'cubeRowCard',\n            css:\n            [\n                {\n                    \".cubeRowCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".cubeRowCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".cubeRowCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".cubeRowCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".cubeRowCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'cubeRowParameterView',\n            css:\n            [\n                {\n                    \".cubeRowParameterView-label-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"left\",\n                        \"width\"             :   \"50%\"\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-1\" :\n                    {\n                        \"width\"             :   \"30%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-2\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-3\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                },\n                {\n                    \".cubeRowParameterView-unit-span\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'onOffSetCube',\n            css:\n            [\n                {\n                    \".onOffSetCube-button\" : \n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'numberSetCube',\n            css:\n            [\n                {\n                    \".numberSetCube-inputbox\" : \n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"width\"             :   \"100%\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".numberSetCube-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"100%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'numberReadCube',\n            css:\n            [\n                {\n                    \".numberReadCube-span\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'imageReadCube',\n            css:\n            [\n                {\n                    \".imageReadCube\" :\n                    {\n                        \"height\"         :   \"40px\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'stateChoiceCube',\n            css:\n            [\n                {\n                    \".stateChoiceCube-stateColumn-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"20%\",\n                        \"width\"             :   \"50%\"\n                    }\n                },\n                {\n                    \".stateChoiceCube-button\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                },\n                {\n                    \".stateChoiceCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".stateChoiceCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'gaugeCube',\n            css:\n            [\n                {\n                    \".gaugeCube-label\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".gaugeCube-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"10%\",\n                        \"width\"             :   \"90%\"\n                    }\n                },\n                {\n                    \".gaugeCube-div\" :\n                    {\n                        \"overflow\"            :   \"hidden\",\n                        \"width\"               :   \"100%\",\n                        \"display\"             :   \"flex\",\n                        \"justify-content\"     :   \"center\"\n                    }\n                },\n                {\n                    \".gaugeCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".gaugeCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'hbarCube',\n            css:\n            [\n                {\n                    \".hbarCube-label\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".hbarCube-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"10%\",\n                        \"width\"             :   \"90%\"\n                    }\n                },\n                {\n                    \".hbarCube-div\" :\n                    {\n                        \"overflow\"            :   \"hidden\",\n                        \"width\"               :   \"100%\",\n                        \"display\"             :   \"flex\",\n                        \"justify-content\"     :   \"center\"\n                    }\n                },\n                {\n                    \".hbarCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".hbarCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'userCard',\n            css:\n            [\n                {\n                    \".userCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".userCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".userCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".userCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".userCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".userCard-label\" :\n                    {\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"black\",\n                    }\n                },\n                {\n                    \".userCard-data\" :\n                    {\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color6)\",\n                    }\n        \n                },\n                {\n                    \".userCard-button\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"80%  !important\"\n                    }\n        \n                }\n            ]\n        },\n        {\n            category:'okCancelCard',\n            css:\n            [\n                {\n                    \".okCancelCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".okCancelCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".okCancelCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".okCancelCard-button\" :\n                    {\n                        \"font-size\"         :   \"200%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"60%  !important\"\n                    }\n                },\n                {\n                    \".okCancelCard-text\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color6)\",\n                    }\n                }\n            ]\n        }\n        \n    ]\n};\nreturn {topic: appConfig.name,payload:[{name:appConfig.name},appConfig]};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 760,
+        "wires": [
+            [
+                "d65875eade1e6d1c"
+            ]
+        ]
+    },
+    {
+        "id": "68ece72d0f37dc5c",
+        "type": "inject",
+        "z": "9c854ea3.68416",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 820,
+        "wires": [
+            [
+                "72fbf3a618b001b9"
+            ]
+        ]
+    },
+    {
+        "id": "72fbf3a618b001b9",
+        "type": "function",
+        "z": "9c854ea3.68416",
+        "name": "Edit rfq-flow",
+        "func": "let appConfig = \n{\n    name:'rfq-flow',\n    title: 'RFQ Water Flow',\n    pingInterval: 1000,\n    allowedRoles : ['appView'],\n    navbar :\n    {\n        config  :\n        {\n            imageHeight : '75px',\n            leftLink : \"/\",\n            rightLink : \"/apps\",\n            leftImage : \"/img/mirrotron.png\",\n            centerImage : \"/img/pump.png\",\n            rightImage : \"/img/home.png\"\n        }\n    },\n    cards: \n    [\n        {\n            type        :   'CubeRowCard',\n            config      :   \n            {\n                title           :   \"Inlet\", \n                displayOnOpen   :   true,\n                cubeRows   :\n                [\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'watchdog'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'supply'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'coupler'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'top'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'right'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'bottom'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'left'}\n                    }\n                ]\n            }\n        },\n        {\n            type        :   'CubeRowCard',\n            config      :   \n            {\n                title           :   \"Outlet\", \n                displayOnOpen   :   true,\n                cubeRows   :\n                [\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'watchdog'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'supply'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'top'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'right'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'bottom'}\n                    },\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 1, cubeName : 'left'}\n                    }\n                ]\n            }\n        },\n        {\n            type        :   'ArchivePlotCard',\n            config      :   \n            {\n                title           :   \"Archive\", \n                displayOnOpen   :   true, \n                buttonNumbers   :   [2,4,8,24,72,168], \n                timeUnit        :   \"hour\", \n                initButtonIndex :   3,\n                cubeList        :   [\n                    [\n                        {name:'coupler',    color:'green',  yaxis:'y1'},\n                        {name:'top',        color:'red',    yaxis:'y1'},\n                        {name:'right',      color:'blue',   yaxis:'y1'},\n                        {name:'bottom',     color:'orange', yaxis:'y1'},\n                        {name:'left',       color:'purple', yaxis:'y1'},\n                        {name:'supply',     color:'magenta',yaxis:'y1'}\n                    ],\n                    [\n                        {name:'top',        color:'red',    yaxis:'y1'},\n                        {name:'right',      color:'blue',   yaxis:'y1'},\n                        {name:'bottom',     color:'orange', yaxis:'y1'},\n                        {name:'left',       color:'purple', yaxis:'y1'},\n                        {name:'supply',     color:'cyan',   yaxis:'y1'}\n                    ]\n                ],\n                plotlyDisplay   :    {displayModeBar: true, staticPlot: false},\n                plotlyLayout    :   \n                {\n                    showlegend  : true,\n                    legend      : \n                    { \n                        x: 0, y: 1.15,\n                        font: {size:20}\n                    },\n                    height      : '600',\n                    width       : '',\n                    xaxis       :\n                    {\n                        type: 'date',\n                        tickangle       : '90',\n                        tickfont        : {size: 30},\n                        tickformat: \"%H:%M\\\\n%b-%d\"\n                    },\n                    yaxis:\n                    {\n                        title           : 'Power (kW)',\n                        titlefont       : {color: '#557a95',size: 30},\n                        tickfont        : {color: '#557a95',size: 30},\n                        gridcolor       : '#557a95',\n                        zerolinecolor   : '#557a95',\n                        linecolor       : '#557a95',\n//                        rangemode       : 'tozero'\n                        range: [0, 100],\n                    },\n                    yaxis2:\n                    {\n                        title           : 'Extra',\n                        titlefont       : {color: '#f2a31f',size: 30},\n                        tickfont        : {color: '#f2a31f',size: 30},\n                        gridcolor       : '#f2a31f',\n                        zerolinecolor   : '#f2a31f',\n                        linecolor       : '#f2a31f',\n                        range: [0, 100],\n//                        rangemode: 'tozero',\n                        autorange: true,\n                        overlaying: 'y',\n                        side: 'right'\n                    },\n        \n                    margin: \n                    {\n                        t: 30, //top margin\n                        l: 150, //left margin\n                        r: 100, //right margin\n                        b: 130 //bottom margin\n                    }\n                }\n            }\n        },\n        {\n            type        :   'UserCard',\n            config      :   \n            {\n                title           :   \"User\", \n                displayOnOpen   :   true \n            }\n        }\n    ],\n    styleSheets :\n    [\n        {\n            category:'base',\n            css:\n            [\n                {   \":root\": \n                    {\n                        \"--color1\"          :   \"#1c6e97\",\n                        \"--color2\"          :   \"#289dd7\",\n                        \"--color3\"          :   \"#e7e7e7\",\n                        \"--color4\"          :   \"#c6c2bb\",\n                        \"--color5\"          :   \"#ffffff\",\n                        \"--color6\"          :   \"#289dd7\",\n                    }\n                },\n                {\n                    \"body\":\n                    {\n                        \"background-color\"  :   \"white !important\",\n                        \"padding-left\"      :   \"25px\",\n                        \"padding-right\"     :   \"25px\",\n                    }\n                },\n                {\n                    \"img\" :\n                    {\n                        \"object-fit\"        :   \"contain\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'dialog',\n            css:\n            [\n                {\n                    \".dialog-modal\" : \n                    {\n                        \"display\"           :   \"none\", \n                        \"position\"          :   \"fixed\", \n                        \"z-index\"           :   \"1\", \n                        \"left\"              :   \"0\",\n                        \"top\"               :   \"0\",\n                        \"width\"             :   \"100%\", \n                        \"height\"            :   \"100%\", \n                        \"overflow\"          :   \"auto\", \n    //                        \"background-color\"  :   \"rgb(0,0,0)\", \n                        \"background-color\"  :   \"rgba(0,0,0,0.4)\" \n                    }\n                },\n                {\n                    \".dialog-modal-content\" :\n                    {\n                        \"margin\"            :   \"15% auto\", \n                        \"padding\"           :   \"20px\",\n                        \"border\"            :   \"1px solid #888\",\n                        \"width\"             :   \"80%\" \n                    }\n                }\n            ]\n        },\n        {\n            category:'navbar',\n            css:\n            [\n                {\n                    \".navbar\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"color\"             :   \"var(--color6)\",\n                        \"padding-top\"       :   \"25px\",\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".navbar-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'alarmLimit',\n            css:\n            [\n                {\n                    \".alarmLimit-card\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".alarmLimit-card-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".alarmLimit-card-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".alarmLimit-label-text\" :\n                    {\n                        \"color\"             :   \"var(--color6)\",\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\"\n                    }\n                },\n                {\n                    \".alarmLimit-input-text\" :\n                    {\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"300%\",\n                        \"width\"             :   \"100%\"\n                    }\n                },\n                {\n                    \".alarmLimit-button\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"80%  !important\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'archivePlotCard',\n            css:\n            [\n                {\n                    \".archivePlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".archivePlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".archivePlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".archivePlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".archivePlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".archiveCard-timeType-span\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".archive-button\" : \n                    {\n                        \"background-color\"  :   \"var(--color1)\",\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-size\"         :   \"200%\"\n                    }\n                },\n                {\n                    \".archive-button-pressed\" : \n                    {\n                        \"background-color\"  :   \"var(--color5)\",\n                        \"color\"             :   \"var(--color1)\",\n                        \"font-size\"         :   \"200%\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'timePlotCard',\n            css:\n            [\n                {\n                    \".timePlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".timePlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".timePlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".timePlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".timePlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'cubeRowCard',\n            css:\n            [\n                {\n                    \".cubeRowCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".cubeRowCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".cubeRowCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".cubeRowCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".cubeRowCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'cubeRowParameterView',\n            css:\n            [\n                {\n                    \".cubeRowParameterView-label-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"left\",\n                        \"width\"             :   \"50%\"\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-1\" :\n                    {\n                        \"width\"             :   \"30%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-2\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-3\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                },\n                {\n                    \".cubeRowParameterView-unit-span\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'onOffSetCube',\n            css:\n            [\n                {\n                    \".onOffSetCube-button\" : \n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'numberSetCube',\n            css:\n            [\n                {\n                    \".numberSetCube-inputbox\" : \n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"width\"             :   \"100%\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".numberSetCube-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"100%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'numberReadCube',\n            css:\n            [\n                {\n                    \".numberReadCube-span\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'imageReadCube',\n            css:\n            [\n                {\n                    \".imageReadCube\" :\n                    {\n                        \"height\"         :   \"40px\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'stateChoiceCube',\n            css:\n            [\n                {\n                    \".stateChoiceCube-stateColumn-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"20%\",\n                        \"width\"             :   \"50%\"\n                    }\n                },\n                {\n                    \".stateChoiceCube-button\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                },\n                {\n                    \".stateChoiceCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".stateChoiceCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'gaugeCube',\n            css:\n            [\n                {\n                    \".gaugeCube-label\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".gaugeCube-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"10%\",\n                        \"width\"             :   \"90%\"\n                    }\n                },\n                {\n                    \".gaugeCube-div\" :\n                    {\n                        \"overflow\"            :   \"hidden\",\n                        \"width\"               :   \"100%\",\n                        \"display\"             :   \"flex\",\n                        \"justify-content\"     :   \"center\"\n                    }\n                },\n                {\n                    \".gaugeCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".gaugeCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'hbarCube',\n            css:\n            [\n                {\n                    \".hbarCube-label\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".hbarCube-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"10%\",\n                        \"width\"             :   \"90%\"\n                    }\n                },\n                {\n                    \".hbarCube-div\" :\n                    {\n                        \"overflow\"            :   \"hidden\",\n                        \"width\"               :   \"100%\",\n                        \"display\"             :   \"flex\",\n                        \"justify-content\"     :   \"center\"\n                    }\n                },\n                {\n                    \".hbarCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".hbarCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'userCard',\n            css:\n            [\n                {\n                    \".userCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".userCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".userCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".userCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".userCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".userCard-label\" :\n                    {\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"black\",\n                    }\n                },\n                {\n                    \".userCard-data\" :\n                    {\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color6)\",\n                    }\n        \n                },\n                {\n                    \".userCard-button\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"80%  !important\"\n                    }\n        \n                }\n            ]\n        },\n        {\n            category:'okCancelCard',\n            css:\n            [\n                {\n                    \".okCancelCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".okCancelCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".okCancelCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".okCancelCard-button\" :\n                    {\n                        \"font-size\"         :   \"200%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"60%  !important\"\n                    }\n                },\n                {\n                    \".okCancelCard-text\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color6)\",\n                    }\n                }\n            ]\n        }\n        \n    ]\n};\nreturn {topic: appConfig.name,payload:[{name:appConfig.name},appConfig]};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 820,
+        "wires": [
+            [
+                "d65875eade1e6d1c"
             ]
         ]
     },
@@ -3080,7 +3182,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.launcher}}}\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' >Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.user}}}\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.launcher}}}\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' >Core Apps</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.user}}}\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 910,
         "y": 140,
@@ -3230,23 +3332,6 @@
         "wires": []
     },
     {
-        "id": "2765d47d0db8f54e",
-        "type": "template",
-        "z": "a858ad3a.95706",
-        "name": "Old html.launcher",
-        "field": "payload.html.launcher",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-6\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-6\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"blinky-bus\">blinky-bus</option>\n                                    <option value=\"blinky-rpmode0-dsp\">blinky-rpmode0-dsp</option>\n                                    <option value=\"blinky-stepper\">blinky-stepper</option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-6\" align=\"center\">\n                                <span class='card-text' >Tray</span>\n                            </div>\n                            <div class=\"col-md-6\" align=\"center\">\n                                <select class=\"app-dropdown-select  big-text\" id=\"trayA\" onchange=\"trayAselected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"01\">01</option>\n                                    <option value=\"02\">02</option>\n                                    <option value=\"03\">03</option>\n                                    <option value=\"04\">04</option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                            </div>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                        </div>\n                    </div>\n                </div>",
-        "output": "str",
-        "x": 1170,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3ebf221ace37085a",
         "type": "template",
         "z": "a858ad3a.95706",
@@ -3255,13 +3340,347 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-3\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-9\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"cubeDisplay?appConfig=rk-pa&trays=rk-pa.01\">Mirrotron R&K Amp</option>\n                                    <option value=\"cubeDisplay?appConfig=rk-pa-timer&trays=rk-pa-timer.01\">Mirrotron R&K Timer</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n                </div>",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-3\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-9\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"cubeDisplay?appConfig=rk-pa&trays=rk-pa.01\">Power Amplifier</option>\n                                    <option value=\"cubeDisplay?appConfig=rfq-temp&trays=rfq-temp.inlet,rfq-temp.outlet\">RFQ Temperature</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n                </div>",
         "output": "str",
         "x": 940,
         "y": 60,
         "wires": [
             [
                 "385a54c277c0dd14"
+            ]
+        ]
+    },
+    {
+        "id": "54a7987d3e160504",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/core",
+        "url": "/core",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 560,
+        "wires": [
+            [
+                "36b3529f9403ec99"
+            ]
+        ]
+    },
+    {
+        "id": "bcc9d059a6bc454a",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "Set Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Core Applications",
+        "output": "str",
+        "x": 340,
+        "y": 600,
+        "wires": [
+            [
+                "bc0420f20d9cbb1e"
+            ]
+        ]
+    },
+    {
+        "id": "501167e444420726",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "coreYellow.png",
+        "output": "str",
+        "x": 350,
+        "y": 560,
+        "wires": [
+            [
+                "bcc9d059a6bc454a"
+            ]
+        ]
+    },
+    {
+        "id": "36b3529f9403ec99",
+        "type": "function",
+        "z": "a858ad3a.95706",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['appView','coreView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 600,
+        "wires": [
+            [
+                "eef7526027034b14"
+            ]
+        ]
+    },
+    {
+        "id": "1aa5a01e79a89464",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.launcher}}}\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.user}}}\n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 930,
+        "y": 640,
+        "wires": [
+            [
+                "b8beb9d4a4852b99"
+            ]
+        ]
+    },
+    {
+        "id": "0305b5890a8d7283",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "{{{payload.script.global}}}\n{{{payload.script.launcher}}}\n{{{payload.script.user}}}\n",
+        "output": "str",
+        "x": 580,
+        "y": 680,
+        "wires": [
+            [
+                "80d61259105f4c7f"
+            ]
+        ]
+    },
+    {
+        "id": "093e2704d0cd3eb3",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.user",
+        "field": "payload.html.user",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card' id='userCardId'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 940,
+        "y": 600,
+        "wires": [
+            [
+                "1aa5a01e79a89464"
+            ]
+        ]
+    },
+    {
+        "id": "bc0420f20d9cbb1e",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "script.global",
+        "field": "payload.script.global",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n//            initLaunchMenu();\n            \n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n",
+        "output": "str",
+        "x": 590,
+        "y": 560,
+        "wires": [
+            [
+                "172c3e275509e218"
+            ]
+        ]
+    },
+    {
+        "id": "172c3e275509e218",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "script.launcher",
+        "field": "payload.script.launcher",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function appSelected()\n        {\n            var application = $('#application').val();\n            if (application != 'none') launchApp();\n        }\n        function launchApp()\n        {\n            var application = $('#application').val();\n            var link = \"/\" + application;\n            window.location.href = link;\n//            window.open(link, '_blank');\n        }\n",
+        "output": "str",
+        "x": 600,
+        "y": 600,
+        "wires": [
+            [
+                "673a1835af1e335a"
+            ]
+        ]
+    },
+    {
+        "id": "673a1835af1e335a",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "script.user",
+        "field": "payload.script.user",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = box + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = box + \"Role=\" + msg.role;\n            document.cookie = box + \"ExpDate=\" + msg.expDate;\n            document.cookie = box + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", box + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "output": "str",
+        "x": 590,
+        "y": 640,
+        "wires": [
+            [
+                "0305b5890a8d7283"
+            ]
+        ]
+    },
+    {
+        "id": "80d61259105f4c7f",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.launcher",
+        "field": "payload.html.launcher",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-3\" align=\"center\">\n                                <span class='card-text' >Core App</span>\n                            </div>\n                            <div class=\"col-md-9\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"access-log\">Access Log</option>\n                                    <option value=\"settings-log\">Settings Log</option>\n                                    <option value=\"scalarPlotter\">Scalar Plotter</option>\n                                    <option value=\"scalarArchivePlotter\">Scalar Archive Plotter</option>\n                                    <option value=\"scalarViewer\">Scalar Viewer</option>\n                                    <option value=\"scalarAlarmScanner\">Scalar Alarm Scanner</option>\n                                    <option value=\"vectorPlotter\">Vector Plotter</option>\n                                    <option value=\"vectorArchivePlotter\">Vector Archive Plotter</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                \n<!--                \n                \n                    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarPlotter\" >Scalar Plotter</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarArchivePlotter\" >Scalar Archive Plotter</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarViewer\" >Scalar Viewer</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarAlarmScanner\" >Scalar Alarm Scanner</a> \n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/vectorPlotter\" >Vector Plotter</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/vectorArchivePlotter\" >Vector Archive Plotter</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/access-log\" >Access Log</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/settings-log\" >Settings Log</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/apps\" >Custom App Index</a> \n            </div>\n        </div>\n    </div>\n    \n-->",
+        "output": "str",
+        "x": 960,
+        "y": 560,
+        "wires": [
+            [
+                "093e2704d0cd3eb3"
+            ]
+        ]
+    },
+    {
+        "id": "f1d40c45ecd8a87e",
+        "type": "websocket in",
+        "z": "a858ad3a.95706",
+        "name": "/core/websocket",
+        "server": "e2674addbc6ccaef",
+        "client": "",
+        "x": 140,
+        "y": 840,
+        "wires": [
+            [
+                "22ec08a66c477512"
+            ]
+        ]
+    },
+    {
+        "id": "b204425f16f67466",
+        "type": "function",
+        "z": "a858ad3a.95706",
+        "name": "Renew Token",
+        "func": "msg.token.expDate = new Date().getTime() + msg.token.timeoutMin * 60000;\ndelete msg.token['iat']\nmsg.payload = JSON.parse(JSON.stringify(msg.token));\ndelete msg['token'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 560,
+        "y": 800,
+        "wires": [
+            [
+                "b7503a417361a0ae"
+            ]
+        ]
+    },
+    {
+        "id": "b7503a417361a0ae",
+        "type": "JsonWebToken",
+        "z": "a858ad3a.95706",
+        "name": "encrypt token",
+        "tokenconfig": "6acefdd9.69f124",
+        "x": 740,
+        "y": 800,
+        "wires": [
+            [
+                "6ee42571a1da7c50"
+            ]
+        ]
+    },
+    {
+        "id": "6ee42571a1da7c50",
+        "type": "function",
+        "z": "a858ad3a.95706",
+        "name": "Renew Cookies",
+        "func": "var newMsg = \n{\n    topic : 'renew',\n    payload: \n    {\n        topic       : 'renew',\n        userID      : msg.userID,\n        role        : msg.token,\n        expDate     : msg.payload.expDate.toString(),\n        username    : msg.payload.username\n    }\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 920,
+        "y": 800,
+        "wires": [
+            [
+                "91eeea509dde57c9"
+            ]
+        ]
+    },
+    {
+        "id": "91eeea509dde57c9",
+        "type": "websocket out",
+        "z": "a858ad3a.95706",
+        "name": "/core/websocket",
+        "server": "e2674addbc6ccaef",
+        "client": "",
+        "x": 1120,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "b8beb9d4a4852b99",
+        "type": "subflow:c57c2f9e65e6cb70",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 1090,
+        "y": 640,
+        "wires": [
+            [
+                "9c42cf48893ca54d"
+            ]
+        ]
+    },
+    {
+        "id": "9c42cf48893ca54d",
+        "type": "subflow:ca529822.9112f8",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 1230,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "eef7526027034b14",
+        "type": "subflow:2d027d69.1fdeb2",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 140,
+        "y": 640,
+        "wires": [
+            [
+                "501167e444420726"
+            ]
+        ]
+    },
+    {
+        "id": "22ec08a66c477512",
+        "type": "subflow:fee416c.fb205e8",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 350,
+        "y": 840,
+        "wires": [
+            [
+                "b204425f16f67466"
+            ],
+            [
+                "91eeea509dde57c9"
             ]
         ]
     },
@@ -3719,80 +4138,6 @@
         "y": 520,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "275c08.dff3c3f8",
-        "type": "http in",
-        "z": "90f83725.6dae08",
-        "name": "/core",
-        "url": "/core",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 60,
-        "wires": [
-            [
-                "49150800.c088c8"
-            ]
-        ]
-    },
-    {
-        "id": "59315144.42ea4",
-        "type": "template",
-        "z": "90f83725.6dae08",
-        "name": "Body",
-        "field": "payload.body",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarPlotter\" >Scalar Plotter</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarArchivePlotter\" >Scalar Archive Plotter</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarViewer\" >Scalar Viewer</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarAlarmScanner\" >Scalar Alarm Scanner</a> \n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/vectorPlotter\" >Vector Plotter</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/vectorArchivePlotter\" >Vector Archive Plotter</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/access-log\" >Access Log</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/settings-log\" >Settings Log</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/apps\" >Custom App Index</a> \n            </div>\n        </div>\n    </div>",
-        "output": "str",
-        "x": 1030,
-        "y": 60,
-        "wires": [
-            [
-                "a9d47de1.dae3f"
-            ]
-        ]
-    },
-    {
-        "id": "a9d47de1.dae3f",
-        "type": "template",
-        "z": "90f83725.6dae08",
-        "name": "Title",
-        "field": "payload.title",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "Core Applications",
-        "output": "str",
-        "x": 1150,
-        "y": 60,
-        "wires": [
-            [
-                "f72a9cb2bd3ef69d"
-            ]
-        ]
-    },
-    {
-        "id": "f1353403.af8cb8",
-        "type": "template",
-        "z": "90f83725.6dae08",
-        "name": "JavaScript",
-        "field": "payload.javascript",
-        "fieldType": "msg",
-        "format": "javascript",
-        "syntax": "mustache",
-        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
-        "output": "str",
-        "x": 890,
-        "y": 60,
-        "wires": [
-            [
-                "59315144.42ea4"
-            ]
         ]
     },
     {
@@ -4778,19 +5123,6 @@
         ]
     },
     {
-        "id": "781dbbc5.3a2e14",
-        "type": "subflow:495f0879.c831c8",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "x": 700,
-        "y": 60,
-        "wires": [
-            [
-                "f1353403.af8cb8"
-            ]
-        ]
-    },
-    {
         "id": "44733e49.ba7ec",
         "type": "subflow:495f0879.c831c8",
         "z": "90f83725.6dae08",
@@ -4814,24 +5146,6 @@
         "wires": [
             [
                 "3ff05971.6144b6"
-            ]
-        ]
-    },
-    {
-        "id": "49150800.c088c8",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Allowed Roles",
-        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 500,
-        "y": 60,
-        "wires": [
-            [
-                "781dbbc5.3a2e14"
             ]
         ]
     },
@@ -5552,27 +5866,6 @@
         "wires": [
             [
                 "787329f7fa16e517"
-            ]
-        ]
-    },
-    {
-        "id": "c7a463d3efa31005",
-        "type": "subflow:ca529822.9112f8",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "x": 1430,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "f72a9cb2bd3ef69d",
-        "type": "subflow:7744eedb71df7703",
-        "z": "90f83725.6dae08",
-        "x": 1290,
-        "y": 60,
-        "wires": [
-            [
-                "c7a463d3efa31005"
             ]
         ]
     },
