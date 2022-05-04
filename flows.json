@@ -5939,6 +5939,77 @@
         ]
     },
     {
+        "id": "17b9fca689ef9517",
+        "type": "inject",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 600,
+        "wires": [
+            [
+                "0650d939d988beb8"
+            ]
+        ]
+    },
+    {
+        "id": "0650d939d988beb8",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "remove tray from archiver",
+        "func": "var projectionFilter =  \n{\n    projection:\n    {\n        _id                         :   0, \n        type                        :   1,  \n        name                        :   1,  \n        timeStamp                   :   1 \n    } \n};\nvar query = \n{\n    $and :\n    [\n        {\n            type: \"enter-tray-type\"\n        },\n        {\n            name: \"enter-tray-name\"\n        }\n    ]\n};\nvar newMsg = \n{\n    topic           : 'llrf-dsp',\n    payload         :  [query,projectionFilter]  \n};\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 600,
+        "wires": [
+            [
+                "852ce27fc81a91ca"
+            ]
+        ]
+    },
+    {
+        "id": "852ce27fc81a91ca",
+        "type": "mongodb3 in",
+        "z": "90f83725.6dae08",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "archiver",
+        "operation": "removeMany",
+        "x": 690,
+        "y": 600,
+        "wires": [
+            [
+                "5ba7a9f7da1a4c3d"
+            ]
+        ]
+    },
+    {
+        "id": "5ba7a9f7da1a4c3d",
+        "type": "debug",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 940,
+        "y": 600,
+        "wires": []
+    },
+    {
         "id": "d8aea031.7f89d",
         "type": "http in",
         "z": "dc20c6e0.0feb98",
