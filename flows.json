@@ -437,6 +437,40 @@
         "color": "#3FADB5"
     },
     {
+        "id": "3fec913b325ae6ff",
+        "type": "subflow",
+        "name": "HTTPS Check",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "30495fc00067bd92"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 300,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "30495fc00067bd92",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-key"
+    },
+    {
         "id": "0899511e715967e4",
         "type": "group",
         "z": "9c854ea3.68416",
@@ -454,8 +488,8 @@
             "301570926b166a61",
             "9a0c467162948353"
         ],
-        "x": 134,
-        "y": 299,
+        "x": 114,
+        "y": 319,
         "w": 292,
         "h": 222
     },
@@ -1549,6 +1583,208 @@
         ]
     },
     {
+        "id": "721e5b041cde047a",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "Body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n   <h1 style=\"text-align:center;color:#415c71;\">{{{payload.errorMsg}}}</h1>\n   <p></p>\n   <h1 style=\"text-align:center;color:#415c71;\">Redirecting to HTTPS...</h1>\n",
+        "output": "str",
+        "x": 770,
+        "y": 80,
+        "wires": [
+            [
+                "8c6be08c3d726f73"
+            ]
+        ]
+    },
+    {
+        "id": "07bacb5b77262b3d",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Insecure Connection",
+        "output": "str",
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "3a39937ddaa75862"
+            ]
+        ]
+    },
+    {
+        "id": "5129e0a4079ad82a",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "JavaScript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        $( document ).ready(function()\n        {\n            setTimeout(function(){location.replace(\"{{{payload.httpsUrl}}}\");}, 3000);\n        });\n \n",
+        "output": "str",
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "07bacb5b77262b3d"
+            ]
+        ]
+    },
+    {
+        "id": "3a39937ddaa75862",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "basicYellow.png",
+        "output": "str",
+        "x": 630,
+        "y": 80,
+        "wires": [
+            [
+                "721e5b041cde047a"
+            ]
+        ]
+    },
+    {
+        "id": "8c6be08c3d726f73",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                </td>\n            </tr>\n        </table>\n    </div>",
+        "output": "str",
+        "x": 900,
+        "y": 80,
+        "wires": [
+            [
+                "83802deb03eddd20"
+            ]
+        ]
+    },
+    {
+        "id": "83802deb03eddd20",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: var(--color5);\n          font-weight: var(--bold-text);\n          font-size: var(--big-text-size);\n         }\n        .card-text\n        {\n          color: white;\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .danger-card\n        {\n          background-color: yellow !important;\n          text-align: center;\n        }\n        .danger-card-body\n        {\n          background-color: yellow;\n        }\n        .danger-card-button\n        {\n          color: yellow !important;\n          background-color: red !important;\n          font-weight: bold;\n        }\n        .danger-card-title\n        {\n          color: red;\n          font-weight: var(--bold-text);\n          font-size: var(--big-text-size);\n         }\n        .danger-card-text\n        {\n          color: white;\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
+        "output": "str",
+        "x": 1050,
+        "y": 80,
+        "wires": [
+            [
+                "3e97c79390cf79f0"
+            ]
+        ]
+    },
+    {
+        "id": "30495fc00067bd92",
+        "type": "function",
+        "z": "3fec913b325ae6ff",
+        "name": "https check",
+        "func": "let ireq = -1;\nfor (let ii = 0; ii < msg.req.rawHeaders.length; ++ii)\n{\n    if (msg.req.rawHeaders[ii] == \"X-Forwarded-Proto\") ireq = ii + 1;\n}\nif (ireq >= 0) \n{\n    if (msg.req.rawHeaders[ireq] == 'http')\n    {\n        msg.cookies = { };\n        let ireq2 = -1;\n        for (let ii = 0; ii < msg.req.rawHeaders.length; ++ii)\n        {\n            if (msg.req.rawHeaders[ii] == \"Host\") ireq2 = ii + 1;\n        }\n        if (ireq2 >= 0)\n        {\n            let host = msg.req.rawHeaders[ireq2];\n            let url = \"https://\" + host + msg.req.url;\n            msg.payload['httpsUrl'] = url;\n        }\n        else\n        {\n            msg.payload['httpsUrl'] = '';\n        }\n        msg.payload.errorMsg = \"Insecure Connection!\";\n        return [null,msg];\n    }\n}\nreturn [msg,null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [],
+            [
+                "5129e0a4079ad82a"
+            ]
+        ]
+    },
+    {
+        "id": "124220290623f310",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "HTML",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n{{{payload.head}}}\n  </head>\n  <body>\n{{{payload.navBar}}}\n{{{payload.body}}}\n{{{payload.foot}}}\n  </body>\n</html>",
+        "output": "str",
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "155aa92c7a1b80ab"
+            ]
+        ]
+    },
+    {
+        "id": "370b2570c9f1209a",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "Foot",
+        "field": "payload.foot",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "    <script src=\"/scripts/popper.js\"></script>\n    <script src=\"/scripts/bootstrap.js\"></script>",
+        "output": "str",
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "124220290623f310"
+            ]
+        ]
+    },
+    {
+        "id": "3e97c79390cf79f0",
+        "type": "template",
+        "z": "3fec913b325ae6ff",
+        "name": "Head",
+        "field": "payload.head",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/img/favicon.ico?v=4\" type=\"image/x-icon\"/>\n    <title>{{payload.title}}</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui-timepicker-addon.css\"/>\n    <script src=\"/jquery/jquery.js\"></script>\n    <script src=\"/jquery/jquery-ui.js\"></script>\n    <script src=\"/jquery/jquery-ui-timepicker-addon.js\"></script>\n    <script src=\"/scripts/plotly-latest.min.js\"></script>\n    <script src=\"/scripts/pako.min.js\"></script>\n    <style>\n{{{payload.css}}}\n    </style>\n    <script>\n    </script>\n    <script>\n{{{payload.javascript}}}\n    </script>\n",
+        "output": "str",
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "370b2570c9f1209a"
+            ]
+        ]
+    },
+    {
+        "id": "155aa92c7a1b80ab",
+        "type": "http response",
+        "z": "3fec913b325ae6ff",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 220,
+        "wires": []
+    },
+    {
         "id": "6907b9a52031f3cf",
         "type": "http in",
         "z": "9c854ea3.68416",
@@ -1562,7 +1798,7 @@
         "y": 240,
         "wires": [
             [
-                "301570926b166a61"
+                "1ea7cffebed6852b"
             ]
         ]
     },
@@ -1610,8 +1846,8 @@
         "name": "",
         "collection": "appConfig",
         "operation": "findOne",
-        "x": 280,
-        "y": 380,
+        "x": 260,
+        "y": 400,
         "wires": [
             [
                 "7a10937ccd7aef93"
@@ -1630,8 +1866,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 310,
-        "y": 440,
+        "x": 290,
+        "y": 460,
         "wires": [
             [
                 "9a0c467162948353"
@@ -1650,8 +1886,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 340,
+        "x": 220,
+        "y": 360,
         "wires": [
             [
                 "03d904d46af609c9"
@@ -1736,8 +1972,8 @@
         "type": "subflow:2d027d69.1fdeb2",
         "z": "9c854ea3.68416",
         "g": "0899511e715967e4",
-        "x": 320,
-        "y": 480,
+        "x": 300,
+        "y": 500,
         "wires": [
             [
                 "4100d0c58cb16c81"
@@ -2529,6 +2765,19 @@
         ]
     },
     {
+        "id": "1ea7cffebed6852b",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "9c854ea3.68416",
+        "name": "",
+        "x": 240,
+        "y": 300,
+        "wires": [
+            [
+                "301570926b166a61"
+            ]
+        ]
+    },
+    {
         "id": "2132a017.ba23f",
         "type": "mqtt out",
         "z": "8475ab9.3d26058",
@@ -3102,7 +3351,7 @@
         "y": 60,
         "wires": [
             [
-                "433db7b4.42d728"
+                "0a3d919fdc9eff62"
             ]
         ]
     },
@@ -3155,7 +3404,7 @@
         "initialize": "",
         "finalize": "",
         "x": 120,
-        "y": 100,
+        "y": 140,
         "wires": [
             [
                 "7413bfa1.a556d"
@@ -3167,7 +3416,7 @@
         "type": "subflow:2d027d69.1fdeb2",
         "z": "a858ad3a.95706",
         "x": 120,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "e7a2ef05.36c48"
@@ -3279,7 +3528,7 @@
         "y": 460,
         "wires": [
             [
-                "ca68de71.c19fe"
+                "eeb6f237e7b71e56"
             ]
         ]
     },
@@ -3549,7 +3798,7 @@
         "y": 560,
         "wires": [
             [
-                "36b3529f9403ec99"
+                "0ae559dfc1cd42e5"
             ]
         ]
     },
@@ -3603,7 +3852,7 @@
         "finalize": "",
         "libs": [],
         "x": 140,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "eef7526027034b14"
@@ -3847,7 +4096,7 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 140,
-        "y": 640,
+        "y": 680,
         "wires": [
             [
                 "501167e444420726"
@@ -3867,6 +4116,45 @@
             ],
             [
                 "91eeea509dde57c9"
+            ]
+        ]
+    },
+    {
+        "id": "eeb6f237e7b71e56",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 240,
+        "y": 460,
+        "wires": [
+            [
+                "ca68de71.c19fe"
+            ]
+        ]
+    },
+    {
+        "id": "0a3d919fdc9eff62",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "433db7b4.42d728"
+            ]
+        ]
+    },
+    {
+        "id": "0ae559dfc1cd42e5",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 140,
+        "y": 600,
+        "wires": [
+            [
+                "36b3529f9403ec99"
             ]
         ]
     },
@@ -4339,7 +4627,7 @@
         "y": 120,
         "wires": [
             [
-                "1e9bf28b.344d8d"
+                "b760a3b7466678da"
             ]
         ]
     },
@@ -4492,7 +4780,7 @@
         "y": 300,
         "wires": [
             [
-                "b213f397.94307"
+                "1f7fc24d89a8af1e"
             ]
         ]
     },
@@ -4784,9 +5072,7 @@
         "x": 130,
         "y": 960,
         "wires": [
-            [
-                "96140e28.f0af"
-            ]
+            []
         ]
     },
     {
@@ -5545,9 +5831,7 @@
         "x": 140,
         "y": 1120,
         "wires": [
-            [
-                "aa38fdda.bad9d"
-            ]
+            []
         ]
     },
     {
@@ -5827,9 +6111,7 @@
         "x": 120,
         "y": 1400,
         "wires": [
-            [
-                "167b94d7.2438fb"
-            ]
+            []
         ]
     },
     {
@@ -6127,6 +6409,32 @@
         "wires": []
     },
     {
+        "id": "b760a3b7466678da",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "1e9bf28b.344d8d"
+            ]
+        ]
+    },
+    {
+        "id": "1f7fc24d89a8af1e",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "b213f397.94307"
+            ]
+        ]
+    },
+    {
         "id": "d8aea031.7f89d",
         "type": "http in",
         "z": "dc20c6e0.0feb98",
@@ -6139,7 +6447,7 @@
         "y": 40,
         "wires": [
             [
-                "83301a46.e7b368"
+                "48d71400ebc13581"
             ]
         ]
     },
@@ -6272,7 +6580,7 @@
         "syntax": "mustache",
         "template": "    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">Tr</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Tray</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Name</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Prop</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Cube</span></td>\n                <td width=\"8%\" align=\"center\"><span class=\"tableHeading \">value</span></td>\n                <td width=\"7%\" align=\"center\"><span class=\"tableHeading \">unit</span></td>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">y1</span></td>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">y2</span></td>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">pt</span></td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">1</span></td>\n                <td>\n                    <select class=\"custom-select \" id=\"traySelect0\" onchange=\"traySelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect0\" onchange=\"nameSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"propSelect0\" onchange=\"propSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"attrSelect0\" onchange=\"attrSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText \" id=\"valueSelect0\"></span></td>\n                <td align=\"center\"><span class=\"tableText \" id=\"unitSelect0\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_0y1\" type=\"radio\" name=\"plotAxis_0\"  value=\"y1\"  onchange='selectAxis(0,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_0y2\" type=\"radio\" name=\"plotAxis_0\"  value=\"y2\"  onchange='selectAxis(0,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_0\" type=\"checkbox\" name=\"pts_0\"  value=\"pts\"  onchange='selectPts(0)' checked ></td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">2</span></td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect1\" onchange=\"traySelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect1\" onchange=\"nameSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect1\" onchange=\"propSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect1\" onchange=\"attrSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect1\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect1\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_1y1\" type=\"radio\" name=\"plotAxis_1\"  value=\"y1\"  onchange='selectAxis(1,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_1y2\" type=\"radio\" name=\"plotAxis_1\"  value=\"y2\"  onchange='selectAxis(1,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_1\" type=\"checkbox\" name=\"pts_1\"  value=\"pts\"  onchange='selectPts(1)' checked ></td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">3</span></td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect2\" onchange=\"traySelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect2\" onchange=\"nameSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect2\" onchange=\"propSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect2\" onchange=\"attrSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect2\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect2\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_2y1\" type=\"radio\" name=\"plotAxis_2\"  value=\"y1\"  onchange='selectAxis(2,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_2y2\" type=\"radio\" name=\"plotAxis_2\"  value=\"y2\"  onchange='selectAxis(2,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_2\" type=\"checkbox\" name=\"pts_2\"  value=\"pts\"  onchange='selectPts(2)' checked ></td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">4</span></td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect3\" onchange=\"traySelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect3\" onchange=\"nameSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect3\" onchange=\"propSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect3\" onchange=\"attrSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect3\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect3\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_3y1\" type=\"radio\" name=\"plotAxis_3\"  value=\"y1\"  onchange='selectAxis(3,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_3y2\" type=\"radio\" name=\"plotAxis_3\"  value=\"y2\"  onchange='selectAxis(3,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_3\" type=\"checkbox\" name=\"pts_3\"  value=\"pts\"  onchange='selectPts(3)' checked ></td>\n            </tr>\n        </table>\n    </div>\n    <div>\n        <div class='row'>\n            <div class='col-md-6'>\n                <table>\n                    <tr>\n                        <td width=50%  align=\"center\"class=\"tableHeading\">Span</td>\n                        <td width=50% align=\"center\"></td>\n                    </tr>\n                    <tr>\n                         <td align=\"center\">\n                            <input class=\"form-control\" id=\"plotLength\" type=\"text\" value=\"300\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button class=\"btn jumbotron-button\" id=\"startPlotButton\" type=\"button\" onclick=\"startPlot()\">Start Plot</button>\n                        </td>\n                    </tr>\n                </table>\n            </div>\n        </div>\n        <div class='row'>\n            <div class='col-md-12'>\n                <div class='card'>\n                    <p class='card-title'>Time Plot</p>\n                    <div class='card-body' align=\"center\">\n                        <div id=\"timePlot\" width=\"100%\" class=\"plot\"></div> \n                    </div>\n                </div>\n            </div>\n        </div>\n     </div>",
         "output": "str",
-        "x": 1190,
+        "x": 1370,
         "y": 40,
         "wires": [
             [
@@ -6397,7 +6705,7 @@
         "syntax": "mustache",
         "template": "        var plotStarted = false;\n        var plotTraces = [];\n        var plotStartTime = 0;\n        var plotLength = 0;\n        var plotLayout = {};\n \n        function onDocumentReadySpecial()\n        {\n        }\n        function onWebSocketMessageSpecial(msg)\n        {\n        }\n        function loadTrayValuesSpecial(data)\n        {\n            upDatePlot();\n        }\n        function clearAttrOptionListSpecial(itrace)\n        {\n        }\n        function attrSelectedSpecial(itrace)\n        {\n        }\n\n        function selectAxis(itrace,axis)\n        {\n            trayInfo[itrace].axis  = axis;\n        }\n        function selectPts(itrace)\n        {\n            trayInfo[itrace].pts = !trayInfo[itrace].pts;\n        }\n        function startPlot()\n        {\n            if (!plotStarted)\n            {\n                $(\"#startPlotButton\").html('Stop Plot');\n            }\n            else\n            {\n                $(\"#startPlotButton\").html('Start Plot');\n            }\n            plotStarted = !plotStarted;\n            if (!plotStarted)\n            {\n                plotTraces = [];\n                for (var itrace = 0; itrace < numTraces; ++itrace)\n                {\n                    traySelect[itrace].disabled = false;\n                    nameSelect[itrace].disabled = false;\n                    propSelect[itrace].disabled = false;\n                    attrSelect[itrace].disabled = false;\n                    $('#plotAxis_' + itrace.toString() + 'y1').prop( \"disabled\", false );\n                    $('#plotAxis_' + itrace.toString() + 'y2').prop( \"disabled\", false );\n                    $('#pts_' + itrace.toString()).prop( \"disabled\", false );\n                }\n                return;\n            }\n            plotTraces = [];\n            \n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                traySelect[itrace].disabled = true;\n                nameSelect[itrace].disabled = true;\n                propSelect[itrace].disabled = true;\n                attrSelect[itrace].disabled = true;\n                $('#plotAxis_' + itrace.toString() + 'y1').prop( \"disabled\", true );\n                $('#plotAxis_' + itrace.toString() + 'y2').prop( \"disabled\", true );\n                $('#pts_' + itrace.toString()).prop( \"disabled\", true );\n                if (trayInfo[itrace].name.length > 0)\n                {\n                    var modeType = 'lines';\n                    if (trayInfo[itrace].pts) modeType = 'markers';\n                    var trace =  \n                    {\n                        x: [],\n                        y: [],\n                        name: trayInfo[itrace].axis + ' ' + trayInfo[itrace].type + '.' + trayInfo[itrace].name + '.' + trayInfo[itrace].prop + '.' + trayInfo[itrace].attr + ' (' + trayInfo[itrace].tray[trayInfo[itrace].attr].unit + ')',\n                        yaxis: trayInfo[itrace].axis,\n                        type: 'scatter',\n                        mode: modeType\n                    };\n                    plotTraces.push(trace);\n                }\n            }\n            plotLayout =\n            {\n                showlegend: true,\n                legend: {x: 0,y: 1.35},\n                xaxis       : {type: 'date' },\n                yaxis: {title: 'y1'},\n                yaxis2: {title: 'y2',overlaying: 'y',side: 'right'}\n            };\n\n            plotStartTime = new Date().getTime();\n            Plotly.newPlot('timePlot', plotTraces, plotLayout);\n            plotLength = Number($(\"#plotLength\").val());\n        }\n        function upDatePlot()\n        {\n            if (!plotStarted) return;\n            var now = new Date().getTime();\n            var plotBeginning = now - plotLength * 1000;\n            var traceCount = 0;\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                if (trayInfo[itrace].name.length > 0)\n                {\n                    var removeDone = false;\n                    while(!removeDone)\n                    {\n                        if (plotTraces[traceCount].x[0] < plotBeginning)\n                        {\n                            plotTraces[traceCount].x.shift();\n                            plotTraces[traceCount].y.shift();\n                        }\n                        else\n                        {\n                            removeDone = true;\n                        }\n                    }\n                    plotTraces[traceCount].x.push(now);\n                    plotTraces[traceCount].y.push(trayInfo[itrace].tray[trayInfo[itrace].attr].value);\n                    ++traceCount;\n                }\n            }\n            Plotly.newPlot('timePlot', plotTraces, plotLayout);\n        }",
         "output": "str",
-        "x": 670,
+        "x": 850,
         "y": 40,
         "wires": [
             [
@@ -6416,7 +6724,7 @@
         "syntax": "mustache",
         "template": "Scalar Plotter",
         "output": "str",
-        "x": 1070,
+        "x": 1250,
         "y": 40,
         "wires": [
             [
@@ -6488,7 +6796,7 @@
         "y": 100,
         "wires": [
             [
-                "bc63b66b.867d18"
+                "2368821acde56f09"
             ]
         ]
     },
@@ -6503,7 +6811,7 @@
         "syntax": "mustache",
         "template": "    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">Tr</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Tray</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Name</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Prop</span></td>\n                <td width=\"19%\" align=\"center\"><span class=\"tableHeading \">Cube</span></td>\n                <td width=\"8%\" align=\"center\"><span class=\"tableHeading \">value</span></td>\n                <td width=\"7%\" align=\"center\"><span class=\"tableHeading \">unit</span></td>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">y1</span></td>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">y2</span></td>\n                <td width=\"2%\" align=\"center\"><span class=\"tableHeading \">pt</span></td>\n            </tr>\n            <tr>\n                <td align=\"center\">\n                    <a id='csv0' href='' target='_blank' download=\"data0.csv\" class=\"csv-linked\">1</a>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"traySelect0\" onchange=\"traySelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect0\" onchange=\"nameSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"propSelect0\" onchange=\"propSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"attrSelect0\" onchange=\"attrSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText \" id=\"valueSelect0\"></span></td>\n                <td align=\"center\"><span class=\"tableText \" id=\"unitSelect0\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_0y1\" type=\"radio\" name=\"plotAxis_0\"  value=\"y1\"  onchange='selectAxis(0,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_0y2\" type=\"radio\" name=\"plotAxis_0\"  value=\"y2\"  onchange='selectAxis(0,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_0\" type=\"checkbox\" name=\"pts_0\"  value=\"pts\"  onchange='selectPts(0)' checked ></td>\n            </tr>\n            <tr>\n                <td align=\"center\">\n                    <a id='csv1' href='' target='_blank' download=\"data1.csv\" class=\"csv-linked\">2</a>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect1\" onchange=\"traySelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect1\" onchange=\"nameSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect1\" onchange=\"propSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect1\" onchange=\"attrSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect1\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect1\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_1y1\" type=\"radio\" name=\"plotAxis_1\"  value=\"y1\"  onchange='selectAxis(1,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_1y2\" type=\"radio\" name=\"plotAxis_1\"  value=\"y2\"  onchange='selectAxis(1,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_1\" type=\"checkbox\" name=\"pts_1\"  value=\"pts\"  onchange='selectPts(1)' checked ></td>\n            </tr>\n            <tr>\n                <td align=\"center\">\n                    <a id='csv2' href='' target='_blank' download=\"data2.csv\" class=\"csv-linked\">3</a>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect2\" onchange=\"traySelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect2\" onchange=\"nameSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect2\" onchange=\"propSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect2\" onchange=\"attrSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect2\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect2\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_2y1\" type=\"radio\" name=\"plotAxis_2\"  value=\"y1\"  onchange='selectAxis(2,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_2y2\" type=\"radio\" name=\"plotAxis_2\"  value=\"y2\"  onchange='selectAxis(2,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_2\" type=\"checkbox\" name=\"pts_2\"  value=\"pts\"  onchange='selectPts(2)' checked ></td>\n            </tr>\n            <tr>\n                <td align=\"center\">\n                    <a id='csv3' href='' target='_blank' download=\"data3.csv\" class=\"csv-linked\">4</a>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect3\" onchange=\"traySelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect3\" onchange=\"nameSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect3\" onchange=\"propSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect3\" onchange=\"attrSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect3\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect3\"></span></td>\n                <form action=\"\" >\n                   <td align=\"center\"><input id=\"plotAxis_3y1\" type=\"radio\" name=\"plotAxis_3\"  value=\"y1\"  onchange='selectAxis(3,\"y1\")' checked></td>\n                   <td align=\"center\"><input id=\"plotAxis_3y2\" type=\"radio\" name=\"plotAxis_3\"  value=\"y2\"  onchange='selectAxis(3,\"y2\")' ></td>\n                </form>\n                <td align=\"center\"><input id=\"pts_3\" type=\"checkbox\" name=\"pts_3\"  value=\"pts\"  onchange='selectPts(3)' checked ></td>\n            </tr>\n        </table>\n    </div>\n    <div id='plotSetup'>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotSetupTable'>\n                    <tr>\n                        <td width=10% align=\"center\" class=\"tableHeading\">Max Plot Pts</td>\n                        <td width=20% align=\"center\" class=\"tableHeading\">Start</td>\n                        <td width=20% align=\"center\" class=\"tableHeading\">Stop</td>\n                        <td width=10% align=\"center\"></td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"maxPtsToPlot\" type=\"text\" value=\"500\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"startDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"stopDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button width=100% class=\"btn jumbotron-button\" id=\"getDataButton\" type=\"button\" onclick=\"getArchiveData()\">Get Data</button>\n                        </td>\n                    </tr>\n                </table>\n            </div>\n       </div>\n        <div class='row'>\n            <div class='col-md-12'>\n                <div class='card' id=\"timePlotCard\" >\n                    <p class='card-title'>Time Plot</p>\n                    <div class='card-body' align=\"center\">\n                        <div id=\"timePlot\" width=\"100%\" class=\"plot\"></div> \n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
         "output": "str",
-        "x": 1190,
+        "x": 1370,
         "y": 100,
         "wires": [
             [
@@ -6522,7 +6830,7 @@
         "syntax": "mustache",
         "template": "        var startDate = 0;\n        var stopDate = 0;\n        var csvFile = [];\n        var archiveRequestList = [];\n        var archiveList = [];\n\n        function onDocumentReadySpecial()\n        {\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                $('#csv'+ itrace.toString()).removeAttr(\"href\");\n                $('#csv'+ itrace.toString()).css('color', 'black');\n                $('#csv'+ itrace.toString()).css('text-decoration', 'none');\n                $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n                csvFile[itrace] = null;\n\n            }\n            var now = new Date();\n            console.log(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            var then = new Date(now.getTime() - 3600 * 24 * 1000);\n            $( \"#startDate\" ).val(then.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( \"#stopDate\" ).val(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( function()\n            {\n                $('#startDate').datetimepicker();\n            } );\n            $( function()\n            {\n                $('#stopDate').datetimepicker();\n            } );\n            $('#timePlotCard').hide();\n        }\n        function onWebSocketMessageSpecial(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'getArchiveValues':\n                    archiveList.push(msg.payload);\n                    if (archiveRequestList.length > 0)\n                    {\n                        getArchiveValues();\n                    }\n                    else\n                    {\n                        loadArchiveValues();\n                    }\n                    break;\n                default:\n                // code block\n            }\n        }\n        function loadTrayValuesSpecial(data)\n        {\n        }\n        function clearAttrOptionListSpecial(itrace)\n        {\n            $('#csv'+ itrace.toString()).removeAttr(\"href\");\n            $('#csv'+ itrace.toString()).css('color', 'black');\n            $('#csv'+ itrace.toString()).css('text-decoration', 'none');\n            $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n       }\n        function attrSelectedSpecial(itrace)\n        {\n            $('#csv'+ itrace.toString()).removeAttr(\"href\");\n            $('#csv'+ itrace.toString()).css('color', 'black');\n            $('#csv'+ itrace.toString()).css('text-decoration', 'none');\n            $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n        }\n        function selectAxis(itrace,axis)\n        {\n            trayInfo[itrace].axis  = axis;\n        }\n        function selectPts(itrace)\n        {\n            trayInfo[itrace].pts = !trayInfo[itrace].pts;\n        }\n        function getArchiveData()\n        {\n            archiveRequestList = [];\n            archiveList = [];\n            startDate = new Date($( \"#startDate\" ).val()).getTime();\n            stopDate = new Date($( \"#stopDate\" ).val()).getTime();\n            var traceCount = 0;\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                if (trayInfo[itrace].name.length > 0) \n                {\n                    archiveRequestList[traceCount] = \n                    {\n                        type        : trayInfo[itrace].type, \n                        name        : trayInfo[itrace].name, \n                        prop        : trayInfo[itrace].prop, \n                        attr        : trayInfo[itrace].attr,\n                        startDate   : startDate, \n                        stopDate    : stopDate,\n                        itrace      : itrace\n                    };\n                    ++traceCount;\n                }\n            }\n            if (traceCount < 1) return;\n            $('#plotSetupTable').hide();\n            $('#timePlotCard').hide();\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                $('#csv'+ itrace.toString()).removeAttr(\"href\");\n                $('#csv'+ itrace.toString()).css('color', 'black');\n                $('#csv'+ itrace.toString()).css('text-decoration', 'none');\n                $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n            }\n            messageDialog('Alert', 'Wait!', 'Requesting data ...');\n            getArchiveValues();\n\n        }\n        function getArchiveValues()\n        {\n            var maxPtsToPlot = Number($( \"#maxPtsToPlot\" ).val());\n            var actionMsg = \n                {\n                    tray      : archiveRequestList[0],\n                    maxPtsToPlot: maxPtsToPlot\n                };\n            sendActionMsg('getArchiveValues', 'readDatabase', actionMsg);\n            archiveRequestList.shift();\n            return;\n        }\n        function loadArchiveValues()\n        {\n            $( \"#messageDialog\" ).dialog('close');\n            $('#plotSetupTable').show();\n            var plotTraces = [];\n            for (ii = 0; ii < archiveList.length; ++ii)\n            {\n                itrace = archiveList[ii].itrace;\n                var modeType = 'lines';\n                if (trayInfo[itrace].pts) modeType = 'markers';\n                var trace =  \n                {\n                    x: [],\n                    y: [],\n                    name: trayInfo[itrace].axis + ' ' + trayInfo[itrace].type + '.' + trayInfo[itrace].name + '.' + trayInfo[itrace].prop + '.' + trayInfo[itrace].attr + ' (' + trayInfo[itrace].tray[trayInfo[itrace].attr].unit + ')',\n                    yaxis: trayInfo[itrace].axis,\n                    type: 'scatter',\n                    mode: modeType\n                }\n                for (var ipt = 0; ipt < archiveList[ii].trace.length; ++ipt)\n                {\n                    trace.x[ipt] = archiveList[ii].trace[ipt].timeStamp;\n                    trace.y[ipt] = archiveList[ii].trace[ipt].value;\n                }\n                plotTraces.push(trace);\n                makeCsvFile(ii);\n            }\n            var plotLayout =\n            {\n                showlegend: true,\n                legend: {x: 0,y: 1.35},\n                xaxis       : {type: 'date' },\n                yaxis: {title: 'y1'},\n                yaxis2: {title: 'y2',overlaying: 'y',side: 'right'}\n            };\n            $('#timePlotCard').show();\n            Plotly.newPlot('timePlot', plotTraces, plotLayout);\n        }\n        function makeCsvFile(ii)\n        {\n            var dataString = '';\n            var startT = archiveList[ii].trace[0].timeStamp;\n            var itrace = archiveList[ii].itrace;\n        \n            dataString = dataString + 'Tray,' + trayInfo[itrace].type + ',' + trayInfo[itrace].name + ',' + trayInfo[itrace].prop + ',' + trayInfo[itrace].attr  +'\\n';\n            dataString = dataString + 'StartDate,' + new Date(startT).toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}) + '\\n';\n            dataString = dataString + 'StartDate (mS),' + startT.toString() + '\\n';\n            dataString = dataString + 'Time (sec), Value (' + trayInfo[itrace].tray[trayInfo[itrace].attr].unit + ')\\n';\n            for (var ipt = 0; ipt < archiveList[ii].trace.length; ++ipt)\n            {\n                var x = (archiveList[ii].trace[ipt].timeStamp - startT) / 1000;\n                var y = archiveList[ii].trace[ipt].value;\n                dataString = dataString + x.toString() + ',' + y.toString() + '\\n';\n            }\n            var data = new Blob([dataString], {type: 'text/plain'});\n        \n            // If we are replacing a previously generated file we need to\n            // manually revoke the object URL to avoid memory leaks.\n            if (csvFile[itrace] !== null) {\n              window.URL.revokeObjectURL(csvFile[itrace]);\n            }\n        \n            csvFile[itrace] = window.URL.createObjectURL(data);\n            // returns a URL you can use as a href\n            $('#csv'+ itrace.toString()).css('color', 'blue');\n            $('#csv'+ itrace.toString()).css('text-decoration', 'underline');\n            $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n            $('#csv'+ itrace.toString()).attr(\"href\", csvFile[itrace]);\n            $('#csv'+ itrace.toString()).attr(\"download\", trayInfo[itrace].type + '-' + trayInfo[itrace].name + '-' + trayInfo[itrace].prop + '-' + trayInfo[itrace].attr + '.csv');\n        \n        }\n",
         "output": "str",
-        "x": 670,
+        "x": 850,
         "y": 100,
         "wires": [
             [
@@ -6541,7 +6849,7 @@
         "syntax": "mustache",
         "template": "Scalar Archive Plotter",
         "output": "str",
-        "x": 1070,
+        "x": 1250,
         "y": 100,
         "wires": [
             [
@@ -6672,7 +6980,7 @@
         "y": 160,
         "wires": [
             [
-                "5fe2ee6b.e7801"
+                "761fbc6312cdfd4d"
             ]
         ]
     },
@@ -6687,7 +6995,7 @@
         "syntax": "mustache",
         "template": "    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"9%\"  align=\"center\"><span class=\"tableHeading \">Tr</span></td>\n                <td width=\"13%\" align=\"center\"><span class=\"tableHeading \">Tray</span></td>\n                <td width=\"13%\" align=\"center\"><span class=\"tableHeading \">Name</span></td>\n                <td width=\"13%\" align=\"center\"><span class=\"tableHeading \">Prop</span></td>\n                <td width=\"13%\" align=\"center\"><span class=\"tableHeading \">Cube</span></td>\n                <td width=\"13%\" align=\"center\"><span class=\"tableHeading \">value</span></td>\n                <td width=\"13%\" align=\"center\"><span class=\"tableHeading \">unit</span></td>\n                <td width=\"6.5%\" align=\"center\"><span class=\"tableHeading \">Set</span></td>\n                <td width=\"6.5%\" align=\"center\"><span class=\"tableHeading \">Con</span></td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">1</span></td>\n                <td>\n                    <select class=\"custom-select \" id=\"traySelect0\" onchange=\"traySelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect0\" onchange=\"nameSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"propSelect0\" onchange=\"propSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"attrSelect0\" onchange=\"attrSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText \" id=\"valueSelect0\"></span></td>\n                <td align=\"center\"><span class=\"tableText \" id=\"unitSelect0\"></span></td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"setTrayButton0\" type=\"button\" onclick=\"setTray(0)\">Set</button>\n                </td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"conTrayButton0\" type=\"button\" onclick=\"conTray(0)\">Con</button>\n                </td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">2</span></td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect1\" onchange=\"traySelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect1\" onchange=\"nameSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect1\" onchange=\"propSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect1\" onchange=\"attrSelected(1)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect1\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect1\"></span></td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"setTrayButton1\" type=\"button\" onclick=\"setTray(1)\">Set</button>\n                </td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"conTrayButton1\" type=\"button\" onclick=\"conTray(1)\">Con</button>\n                </td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">3</span></td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect2\" onchange=\"traySelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect2\" onchange=\"nameSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect2\" onchange=\"propSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect2\" onchange=\"attrSelected(2)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect2\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect2\"></span></td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"setTrayButton2\" type=\"button\" onclick=\"setTray(2)\">Set</button>\n                </td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"conTrayButton2\" type=\"button\" onclick=\"conTray(2)\">Con</button>\n                </td>\n            </tr>\n            <tr>\n                <td align=\"center\"><span class=\"tableText\">4</span></td>\n                <td>\n                    <select class=\"custom-select\" id=\"traySelect3\" onchange=\"traySelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect3\" onchange=\"nameSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"propSelect3\" onchange=\"propSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select\" id=\"attrSelect3\" onchange=\"attrSelected(3)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td align=\"center\"><span class=\"tableText\" id=\"valueSelect3\"></span></td>\n                <td align=\"center\"><span class=\"tableText\" id=\"unitSelect3\"></span></td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"setTrayButton3\" type=\"button\" onclick=\"setTray(3)\">Set</button>\n                </td>\n                <td align=\"center\">\n                    <button class=\"btn jumbotron-button btn-block\" id=\"conTrayButton3\" type=\"button\" onclick=\"conTray(3)\">Con</button>\n                </td>\n            </tr>\n        </table>\n    </div>\n    <div id=\"setTrayDialog\" title=\"set Tray\" class='card'>\n        <p class='card-title' id='setTrayDialogAttribute'>Attribute</p>\n        <div class='card-body'>\n            <table>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">Value</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"attrValue\" type=\"text\" value=\"0\" /></td>\n                </tr>\n            </table>\n        </div>\n    </div>\n    <div id=\"conTrayDialog\" title=\"Config Tray\" class='card'>\n        <p class='card-title' id='conTrayDialogAttribute'>Attribute</p>\n        <div class='card-body'>\n            <table>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">LoLo</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"loloAlarm\" type=\"text\" value=\"0\" /></td>\n                </tr>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">LOW</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"lowAlarm\" type=\"text\" value=\"0\" /></td>\n                </tr>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">HIGH</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"highAlarm\" type=\"text\" value=\"0\" /></td>\n                </tr>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">HiHi</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"hihiAlarm\" type=\"text\" value=\"0\" /></td>\n                </tr>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">Notify Name</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"notifyName\" type=\"text\" value=\"\" /></td>\n                </tr>\n                <tr>\n                    <td width=\"50%\" align=\"left\">  <span class=\"tableHeading\">Notify Number</span></td>\n                    <td width=\"50%\" align=\"right\"><input class=\"form-control\" id=\"notifyNumber\" type=\"text\" value=\"\" /></td>\n                </tr>\n            </table>\n        </div>\n    </div>",
         "output": "str",
-        "x": 1190,
+        "x": 1370,
         "y": 160,
         "wires": [
             [
@@ -6706,7 +7014,7 @@
         "syntax": "mustache",
         "template": "Scalar Viewer",
         "output": "str",
-        "x": 1070,
+        "x": 1250,
         "y": 160,
         "wires": [
             [
@@ -6786,7 +7094,7 @@
         "y": 220,
         "wires": [
             [
-                "fac3ac47.cbce"
+                "4fa9c0988a15eb70"
             ]
         ]
     },
@@ -6801,7 +7109,7 @@
         "syntax": "mustache",
         "template": "    <div width=\"100%\">\n        <div class=\"row\"> \n            <div class=\"col-md-3\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\"></div>\n            <div class=\"col-md-6\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\">\n                <button class=\"btn jumbotron-button btn-block\" id=\"toggleSoundButton\" type=\"button\" onclick=\"toggleSound()\">Turn Sound On</button>\n            </div>\n            <div class=\"col-md-3\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\"></div>\n        </div>\n    </div>\n    <div width=\"100%\">\n        <table width=\"100%\" id='alarmTable'>\n            <tr class=\"tableHeading\">\n                <td width='12%'>Alarm</td>\n                <td width='12%'>Tray</td>\n                <td width='12%'>Name</td>\n                <td width='12%'>Property</td>\n                <td width='12%'>Cube</td>\n                <td width='12%'>Value</td>\n                <td width='12%'>Unit</td>\n                <td width='12%'>Type</td>\n            </tr>\n        </table>\n    </div>",
         "output": "str",
-        "x": 1190,
+        "x": 1370,
         "y": 220,
         "wires": [
             [
@@ -6820,7 +7128,7 @@
         "syntax": "mustache",
         "template": "        var ws;\n        var retries = 0;\n        var userID = -1;\n        var audioAlarm = new Audio('/audio/alarm.ogg');\n        var alarmSoundOn = false;\n        var soundLastPlayed = 0;\n        var soundInterval = 4000;\n        \n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            createAlarmTableRows(100);\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n               case 'alarmList':\n                    alarmScan(msg.payload);\n                    break;\n                default:\n                // code block\n            }\n        }\n        function createAlarmTableRows(nrows)\n        {\n            var alarmTable = document.getElementById('alarmTable');\n            for (var irow = 0; irow < nrows; ++irow)\n            {\n                var row = alarmTable.insertRow(irow + 1);\n                row.setAttribute(\"id\", \"alarmTable\" + irow.toString());\n                row.setAttribute(\"class\", \"tableText\");\n                var iconCell = row.insertCell(0);\n                var trayCell  = row.insertCell(1);\n                var nameCell = row.insertCell(2);\n                var propCell = row.insertCell(3);\n                var attrCell = row.insertCell(4);\n                var valueCell= row.insertCell(5);\n                var unitCell = row.insertCell(6);\n                var typeCell = row.insertCell(7);\n                iconCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_icon\");\n                trayCell.setAttribute( \"id\", \"alarmTable\" + irow.toString() + \"_tray\");\n                nameCell.setAttribute( \"id\", \"alarmTable\" + irow.toString() + \"_name\");\n                propCell.setAttribute( \"id\", \"alarmTable\" + irow.toString() + \"_prop\");\n                attrCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_attr\");\n                valueCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_value\");\n                unitCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_unit\");\n                typeCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_type\");\n                $('#alarmTable' + irow.toString()).hide();\n                iconCell.innerHTML = \"<img id='alarmTable\" + irow.toString() + \"_led'\" + \" src='/img/redLight.png' height='50px'/>\";\n            }\n        \n        }\n        function alarmScan(alarmList)\n        {\n            var trayInfo = [];\n            var nrows = $('#alarmTable tr').length;\n            nrows = nrows - 1;\n            if (alarmList.length > nrows) alert('Too many alarms to display!');\n            for (var itray = 0; itray < alarmList.length; ++itray)\n            {\n                $('#alarmTable' + itray.toString()).show();\n                $('#alarmTable' + itray.toString() + '_tray').html(alarmList[itray].type);\n                $('#alarmTable' + itray.toString() + '_name').html(alarmList[itray].name);\n                $('#alarmTable' + itray.toString() + '_prop').html(alarmList[itray].prop);\n                $('#alarmTable' + itray.toString() + '_attr').html(alarmList[itray].attr);\n                $('#alarmTable' + itray.toString() + '_value').html(alarmList[itray].value);\n                $('#alarmTable' + itray.toString() + '_unit').html(alarmList[itray].unit);\n                var type = '';\n                if (alarmList[itray].alarm == 1) type = 'LOW';\n                if (alarmList[itray].alarm == 2) type = 'HIGH';\n                if (alarmList[itray].alarm == 3) type = 'LOLO';\n                if (alarmList[itray].alarm == 4) type = 'HIHI';\n                $('#alarmTable' + itray.toString() + '_type').html(type);\n                if (alarmList[itray].alarm < 3)\n                {\n                    $('#alarmTable' + itray.toString() + '_led').attr('src','/img/yellowLight.png');\n                }\n                else\n                {\n                    $('#alarmTable' + itray.toString() + '_led').attr('src','/img/redLight.png');\n                    if (alarmSoundOn)\n                    {\n                        if ((new Date().getTime() - soundLastPlayed) > soundInterval)\n                        {\n                            audioAlarm.play();\n                            soundLastPlayed = new Date().getTime();\n                        }\n                    }\n                    \n                }\n        \n            }\n            for (var itray = alarmList.length; itray < nrows; ++itray)\n            {\n                $('#alarmTable' + itray.toString()).hide();\n            }\n        \n        }\n        function toggleSound()\n        {\n            alarmSoundOn = !alarmSoundOn;\n            var soundButtonText = 'Turn Sound On';\n            if (alarmSoundOn) soundButtonText = 'Turn Sound Off';\n            $('#toggleSoundButton').html(soundButtonText);\n        }",
         "output": "str",
-        "x": 930,
+        "x": 1110,
         "y": 220,
         "wires": [
             [
@@ -6839,7 +7147,7 @@
         "syntax": "mustache",
         "template": "Alarm Scanner",
         "output": "str",
-        "x": 1070,
+        "x": 1250,
         "y": 220,
         "wires": [
             [
@@ -7069,7 +7377,7 @@
         "syntax": "mustache",
         "template": "        var editedTrace = -1;\n        \n        function onDocumentReadySpecial()\n        {\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                $('#setTrayButton'+ itrace.toString()).hide();\n                $('#conTrayButton'+ itrace.toString()).hide();\n            }\n        }\n        function onWebSocketMessageSpecial(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'getJwtToken':\n                    loadJwtToken(msg);\n                    break;\n                case 'settingAcknowledge':\n                    acknowledgeDialog('Acknowledge', 'Setting', msg.payload);\n                    break;\n                default:\n                // code block\n            }\n        }\n        $( function() \n        {\n            $( \"#setTrayDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Set\",\n                            click: function() {disableButtons(false); sendSetting(); $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() {disableButtons(false); $( this ).dialog( \"close\" ); permitGetTrayValues = true;},\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n        $( function() \n        {\n            $( \"#conTrayDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Set\",\n                            click: function() {disableButtons(false); sendConfig(); $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() {disableButtons(false); $( this ).dialog( \"close\" ); permitGetTrayValues = true;},\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n        function disableButtons(disable)\n        {\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                $('#setTrayButton'+ itrace.toString()).attr('disabled',disable);\n                $('#conTrayButton'+ itrace.toString()).attr('disabled',disable);\n            }\n        }\n        function setTray(itrace)\n        {\n            permitGetTrayValues = false;\n            editedTrace = itrace;\n            $( \"#editTrayDialog\" ).dialog( \"option\", \"title\", \"Edit\");    \n            $( \"#editTrayDialogAttribute\").html(trayInfo[itrace].type + '-'  + trayInfo[itrace].name + '-'  + trayInfo[itrace].prop + '-'  + trayInfo[itrace].attr);\n            var attr = trayInfo[itrace].tray[trayInfo[itrace].attr];\n            $( \"#attrValue\").val(attr.value);\n            disableButtons(true);\n\n\n            $( \"#setTrayDialog\" ).dialog( \"open\" );\n        }\n        function conTray(itrace)\n        {\n            permitGetTrayValues = false;\n            editedTrace = itrace;\n            $( \"#editTrayDialog\" ).dialog( \"option\", \"title\", \"Edit\");    \n            $( \"#editTrayDialogAttribute\").html(trayInfo[itrace].type + '-'  + trayInfo[itrace].name + '-'  + trayInfo[itrace].prop + '-'  + trayInfo[itrace].attr);\n            var attr = trayInfo[itrace].tray[trayInfo[itrace].attr];\n            $( \"#loloAlarm\").val(attr.alarm.limits.lolo);\n            $( \"#lowAlarm\").val(attr.alarm.limits.low);\n            $( \"#highAlarm\").val(attr.alarm.limits.high);\n            $( \"#hihiAlarm\").val(attr.alarm.limits.hihi);\n            $( \"#notifyName\").val(attr.alarm.notify.name);\n            $( \"#notifyNumber\").val(attr.alarm.notify.number);\n            disableButtons(true);\n\n            $( \"#conTrayDialog\" ).dialog( \"open\" );\n        }\n        function sendSetting()\n        {\n            var attr = trayInfo[editedTrace].tray[trayInfo[editedTrace].attr];\n            if (isNaN($('#attrValue').val()))\n            {\n                permitGetTrayValues = true;\n                acknowledgeDialog('Error', 'Entry not a number!', attr.attr);\n                return;\n            }\n\n            var actionMsg = \n                {\n                    topic   : box + '/' + trayInfo[editedTrace].tray.type + '/' + trayInfo[editedTrace].tray.name + '/setting/setting',\n                    payload : {'cube': trayInfo[editedTrace].attr, 'value':Number($( \"#attrValue\").val())}\n                };\n            sendActionMsg('sendSettingToMqtt','setting',actionMsg);\n\n            permitGetTrayValues = true;\n        }\n        function sendConfig()\n        {\n            var attr = trayInfo[editedTrace].tray[trayInfo[editedTrace].attr];\n            if (isNaN($('#loloAlarm').val()) \n                || isNaN($('#lowAlarm').val()) \n                || isNaN($('#highAlarm').val()) \n                || isNaN($('#hihiAlarm').val()))\n            {\n                permitGetTrayValues = true;\n                acknowledgeDialog('Error', 'Entry not a number!', attr.attr);\n                return;\n            }\n\n            attr.alarm.limits.lolo = Number($( \"#loloAlarm\").val());\n            attr.alarm.limits.low = Number($( \"#lowAlarm\").val());\n            attr.alarm.limits.high = Number($( \"#highAlarm\").val());\n            attr.alarm.limits.hihi = Number($( \"#hihiAlarm\").val());\n            attr.alarm.notify.number =  $( \"#notifyNumber\").val();\n            attr.alarm.notify.name = $( \"#notifyName\").val();\n            let configInfo = \n            {\n                cube : trayInfo[editedTrace].attr,\n                limits: attr.alarm.limits,\n                notify: attr.alarm.notify\n            };\n            var actionMsg = \n                {\n                    topic   : box + '/' + trayInfo[editedTrace].tray.type + '/' + trayInfo[editedTrace].tray.name + '/setting/config',\n                    payload : configInfo\n                };\n            sendActionMsg('sendConfigToMqtt', 'setting',  actionMsg);\n            permitGetTrayValues = true;\n        }\n        function loadTrayValuesSpecial(data)\n        {\n        }\n        function clearAttrOptionListSpecial(itrace)\n        {\n            $('#setTrayButton'+ itrace.toString()).hide();\n            $('#conTrayButton'+ itrace.toString()).hide();\n        }\n        function attrSelectedSpecial(itrace)\n        {\n            if (trayInfo[itrace].prop == 'setting') $('#setTrayButton'+ itrace.toString()).show();\n            $('#conTrayButton'+ itrace.toString()).show();\n\n        }\n\n",
         "output": "str",
-        "x": 670,
+        "x": 850,
         "y": 160,
         "wires": [
             [
@@ -7083,7 +7391,7 @@
         "z": "dc20c6e0.0feb98",
         "name": "",
         "env": [],
-        "x": 900,
+        "x": 1080,
         "y": 160,
         "wires": [
             [
@@ -7097,7 +7405,7 @@
         "z": "dc20c6e0.0feb98",
         "name": "",
         "env": [],
-        "x": 900,
+        "x": 1080,
         "y": 40,
         "wires": [
             [
@@ -7111,7 +7419,7 @@
         "z": "dc20c6e0.0feb98",
         "name": "",
         "env": [],
-        "x": 900,
+        "x": 1080,
         "y": 100,
         "wires": [
             [
@@ -7143,7 +7451,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 290,
+        "x": 470,
         "y": 40,
         "wires": [
             [
@@ -7156,7 +7464,7 @@
         "type": "subflow:495f0879.c831c8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 460,
+        "x": 640,
         "y": 40,
         "wires": [
             [
@@ -7174,7 +7482,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 290,
+        "x": 470,
         "y": 160,
         "wires": [
             [
@@ -7187,7 +7495,7 @@
         "type": "subflow:495f0879.c831c8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 460,
+        "x": 640,
         "y": 160,
         "wires": [
             [
@@ -7205,7 +7513,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 290,
+        "x": 470,
         "y": 220,
         "wires": [
             [
@@ -7218,7 +7526,7 @@
         "type": "subflow:495f0879.c831c8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 460,
+        "x": 640,
         "y": 220,
         "wires": [
             [
@@ -7236,7 +7544,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 290,
+        "x": 470,
         "y": 100,
         "wires": [
             [
@@ -7249,7 +7557,7 @@
         "type": "subflow:495f0879.c831c8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 460,
+        "x": 640,
         "y": 100,
         "wires": [
             [
@@ -7309,7 +7617,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 1470,
+        "x": 1650,
         "y": 220,
         "wires": []
     },
@@ -7317,7 +7625,7 @@
         "id": "d7c2577456ab9e19",
         "type": "subflow:7744eedb71df7703",
         "z": "dc20c6e0.0feb98",
-        "x": 1330,
+        "x": 1510,
         "y": 220,
         "wires": [
             [
@@ -7330,7 +7638,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 1470,
+        "x": 1650,
         "y": 160,
         "wires": []
     },
@@ -7338,7 +7646,7 @@
         "id": "47a0234124b3b599",
         "type": "subflow:7744eedb71df7703",
         "z": "dc20c6e0.0feb98",
-        "x": 1330,
+        "x": 1510,
         "y": 160,
         "wires": [
             [
@@ -7351,7 +7659,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 1470,
+        "x": 1650,
         "y": 100,
         "wires": []
     },
@@ -7359,7 +7667,7 @@
         "id": "9e1f54c01efdf924",
         "type": "subflow:7744eedb71df7703",
         "z": "dc20c6e0.0feb98",
-        "x": 1330,
+        "x": 1510,
         "y": 100,
         "wires": [
             [
@@ -7372,7 +7680,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "dc20c6e0.0feb98",
         "name": "",
-        "x": 1470,
+        "x": 1650,
         "y": 40,
         "wires": []
     },
@@ -7380,11 +7688,63 @@
         "id": "5caadfa3a8a636ab",
         "type": "subflow:7744eedb71df7703",
         "z": "dc20c6e0.0feb98",
-        "x": 1330,
+        "x": 1510,
         "y": 40,
         "wires": [
             [
                 "94f6cca52d4c60da"
+            ]
+        ]
+    },
+    {
+        "id": "4fa9c0988a15eb70",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "dc20c6e0.0feb98",
+        "name": "",
+        "x": 300,
+        "y": 220,
+        "wires": [
+            [
+                "fac3ac47.cbce"
+            ]
+        ]
+    },
+    {
+        "id": "761fbc6312cdfd4d",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "dc20c6e0.0feb98",
+        "name": "",
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "5fe2ee6b.e7801"
+            ]
+        ]
+    },
+    {
+        "id": "2368821acde56f09",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "dc20c6e0.0feb98",
+        "name": "",
+        "x": 300,
+        "y": 100,
+        "wires": [
+            [
+                "bc63b66b.867d18"
+            ]
+        ]
+    },
+    {
+        "id": "48d71400ebc13581",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "dc20c6e0.0feb98",
+        "name": "",
+        "x": 300,
+        "y": 40,
+        "wires": [
+            [
+                "83301a46.e7b368"
             ]
         ]
     },
@@ -7427,7 +7787,7 @@
         "y": 40,
         "wires": [
             [
-                "421bd3a6.9feaac"
+                "88734c9b0d08367a"
             ]
         ]
     },
@@ -7442,7 +7802,7 @@
         "syntax": "mustache",
         "template": "    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"33%\" align=\"center\"><span class=\"tableHeading \">Tray</span></td>\n                <td width=\"33%\" align=\"center\"><span class=\"tableHeading \">Name</span></td>\n                <td width=\"33%\" align=\"center\"><span class=\"tableHeading \">Cube</span></td>\n            </tr>\n            <tr>\n                <td>\n                    <select class=\"custom-select \" id=\"traySelect0\" onchange=\"traySelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect0\" onchange=\"nameSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"attrSelect0\" onchange=\"attrSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n            </tr>\n        </table>\n    </div>\n    <div class='vert-pad' width=\"100%\">\n        <div class='row'>\n            <div class='col-md-12'>\n                <div class='card'>\n                    <p class='card-title'>Spectrogram</p>\n                    <div class='card-body' align=\"center\">\n                        <div width=\"100%\" id=\"spectrogram\" align=\"center\"></div> \n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div width=\"100%\">\n        <div class=\"row\"> \n            <div class=\"col-md-6\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\">\n                <button class=\"btn jumbotron-button btn-block\" id=\"freezeButton\" type=\"button\" onclick=\"freezeRun()\"></button>\n            </div>\n            <div class=\"col-md-6\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\">\n                <button class=\"btn jumbotron-button btn-block\" id=\"birdsEyeButton\" type=\"button\" onclick=\"birdsEyeView()\">Birds Eye</button>\n            </div>\n        </div>\n        <div class=\"row\"> \n            <div class=\"col-md-6\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\">\n                <button class=\"btn jumbotron-button btn-block\" id=\"sliceViewButton\" type=\"button\" onclick=\"sliceView()\">Slice View</button>\n            </div>\n            <div class=\"col-md-6\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\">\n                <button class=\"btn jumbotron-button btn-block\" id=\"sliceViewButton\" type=\"button\" onclick=\"topView()\">Top View</button>\n            </div>\n        </div>\n        <div class=\"row\"> \n            <div class=\"col-md-6\" align=\"right\" >\n                <span class=\"tableHeading\" style=\"font-size: medium;\">Start Time</span>\n            </div>\n            <div class=\"col-md-6\">\n                <span class=\"tableHeading\"  style=\"font-size: medium;\" id=\"startTime\"></span>\n            </div>\n        </div>\n        <div class=\"row\"> \n            <div class=\"col-md-6\"  align=\"right\">\n                <span class=\"tableHeading\" style=\"font-size: medium;\">Stop Time</span>\n            </div>\n            <div class=\"col-md-6\">\n                <span class=\"tableHeading\" id=\"stopTime\" style=\"font-size: medium;\"></span>\n            </div>\n        </div>\n        <div class=\"row\"> \n            <div class=\"col-md-3\" align=\"right\" >\n                <span class=\"tableHeading\" style=\"font-size: medium;\">PlotSlices</span>\n            </div>\n            <div class=\"col-md-6\">\n                <input class=\"form-control center-justify\" id=\"plotslices\" type=\"text\" value=\"0\" style=\"font-size: medium;\"/>\n            </div>\n        </div>\n    </div>\n    ",
         "output": "str",
-        "x": 1050,
+        "x": 1230,
         "y": 40,
         "wires": [
             [
@@ -7461,7 +7821,7 @@
         "syntax": "mustache",
         "template": "        var numTraces = 1;\n        var traySelect = [];\n        var nameSelect = [];\n        var attrSelect=[];\n        var valSelect=[];\n        var trayInfo = [];\n\n        var graph3d = null;\n        var itimeSlice = 0;\n        var timeMax = 32;\n        var dataArray = [];\n        var timeStamp = [];\n        var deltaT = 0;\n        var freeze = false;\n        var sliceViewActive = false;\n        var birdsEyeViewActive = false;\n        var topViewActive = false;\n        var birdsEyeTimeMax = 32;\n        var plotStarted = false;\n        \n        var threedPlotOptions =\n        {\n            width: '850px',\n            height: '600px',\n            style: 'surface',\n            showPerspective: false,\n            showGrid: true,\n            showShadow: false,\n            keepAspectRatio: false,\n            verticalRatio: 0.6,\n            showZAxis: true,\n            xLabel: 'x',\n            yLabel: 'Time',\n            tooltip: true,\n            axisColor: '#ffffff',\n        };\n\n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                traySelect[itrace] = document.getElementById('traySelect' + itrace.toString());\n                nameSelect[itrace] = document.getElementById('nameSelect' + itrace.toString());\n                attrSelect[itrace] = document.getElementById('attrSelect' + itrace.toString());\n                valSelect[itrace] = document.getElementById('valSelect' + itrace.toString());\n                trayInfo[itrace] = {type: '', name : '',  prop : 'reading', attr : '',tray : {}};\n            }\n            $(\"#freezeButton\").text('Running');\n            $(\"#plotslices\").val(timeMax.toString());\n            $(\"#plotslices\").change(function()\n            {\n                timeMax = Number($(\"#plotslices\").val());\n                if (timeMax < 2)\n                {\n                    alert('Number of plot slices must be greater than 1');\n                    timeMax = 2;\n                }\n                birdsEyeTimeMax = timeMax;\n                $(\"#plotslices\").val(timeMax.toString());\n                dataArray = [];\n                itimeSlice = 0;\n                plotStarted = false;\n            });\n            sliceViewActive = true;\n            birdsEyeViewActive = false;\n            topViewActive = false;\n            setInterval(getTrayValues, 1000);\n        }\n        function restartPlot()\n        {\n            $(\"#freezeButton\").text('Running');\n            $(\"#plotslices\").val(timeMax.toString());\n            dataArray = [];\n            itimeSlice = 0;\n            plotStarted = false;\n            sliceViewActive = true;\n            birdsEyeViewActive = false;\n            topViewActive = false;\n        }\n        function onWebSocketMessage(msg)\n        {\n            if (msg.userID == userID)\n            {\n                switch(msg.topic)\n                {\n                    case 'getTrayList':\n                        loadTrayList(msg.payload);\n                        break;\n                    case 'getNameList':\n                        loadNameList(msg);\n                        break;\n                    case 'getAttrList':\n                        loadAttrList(msg);\n                        break;\n                    case 'getTrayValues':\n                        loadTrayValues(msg);\n                        break;\n                    case 'permissionError':\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                        break;\n                    case 'loginExpired':\n                        location.reload();\n                        break;\n                    default:\n                       break;\n                }\n            }\n         }\n        function onWebSocketOpen()\n        {\n            var actionMsg = \n                {\n                };\n            sendActionMsg('getTrayList', 'readDatabase', actionMsg);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function loadTrayList(trayList)\n        {\n            trayList.sort();\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                for (var ii = 0; ii < trayList.length; ++ii)\n                {\n                    var opt = document.createElement('option');\n                    opt.value = trayList[ii];\n                    opt.innerHTML = trayList[ii];\n                    traySelect[itrace].appendChild(opt);\n                }\n            }\n        }\n        function loadNameList(data)\n        {\n            data.nameList.sort();\n            for (var ii = 0; ii < data.nameList.length; ++ii)\n            {\n                var opt = document.createElement('option');\n                opt.value = data.nameList[ii];\n                opt.innerHTML = data.nameList[ii];\n                nameSelect[data.trace].appendChild(opt);\n            }\n\n            return;\n        }\n        function loadAttrList(data)\n        {\n            data.attrList.sort();\n            for (var ii = 0; ii < data.attrList.length; ++ii)\n            {\n                var opt = document.createElement('option');\n                opt.value = data.attrList[ii];\n                opt.innerHTML = data.attrList[ii];\n                attrSelect[data.trace].appendChild(opt);\n            }\n        }\n        function traySelected(itrace)\n        {\n            clearNameOptionList(itrace);\n            if (traySelect[itrace].value == 'notSelected') return;\n            nameSelect[itrace].value = 'notSelected';\n            var actionMsg = \n                {\n                    trace       : itrace,\n                    type  : traySelect[itrace].value\n                };\n            sendActionMsg('getNameList', 'readDatabase', actionMsg);\n        }\n        function nameSelected(itrace)\n        {\n            clearAttrOptionList(itrace);\n            if (nameSelect[itrace].value == 'notSelected') return;\n            var actionMsg = \n                {\n                    trace       : itrace,\n                    type  : traySelect[itrace].value,\n                    name        : nameSelect[itrace].value,\n                    prop        : 'reading'\n                };\n            sendActionMsg('getAttrList', 'readDatabase', actionMsg);\n        }\n        function attrSelected(itrace)\n        {\n            trayInfo[itrace].type = '';\n            trayInfo[itrace].name = '';\n            trayInfo[itrace].attr = '';\n            trayInfo[itrace].tray = {};\n            restartPlot();\n            if (attrSelect[itrace].value == 'notSelected')  return;\n            trayInfo[itrace].type = traySelect[itrace].value;\n            trayInfo[itrace].name = nameSelect[itrace].value;\n            trayInfo[itrace].attr = attrSelect[itrace].value;\n\n        }\n        function clearNameOptionList(itrace)\n        {\n            trayInfo[itrace].type = '';\n            trayInfo[itrace].name = '';\n            trayInfo[itrace].attr = '';\n            trayInfo[itrace].tray = {};\n\n            while (nameSelect[itrace].firstChild)\n            {\n                nameSelect[itrace].removeChild(nameSelect[itrace].firstChild);\n            }\n            var opt = document.createElement('option');\n            opt.value = 'notSelected';\n            opt.innerHTML = '';\n            nameSelect[itrace].appendChild(opt);\n            clearAttrOptionList(itrace);\n        }\n        function clearAttrOptionList(itrace)\n        {\n            trayInfo[itrace].type = '';\n            trayInfo[itrace].name = '';\n            trayInfo[itrace].attr = '';\n            trayInfo[itrace].tray = {};\n\n            while (attrSelect[itrace].firstChild)\n            {\n                attrSelect[itrace].removeChild(attrSelect[itrace].firstChild);\n            }\n            var opt = document.createElement('option');\n            opt.value = 'notSelected';\n            opt.innerHTML = '';\n            attrSelect[itrace].appendChild(opt);\n            \n        }\n        function getTrayValues()\n        {\n            var trayList = [];\n            var traceCount = 0;\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                if ((trayInfo[itrace].type.length > 0) && (trayInfo[itrace].name.length > 0)) \n                {\n                    trayList[traceCount] = { $and: [ {type : trayInfo[itrace].type}, {name : trayInfo[itrace].name}]};\n                    ++traceCount;\n                }\n            }\n            if (traceCount < 1) return;\n            var queryFilter = { $or: trayList };\n            var actionMsg = \n                {\n                    queryFilter : queryFilter,\n                };\n            sendActionMsg('getTrayValues', 'readDatabase', actionMsg);\n        }\n        function loadTrayValues(data)\n        {\n            var trays = data.trays;\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                if (trayInfo[itrace].attr.length > 0)\n                {\n                    for (itray = 0; itray < trays.length; ++itray)\n                    {\n                        if (trays[itray].type == trayInfo[itrace].type)\n                        {\n                            if(trays[itray].name == trayInfo[itrace].name)\n                            {\n                                trayInfo[itrace].tray = trays[itray];\n                                var attr = trayInfo[itrace].tray[trayInfo[itrace].attr];\n                                upDatePlot(attr.value);\n                            }\n                        }\n                    } \n                }\n            }\n        }\n        function upDatePlot(value)\n        {\n            var npts = value[0].length;\n            if(!plotStarted)\n            {\n                dataArray = [];\n                for (var ix = 0; ix < npts; ++ix)\n                {\n                    dataArray[ix] =\n                    {\n                        'x': value[0][ix],\n                        'y': 0,\n                        'z': value[1][ix],\n                        'style': value[1][ix]\n                    };\n                }\n                var container = document.getElementById('spectrogram');\n            \n                graph3d = new vis.Graph3d(container, dataArray, threedPlotOptions);\n                $(\"#startTime\").text(new Date().toLocaleString());\n                $(\"#stopTime\").text(new Date().toLocaleString());\n                graph3d.on('cameraPositionChange', onCameraPositionChange);\n                if (sliceViewActive) sliceView();\n                if (birdsEyeViewActive) birdsEyeView();\n                if (topViewActive) topView();\n                plotStarted = true;\n            }\n            else\n            {\n                if (freeze) return;\n                if (itimeSlice < timeMax)\n                {\n                    timeStamp[itimeSlice] = new Date().getTime();\n                    deltaT = (timeStamp[itimeSlice] - timeStamp[0]) / 1000;\n                    for (var ix = 0; ix < npts; ++ix)\n                    {\n                        dataArray[itimeSlice * npts + ix] =\n                        {\n                            'x': value[0][ix],\n                            'y': deltaT,\n                            'z': value[1][ix],\n                            'style': value[1][ix]\n                        };\n                    }\n                    ++itimeSlice;\n                }\n                else\n                {\n                    for (var itime = 0; itime < (timeMax - 1); ++itime)\n                    {\n                        timeStamp[itime] = timeStamp[itime + 1];\n                        deltaT = (timeStamp[itime] - timeStamp[0]) / 1000;\n                        for (var ix = 0; ix < npts; ++ix)\n                        {\n                            dataArray[itime * npts + ix] =\n                            {\n                                'x': dataArray[(itime + 1) * npts + ix].x,\n                                'y': deltaT,\n                                'z': dataArray[(itime + 1) * npts + ix].z,\n                                'style': dataArray[(itime + 1) * npts + ix].style\n                            };\n                        }\n                    }\n                    timeStamp[timeMax - 1] = new Date().getTime();\n                    deltaT = (timeStamp[timeMax - 1] - timeStamp[0]) / 1000;\n                    for (var ix = 0; ix < npts; ++ix)\n                    {\n                        dataArray[(timeMax - 1) * npts + ix] =\n                        {\n                            'x': value[0][ix],\n                            'y': deltaT,\n                            'z': value[1][ix],\n                            'style': value[1][ix]\n                        };\n                    }\n                }\n                $(\"#startTime\").text(new Date(timeStamp[0]).toLocaleString());\n                $(\"#stopTime\").text(new Date(timeStamp[itimeSlice - 1]).toLocaleString());\n                graph3d.setData(dataArray);\n            }\n        }\n        function freezeRun()\n        {\n            freeze = !freeze;\n            if (freeze)\n            {\n                $(\"#freezeButton\").text('Frozen');\n            }\n            else\n            {\n                $(\"#freezeButton\").text('Running');\n            }\n        }\n        \n        function birdsEyeView()\n        {\n            var horzAngle = 315.0 * 3.1415927 / 180.0;\n            var vertAngle = 45.0 * 3.1415927 / 180.0;\n            graph3d.setCameraPosition({'horizontal': horzAngle, 'vertical': vertAngle, 'distance': 2.0});\n            if (sliceViewActive)\n            {\n                timeMax =  birdsEyeTimeMax;\n                $(\"#plotslices\").val(timeMax.toString());\n            }\n            sliceViewActive = false;\n            birdsEyeViewActive = true;\n            topViewActive = false;\n        }\n        function sliceView()\n        {\n            var horzAngle = 0.0 * 3.1415927 / 180.0;\n            var vertAngle = 0.0 * 3.1415927 / 180.0;\n            graph3d.setCameraPosition({'horizontal': horzAngle, 'vertical': vertAngle, 'distance': 1.1});\n            timeMax = 2;\n            $(\"#plotslices\").val(timeMax.toString());\n            itimeSlice = 0;\n            plotStarted = false;\n            sliceViewActive = true;\n            birdsEyeViewActive = false;\n            topViewActive = false;\n        }\n        function topView()\n        {\n            var horzAngle = 0 * 3.1415927 / 180.0;\n            var vertAngle = 90 * 3.1415927 / 180.0;\n            graph3d.setCameraPosition({'horizontal': horzAngle, 'vertical': vertAngle, 'distance': 2.0});\n            if (sliceViewActive)\n            {\n                timeMax =  birdsEyeTimeMax;\n                $(\"#plotslices\").val(timeMax.toString());\n            }\n            sliceViewActive = false;\n            birdsEyeViewActive = false;\n            topViewActive = true;\n        }\n        function onCameraPositionChange(event)\n        {\n            if (sliceViewActive) sliceView();\n            if (birdsEyeViewActive) birdsEyeView();\n            if (topViewActive) topView();\n        }",
         "output": "str",
-        "x": 640,
+        "x": 820,
         "y": 40,
         "wires": [
             [
@@ -7480,7 +7840,7 @@
         "syntax": "mustache",
         "template": "Vector Plotter",
         "output": "str",
-        "x": 930,
+        "x": 1110,
         "y": 40,
         "wires": [
             [
@@ -7815,7 +8175,7 @@
         "y": 140,
         "wires": [
             [
-                "50b5b5d7.93c8ac"
+                "058020a9c8677234"
             ]
         ]
     },
@@ -7830,7 +8190,7 @@
         "syntax": "mustache",
         "template": "        var numTraces = 1;\n        var traySelect = [];\n        var nameSelect = [];\n        var attrSelect=[];\n        var trayInfo = [];\n\n        var startDate = 0;\n        var stopDate = 0;\n        var csvFile = [];\n\n        var archiveRequestList = [];\n        var archiveList = [];\n\n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                traySelect[itrace] = document.getElementById('traySelect' + itrace.toString());\n                nameSelect[itrace] = document.getElementById('nameSelect' + itrace.toString());\n                attrSelect[itrace] = document.getElementById('attrSelect' + itrace.toString());\n                trayInfo[itrace] = {type  : '', name : '', prop : 'reading', attr : '',tray : {}};\n\n                $('#csv'+ itrace.toString()).removeAttr(\"href\");\n                $('#csv'+ itrace.toString()).css('color', 'black');\n                $('#csv'+ itrace.toString()).css('text-decoration', 'none');\n                $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n                csvFile[itrace] = null;\n\n            }\n            var now = new Date();\n            console.log(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            var then = new Date(now.getTime() - 3600 * 24 * 1000);\n            $( \"#startDate\" ).val(then.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( \"#stopDate\" ).val(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( function()\n            {\n                $('#startDate').datetimepicker();\n            } );\n            $( function()\n            {\n                $('#stopDate').datetimepicker();\n            } );\n            $('#plotViewButtons').hide();\n        }\n        function onWebSocketOpen()\n        {\n            var actionMsg = {};\n            sendActionMsg('getTrayList', 'readDatabase',  actionMsg);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            if (msg.userID == userID)\n            {\n                switch(msg.topic)\n                {\n                    case 'getTrayList':\n                        loadTrayList(msg.payload);\n                        break;\n                    case 'getNameList':\n                        loadNameList(msg);\n                        break;\n                    case 'getAttrList':\n                        loadAttrList(msg);\n                        break;\n                    case 'getArchiveValues':\n                        archiveList.push(msg.payload);\n                        if (archiveRequestList.length > 0)\n                        {\n                            getArchiveValues();\n                        }\n                        else\n                        {\n                            plotArchive();\n                        }\n                        break;\n                    case 'permissionError':\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                        break;\n                    case 'loginExpired':\n                        location.reload();\n                        break;\n                    default:\n                    // code block\n                }\n            }\n        }\n        function loadTrayList(trayList)\n        {\n            trayList.sort();\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                for (var ii = 0; ii < trayList.length; ++ii)\n                {\n                    var opt = document.createElement('option');\n                    opt.value = trayList[ii];\n                    opt.innerHTML = trayList[ii];\n                    traySelect[itrace].appendChild(opt);\n                }\n            }\n        }\n        function loadNameList(data)\n        {\n            data.nameList.sort();\n            for (var ii = 0; ii < data.nameList.length; ++ii)\n            {\n                var opt = document.createElement('option');\n                opt.value = data.nameList[ii];\n                opt.innerHTML = data.nameList[ii];\n                nameSelect[data.trace].appendChild(opt);\n            }\n\n            return;\n        }\n        function loadAttrList(data)\n        {\n            data.attrList.sort();\n            for (var ii = 0; ii < data.attrList.length; ++ii)\n            {\n                var opt = document.createElement('option');\n                opt.value = data.attrList[ii];\n                opt.innerHTML = data.attrList[ii];\n                attrSelect[data.trace].appendChild(opt);\n            }\n        }\n        function traySelected(itrace)\n        {\n            clearNameOptionList(itrace);\n            if (traySelect[itrace].value == 'notSelected') return;\n            nameSelect[itrace].value = 'notSelected';\n            var actionMsg = \n                {\n                    trace       : itrace,\n                    type  : traySelect[itrace].value\n                };\n            sendActionMsg('getNameList', 'readDatabase', actionMsg);\n        }\n        function nameSelected(itrace)\n        {\n            clearAttrOptionList(itrace);\n            if (nameSelect[itrace].value == 'notSelected') return;\n            var actionMsg = \n                {\n                    trace       : itrace,\n                    type  : traySelect[itrace].value,\n                    name        : nameSelect[itrace].value,\n                    prop        : 'reading'\n                };\n            sendActionMsg('getAttrList', 'readDatabase', actionMsg);\n        }\n        function attrSelected(itrace)\n        {\n            trayInfo[itrace].type = '';\n            trayInfo[itrace].name = '';\n            trayInfo[itrace].attr = '';\n            trayInfo[itrace].tray = {};\n            if (attrSelect[itrace].value == 'notSelected')  return;\n            trayInfo[itrace].type = traySelect[itrace].value;\n            trayInfo[itrace].name = nameSelect[itrace].value;\n            trayInfo[itrace].attr = attrSelect[itrace].value;\n\n        }\n        function clearNameOptionList(itrace)\n        {\n            trayInfo[itrace].type = '';\n            trayInfo[itrace].name = '';\n            trayInfo[itrace].attr = '';\n            trayInfo[itrace].tray = {};\n\n            while (nameSelect[itrace].firstChild)\n            {\n                nameSelect[itrace].removeChild(nameSelect[itrace].firstChild);\n            }\n            var opt = document.createElement('option');\n            opt.value = 'notSelected';\n            opt.innerHTML = '';\n            nameSelect[itrace].appendChild(opt);\n            clearAttrOptionList(itrace);\n        }\n        function clearAttrOptionList(itrace)\n        {\n            trayInfo[itrace].type = '';\n            trayInfo[itrace].name = '';\n            trayInfo[itrace].attr = '';\n            trayInfo[itrace].tray = {};\n\n            while (attrSelect[itrace].firstChild)\n            {\n                attrSelect[itrace].removeChild(attrSelect[itrace].firstChild);\n            }\n            var opt = document.createElement('option');\n            opt.value = 'notSelected';\n            opt.innerHTML = '';\n            attrSelect[itrace].appendChild(opt);\n            \n        }\n        function getArchiveData()\n        {\n\n            archiveRequestList = [];\n            archiveList = [];\n            startDate = new Date($( \"#startDate\" ).val()).getTime();\n            stopDate = new Date($( \"#stopDate\" ).val()).getTime();\n            var traceCount = 0;\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                if (trayInfo[itrace].attr.length > 0) \n                {\n                    archiveRequestList[traceCount] = \n                    {\n                        type  : trayInfo[itrace].type, \n                        name        : trayInfo[itrace].name, \n                        prop        : trayInfo[itrace].prop, \n                        attr        : trayInfo[itrace].attr,\n                        startDate: startDate, \n                        stopDate: stopDate,\n                        itrace  :   itrace\n                    };\n                    ++traceCount;\n                }\n            }\n            if (traceCount < 1) return;\n            $('#plotSetupTable').hide();\n            $('#timePlotCard').hide();\n            for (var itrace = 0; itrace < numTraces; ++itrace)\n            {\n                $('#csv'+ itrace.toString()).removeAttr(\"href\");\n                $('#csv'+ itrace.toString()).css('color', 'black');\n                $('#csv'+ itrace.toString()).css('text-decoration', 'none');\n                $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n            }\n            messageDialog('Alert', 'Wait!', 'Requesting data ...');\n            getArchiveValues();\n        }\n        function getArchiveValues()\n        {\n            var maxPtsToPlot = Number($( \"#maxPtsToPlot\" ).val());\n            var actionMsg = \n                {\n                    tray      : archiveRequestList[0],\n                    maxPtsToPlot: maxPtsToPlot\n                };\n            sendActionMsg('getArchiveValues', 'readDatabase', actionMsg);\n            archiveRequestList.shift();\n            return;\n        }\n        function plotArchive()\n        {\n            $( \"#messageDialog\" ).dialog('close');\n            $('#plotSetupTable').show();\n            \n            $('#plotViewButtons').show();\n            $('#timePlot').show();\n            makeCsvFile();\n            var npts = archiveList[0].trace.length;\n            var oodataArray = [];\n            \n            var nxMax = archiveList[0].trace[0].value[0].length;\n            for (var ii = 0; ii < npts; ++ii)\n            {\n                var yvalue = Math.round((archiveList[0].trace[ii].timeStamp - archiveList[0].trace[0].timeStamp)/3600) / 1000;\n                for (var ix = 0; ix < nxMax; ++ix)\n                {\n                    var zvalue = archiveList[0].trace[ii].value[1][ix];\n                    oodataArray[ii * nxMax + ix] =\n                    {\n                        'x': archiveList[0].trace[ii].value[0][ix],\n                        'y': yvalue,\n                        'z': zvalue,\n                        'style': zvalue\n                    };\n                }\n            }\n            var options = \n            {\n                width:  '100%',\n                height: '800px',\n                style: 'surface',\n                showPerspective: false,\n                showGrid: true,\n                showShadow: false,\n                keepAspectRatio: false,\n                verticalRatio: 1.0,\n                showZAxis: true,\n                yCenter: '50%',\n                xLabel: 'x',\n                yLabel: 'Time (hr)',\n                zLabel: 'y',\n                tooltip: true,\n                axisColor: '#000000'\n            };\n        \n            // create a graph3d\n            var container = document.getElementById('timePlot');\n        \n            graph3d = new vis.Graph3d(container, oodataArray, options);\n            var horzAngle = 0 * 3.1415927 / 180.0;\n            var vertAngle = 90 * 3.1415927 / 180.0;\n            graph3d.setCameraPosition({'horizontal': horzAngle, 'vertical': vertAngle, 'distance': 2.0});\n        }\n        function changePlotView(horzAngleDeg, vertAngleDeg)\n        {\n            var horzAngle = horzAngleDeg * 3.1415927 / 180.0;\n            var vertAngle = vertAngleDeg * 3.1415927 / 180.0;\n            graph3d.setCameraPosition({'horizontal': horzAngle, 'vertical': vertAngle, 'distance': 2.0});\n        }\n        function makeCsvFile ()\n        {\n            var itrace = 0;\n            var dataString = '';\n            var startT = archiveList[0].trace[0].timeStamp;\n        \n            dataString = dataString + 'Tray,' + trayInfo[0].type + ',' + trayInfo[0].name + ',' + trayInfo[0].prop + ',' + trayInfo[0].attr  +'\\n';\n            dataString = dataString + 'StartDate,' + new Date(startT).toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}) + '\\n';\n            dataString = dataString + 'StartDate (mS),' + startT.toString() + '\\n';\n            dataString = dataString + 'Time (sec),  \\n 0,x';\n            for (var ipt = 0; ipt < archiveList[0].trace[0].value[0].length; ++ipt) dataString = dataString + ',' + archiveList[0].trace[0].value[0][ipt];\n            dataString = dataString + '\\n';\n\n            for (var ii = 0; ii < archiveList[0].trace.length; ++ii)\n            {\n\n                var x = (archiveList[0].trace[ii].timeStamp - startT) / 1000;\n                dataString = dataString + x.toString() + ',y';\n                for (var ipt = 0; ipt < archiveList[0].trace[ii].value[1].length; ++ipt) dataString = dataString + ',' + archiveList[0].trace[ii].value[1][ipt];\n                dataString = dataString + '\\n';\n            }\n            var data = new Blob([dataString], {type: 'text/plain'});\n        \n            // If we are replacing a previously generated file we need to\n            // manually revoke the object URL to avoid memory leaks.\n            if (csvFile[itrace] !== null) {\n              window.URL.revokeObjectURL(csvFile[itrace]);\n            }\n        \n            csvFile[itrace] = window.URL.createObjectURL(data);\n            // returns a URL you can use as a href\n            $('#csv'+ itrace.toString()).css('color', 'blue');\n            $('#csv'+ itrace.toString()).css('text-decoration', 'underline');\n            $('#csv'+ itrace.toString()).css('font-weight', 'bold');\n            $('#csv'+ itrace.toString()).attr(\"href\", csvFile[itrace]);\n            $('#csv'+ itrace.toString()).attr(\"download\", trayInfo[itrace].type + '-' + trayInfo[itrace].name + '-' + trayInfo[itrace].prop + '-' + trayInfo[itrace].attr + '.csv');\n        \n        }\n",
         "output": "str",
-        "x": 650,
+        "x": 830,
         "y": 140,
         "wires": [
             [
@@ -7849,7 +8209,7 @@
         "syntax": "mustache",
         "template": "Vector Archive Plotter",
         "output": "str",
-        "x": 950,
+        "x": 1130,
         "y": 140,
         "wires": [
             [
@@ -7868,7 +8228,7 @@
         "syntax": "mustache",
         "template": "    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"5%\" align=\"center\"><span class=\"tableHeading \">Tr</span></td>\n                <td width=\"30%\" align=\"center\"><span class=\"tableHeading \">Tray</span></td>\n                <td width=\"30%\" align=\"center\"><span class=\"tableHeading \">Name</span></td>\n                <td width=\"30%\" align=\"center\"><span class=\"tableHeading \">Cube</span></td>\n            </tr>\n            <tr>\n                <td align=\"center\">\n                    <a id='csv0' href='' target='_blank' download=\"data0.csv\" class=\"csv-linked\">1</a>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"traySelect0\" onchange=\"traySelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"nameSelect0\" onchange=\"nameSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n                <td>\n                    <select class=\"custom-select \" id=\"attrSelect0\" onchange=\"attrSelected(0)\">\n                        <option value='notSelected'></option>\n                    </select>\n                </td>\n            </tr>\n        </table>\n    </div>\n    <div id='plotSetup'>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotSetupTable'>\n                    <tr>\n                        <td width=10% align=\"center\" class=\"tableHeading\">Max Plot Pts</td>\n                        <td width=20% align=\"center\" class=\"tableHeading\">Start</td>\n                        <td width=20% align=\"center\" class=\"tableHeading\">Stop</td>\n                        <td width=10% align=\"center\"></td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"maxPtsToPlot\" type=\"text\" value=\"500\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"startDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"stopDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button width=100% class=\"btn jumbotron-button\" id=\"getDataButton\" type=\"button\" onclick=\"getArchiveData()\">Get Data</button>\n                        </td>\n                    </tr>\n                </table>\n            </div>\n       </div>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotTable'>\n                    <tr valign=\"top\">\n                        <td width='5%'>\n                            <table id='plotViewButtons'>\n                                <tr>\n                                    <td>\n                                        <button class=\"btn jumbotron-button btn-block\" id=\"birdsEyeButton\" type=\"button\" onclick=\"changePlotView(315,45)\">Birds Eye</button>\n                                    </td>\n                                </tr>\n                                <tr>\n                                    <td>\n                                        <button class=\"btn jumbotron-button btn-block\" id=\"overviewButton\" type=\"button\" onclick=\"changePlotView(0,90)\" >Overview</button>\n                                    </td>\n                                </tr>\n                                <tr>\n                                    <td>\n                                        <button class=\"btn jumbotron-button btn-block\" id=\"xviewButton\"    type=\"button\" onclick=\"changePlotView(0,0)\"  >X View</button>\n                                    </td>\n                                </tr>\n                            </table>\n                        </td>\n                        <td width='95%' >\n                            <div id=\"timePlot\" width=\"100%\" class=\"plot\"></div>\n                        </td>\n                    </tr>\n                </table>\n            </div>\n        </div>\n    </div>",
         "output": "str",
-        "x": 1070,
+        "x": 1250,
         "y": 140,
         "wires": [
             [
@@ -7925,7 +8285,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 310,
+        "x": 490,
         "y": 140,
         "wires": [
             [
@@ -7938,7 +8298,7 @@
         "type": "subflow:495f0879.c831c8",
         "z": "b94899c9.b16088",
         "name": "",
-        "x": 480,
+        "x": 660,
         "y": 140,
         "wires": [
             [
@@ -7956,7 +8316,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 310,
+        "x": 490,
         "y": 40,
         "wires": [
             [
@@ -7969,7 +8329,7 @@
         "type": "subflow:495f0879.c831c8",
         "z": "b94899c9.b16088",
         "name": "",
-        "x": 480,
+        "x": 660,
         "y": 40,
         "wires": [
             [
@@ -8033,7 +8393,7 @@
         "syntax": "mustache",
         "template": "    <script src=\"/scripts/visDist/vis.js\"></script>\n",
         "output": "str",
-        "x": 790,
+        "x": 970,
         "y": 40,
         "wires": [
             [
@@ -8052,7 +8412,7 @@
         "syntax": "mustache",
         "template": "    <script src=\"/scripts/visDist/vis.js\"></script>\n",
         "output": "str",
-        "x": 810,
+        "x": 990,
         "y": 140,
         "wires": [
             [
@@ -8065,7 +8425,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "b94899c9.b16088",
         "name": "",
-        "x": 1350,
+        "x": 1530,
         "y": 40,
         "wires": []
     },
@@ -8073,7 +8433,7 @@
         "id": "ff79b7db87145552",
         "type": "subflow:7744eedb71df7703",
         "z": "b94899c9.b16088",
-        "x": 1210,
+        "x": 1390,
         "y": 40,
         "wires": [
             [
@@ -8086,7 +8446,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "b94899c9.b16088",
         "name": "",
-        "x": 1350,
+        "x": 1530,
         "y": 140,
         "wires": []
     },
@@ -8094,11 +8454,37 @@
         "id": "650bc6590635f1a2",
         "type": "subflow:7744eedb71df7703",
         "z": "b94899c9.b16088",
-        "x": 1210,
+        "x": 1390,
         "y": 140,
         "wires": [
             [
                 "88d3bc1a97e8a21d"
+            ]
+        ]
+    },
+    {
+        "id": "88734c9b0d08367a",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "b94899c9.b16088",
+        "name": "",
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "421bd3a6.9feaac"
+            ]
+        ]
+    },
+    {
+        "id": "058020a9c8677234",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "b94899c9.b16088",
+        "name": "",
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "50b5b5d7.93c8ac"
             ]
         ]
     }

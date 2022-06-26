@@ -16,7 +16,7 @@
                 "welcome": "2.2.0-git"
             }
         },
-        "menu-menu-item-sidebar": true,
+        "menu-menu-item-sidebar": false,
         "menu-menu-item-palette": true
     }
 }
