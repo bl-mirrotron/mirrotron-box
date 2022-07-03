@@ -2,7 +2,7 @@
     {
         "id": "508c21e47a4bdb43",
         "type": "tab",
-        "label": "Permit Tester",
+        "label": "Machine Permit",
         "disabled": false,
         "info": "",
         "env": []
@@ -527,16 +527,16 @@
         "h": 182
     },
     {
-        "id": "489fb3bc2134b4f2",
+        "id": "7b6ea272eaa08da0",
         "type": "group",
         "z": "9c854ea3.68416",
         "name": "Application Library",
         "style": {
-            "stroke": "#001f60",
+            "stroke": "#000000",
             "fill": "#ffff00",
             "label": true,
             "label-position": "n",
-            "color": "#001f60"
+            "color": "#000000"
         },
         "nodes": [
             "418f095f757062ea",
@@ -560,7 +560,8 @@
             "f962411e6017d6af",
             "f2433cc41035445d",
             "eb4a741d322caed8",
-            "6c3ba5e52620f7d6"
+            "6c3ba5e52620f7d6",
+            "5c26e6f2752ddd2d"
         ],
         "x": 554,
         "y": 119,
@@ -1875,15 +1876,19 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Check for stale watchdog",
-        "func": "let staleIntervalmS = flow.set('staleIntervalmS',12000);\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) traysToCheck[ii].watchdogChange = false;\n}\nreturn null;",
-        "outputs": 0,
+        "func": "let staleIntervalmS = flow.set('staleIntervalmS',12000);\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) traysToCheck[ii].watchdogChange = false;\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  newMsg;  \n",
+        "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 350,
         "y": 160,
-        "wires": []
+        "wires": [
+            [
+                "16bba99d6cf7939b"
+            ]
+        ]
     },
     {
         "id": "7579dedaf706f7f3",
@@ -1893,8 +1898,8 @@
         "links": [
             "4ffc61b266cd720c"
         ],
-        "x": 215,
-        "y": 260,
+        "x": 85,
+        "y": 300,
         "wires": [
             [
                 "3ed96e34f377b2ed"
@@ -1906,14 +1911,14 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Scan Watchdogs",
-        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet topicSplit = msg.topic.split('/');\nlet trayType = topicSplit[1];\nlet trayName = topicSplit[2];\nlet watchdogIndex = -1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((trayType == traysToCheck[ii].trayType) && (trayName == traysToCheck[ii].trayName))\n    {\n        watchdogIndex = ii;\n        ii = traysToCheck.length;\n    }\n}\nif (watchdogIndex >= 0)\n{\n    if (traysToCheck[watchdogIndex].watchdog != msg.payload.watchdog.value)\n    {\n       traysToCheck[watchdogIndex].watchdog        =   msg.payload.watchdog.value;\n       traysToCheck[watchdogIndex].watchdogChange  =   true;\n       traysToCheck[watchdogIndex].permit          =   msg.payload.permit.value;\n       traysToCheck[watchdogIndex].timeStamp       =   new Date().getTime();\n    }\n    else\n    {\n       traysToCheck[watchdogIndex].watchdogChange  =   false;\n    }\n}\nreturn null;",
+        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet topicSplit = msg.topic.split('/');\nlet trayType = topicSplit[1];\nlet trayName = topicSplit[2];\nlet watchdogIndex = -1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((trayType == traysToCheck[ii].trayType) && (trayName == traysToCheck[ii].trayName))\n    {\n        watchdogIndex = ii;\n        ii = traysToCheck.length;\n    }\n}\nif (watchdogIndex >= 0)\n{\n    if (traysToCheck[watchdogIndex].watchdog != msg.payload.watchdog.value)\n    {\n       traysToCheck[watchdogIndex].watchdog        =   msg.payload.watchdog.value;\n       traysToCheck[watchdogIndex].watchdogChange  =   true;\n       traysToCheck[watchdogIndex].permit          =   msg.payload.permit.value;\n       traysToCheck[watchdogIndex].timeStamp       =   new Date().getTime();\n    }\n}\nreturn null;",
         "outputs": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 350,
-        "y": 260,
+        "x": 230,
+        "y": 300,
         "wires": []
     },
     {
@@ -1928,7 +1933,7 @@
         "finalize": "",
         "libs": [],
         "x": 320,
-        "y": 400,
+        "y": 600,
         "wires": [
             [
                 "131a274f34d37f7a"
@@ -1945,7 +1950,7 @@
         "collection": "trays",
         "operation": "findOneAndReplace",
         "x": 600,
-        "y": 400,
+        "y": 600,
         "wires": [
             [
                 "df7cd5cc47f431f3"
@@ -1966,7 +1971,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 870,
-        "y": 400,
+        "y": 600,
         "wires": []
     },
     {
@@ -1991,7 +1996,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 400,
+        "y": 600,
         "wires": [
             [
                 "908decce6d141c10"
@@ -2020,7 +2025,7 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Save machine permit",
-        "func": "delete msg.payload[\"_id\"];\nflow.set(\"machine-permit\",msg.payload);\nlet keys = Object.keys(msg.payload);\nlet traysToCheck = [];\nfor (let ii = 0; ii < keys.length; ++ii)\n{\n    let keySplit = keys[ii].split('/');\n    if (keySplit.length > 1)\n    {\n        let traycheck = \n        {\n            permit          :   0, \n            watchdog        :   -1,\n            watchdogChange  :   false,\n            timeStamp       :   0,\n            trayType        :   keySplit[0],\n            trayName        :   keySplit[1]\n        };\n        traysToCheck.push(traycheck);\n    }\n}\nflow.set('traysToCheck',traysToCheck);\nreturn null;",
+        "func": "delete msg.payload[\"_id\"];\nmsg.payload.watchdog.value = 0;\nflow.set(\"machine-permit\",msg.payload);\nlet keys = Object.keys(msg.payload);\nlet traysToCheck = [];\nfor (let ii = 0; ii < keys.length; ++ii)\n{\n    let keySplit = keys[ii].split('/');\n    if (keySplit.length > 1)\n    {\n        let traycheck = \n        {\n            permit          :   0, \n            watchdog        :   -1,\n            watchdogChange  :   false,\n            timeStamp       :   0,\n            trayType        :   keySplit[0],\n            trayName        :   keySplit[1]\n        };\n        traysToCheck.push(traycheck);\n    }\n}\nflow.set('traysToCheck',traysToCheck);\nreturn null;",
         "outputs": 0,
         "noerr": 0,
         "initialize": "",
@@ -2052,6 +2057,168 @@
         "wires": [
             [
                 "7b3a750a042c1e1e"
+            ]
+        ]
+    },
+    {
+        "id": "16bba99d6cf7939b",
+        "type": "mqtt out",
+        "z": "508c21e47a4bdb43",
+        "name": "Publish Machine Protection",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "84d80994.260508",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f9be9054ce456982",
+        "type": "switch",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "config",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 380,
+        "wires": [
+            [
+                "47de6287cc26419f"
+            ]
+        ]
+    },
+    {
+        "id": "e0d2b8e49c2e469b",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Filter MQTT",
+        "func": "return {topic:msg.topic.split('/')[4], payload:msg.payload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 380,
+        "wires": [
+            [
+                "f9be9054ce456982"
+            ]
+        ]
+    },
+    {
+        "id": "5a928b853087ebdd",
+        "type": "mqtt in",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "topic": "mirrotron/machine-permit/01/setting/#",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "84d80994.260508",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "f812bb6a.1aec68"
+            ]
+        ]
+    },
+    {
+        "id": "f812bb6a.1aec68",
+        "type": "json",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 430,
+        "y": 380,
+        "wires": [
+            [
+                "e0d2b8e49c2e469b"
+            ]
+        ]
+    },
+    {
+        "id": "47de6287cc26419f",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Save alarm config",
+        "func": "let cubeAlarm = flow.get(\"machine-permit\")[msg.payload.cube].alarm;\ncubeAlarm.limits.lolo = msg.payload.limits.lolo;\ncubeAlarm.limits.low  = msg.payload.limits.low;\ncubeAlarm.limits.high = msg.payload.limits.high;\ncubeAlarm.limits.hihi = msg.payload.limits.hihi;\ncubeAlarm.notify.name = msg.payload.notify.name;\ncubeAlarm.notify.number = msg.payload.notify.number;\nreturn null;",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c2d22bcc1f4cf7b0",
+        "type": "inject",
+        "z": "508c21e47a4bdb43",
+        "name": "Archive clock",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "20",
+        "topic": "archiveClock",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "6a9b2f2af2f7d084"
+            ]
+        ]
+    },
+    {
+        "id": "6a9b2f2af2f7d084",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Archive Pulse",
+        "func": "var tray = flow.get(\"machine-permit\");\nif (tray == null) return null;\nvar lastArchive = context.get('lastArchive');\nvar now = new Date().getTime();\nif ((now - lastArchive) <= tray.arcPeriod) return null;\ncontext.set('lastArchive', now);\nlet newMsg = \n{\n    topic: global.get('box') + '/' + tray.type + '/' + tray.name + '/archive',\n    payload: JSON.stringify(tray)\n};\nreturn  newMsg;  \n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('lastArchive', new Date().getTime());",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 220,
+        "wires": [
+            [
+                "16bba99d6cf7939b"
             ]
         ]
     },
@@ -2373,7 +2540,7 @@
         "id": "418f095f757062ea",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "onOffSetCube",
         "field": "payload.onOffSetCube",
         "fieldType": "msg",
@@ -2382,7 +2549,7 @@
         "template": "//onOffSet\n        class OnOffSetCube extends CubeRowParameterView\n        {\n            addComponents(widgetColumns)\n            {\n\n                this.settingButton = document.createElement('button');\n                this.settingButton.setAttribute('class', 'btn btn-block onOffSetCube-button');\n                this.settingButton.innerHTML = '';\n                this.settingButton.onclick = event => {this.toggle()};\n                widgetColumns[0].appendChild(this.settingButton);\n            }\n            toggle()\n            {\n                let onOff = 0;\n                if (this.tray[this.config.cubeName].value === 0)\n                {\n                    onOff = 1;\n                }\n                else\n                {\n                    onOff = 0;\n                }\n                this.settingButton.setAttribute('style','background: var(--color3); color: var(--color3);');\n                let payload = {'cube': this.config.cubeName, 'value':onOff};\n                let actionMsg = \n                    {\n                        topic   : this.card.app.box + '/' +  this.tray.type + '/' +  this.tray.name + '/setting/setting',\n                        payload : payload\n                    };\n                this.card.app.sendActionMsg('setting','setting',actionMsg);\n            }\n            updateCubeValue()\n            {\n                if (this.tray[this.config.cubeName].value === 0)\n                {\n                    this.settingButton.innerHTML = \"Off\";\n                    this.settingButton.setAttribute('style','background:' + this.config.offColor + '; color: black;');\n                }\n                if (this.tray[this.config.cubeName].value === 1) \n                {   \n                    this.settingButton.innerHTML = \"On\";\n                    this.settingButton.setAttribute('style','background:' + this.config.onColor + '; color: black;');\n                }\n            }\n        }",
         "output": "str",
         "x": 920,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "c7b26de8397740b4"
@@ -2393,13 +2560,13 @@
         "id": "0a86ebd27d99d1a6",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "script",
         "field": "payload.script",
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// script\n{{{payload.cubeControlApp}}}\n{{{payload.navbar}}}\n{{{payload.alarmLimitDialog}}}\n{{{payload.okCancelDialog}}}\n{{{payload.cubeRowCard}}}\n{{{payload.cubeRowParameterView}}}\n{{{payload.onOffSetCube}}}\n{{{payload.numberSetCube}}}\n{{{payload.numberReadCube}}}\n{{{payload.imageReadCube}}}\n{{{payload.stateChoiceCube}}}\n{{{payload.gaugeCube}}}\n{{{payload.hbarCube}}}\n{{{payload.archivePlotCard}}}\n{{{payload.timePlotCard}}}\n{{{payload.vectorPlotCard}}}\n{{{payload.iframeCard}}}\n{{{payload.userCard}}}\n{{{payload.dictionary}}}\n{{{payload.init}}}",
+        "template": "// script\n{{{payload.cubeControlApp}}}\n{{{payload.navbar}}}\n{{{payload.alarmLimitDialog}}}\n{{{payload.okCancelDialog}}}\n{{{payload.cubeRowCard}}}\n{{{payload.cubeRowParameterView}}}\n{{{payload.onOffSetCube}}}\n{{{payload.numberSetCube}}}\n{{{payload.numberReadCube}}}\n{{{payload.imageReadCube}}}\n{{{payload.labelReadCube}}}\n{{{payload.stateChoiceCube}}}\n{{{payload.gaugeCube}}}\n{{{payload.hbarCube}}}\n{{{payload.archivePlotCard}}}\n{{{payload.timePlotCard}}}\n{{{payload.vectorPlotCard}}}\n{{{payload.iframeCard}}}\n{{{payload.userCard}}}\n{{{payload.dictionary}}}\n{{{payload.init}}}",
         "output": "str",
         "x": 1190,
         "y": 440,
@@ -2413,7 +2580,7 @@
         "id": "c7b26de8397740b4",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "numberSetCube",
         "field": "payload.numberSetCube",
         "fieldType": "msg",
@@ -2422,7 +2589,7 @@
         "template": "//numberSetCube\n        class NumberSetCube   extends CubeRowParameterView\n        {\n            addComponents(widgetColumns)\n            {\n                this.inputBox = document.createElement('input');\n                this.inputBox.setAttribute('class', 'numberSetCube-inputbox');\n                this.inputBox.setAttribute('type', 'text');\n                this.inputBox.setAttribute('value', '0');\n                this.inputBox.oninput = event => {this.inputChange()};\n                widgetColumns[0].appendChild(this.inputBox);\n\n                this.unitSpan  = document.createElement('span');\n                this.unitSpan.setAttribute('class', 'cubeRowParameterView-unit-span');\n                this.unitSpan.innerHTML = '';\n                widgetColumns[1].appendChild(this.unitSpan);\n\n                this.settingButton = document.createElement('button');\n                this.settingButton.setAttribute('class', 'btn btn-block numberSetCube-button');\n                this.settingButton.innerHTML = '&#10003;';\n                this.settingButton.onclick = event => {this.changeSetting()};\n                widgetColumns[2].appendChild(this.settingButton);\n\n                this.showSettingButton(false);\n            }\n\n            showSettingButton(showButton)\n            {\n                if (showButton)\n                {\n                    this.settingButton.style.display='block';\n                }\n                else\n                {\n                    this.settingButton.style.display='none';\n                }\n            }\n            inputChange()\n            {\n                this.changed = true;\n                this.showSettingButton(true);\n            }\n            changeSetting()\n            {\n                this.showSettingButton(false);\n                if (isNaN(this.inputBox.value))\n                {\n                    this.changed = false;\n                    return;\n                }\n                let payload = {'cube': this.config.cubeName, 'value':Number(this.inputBox.value)};\n                let actionMsg = \n                    {\n                        topic   : this.card.app.box + '/' +  this.tray.type + '/' +  this.tray.name + '/setting/setting',\n                        payload : payload\n                    };\n                this.card.app.sendActionMsg('setting','setting',actionMsg);\n                this.changed = false;\n            }\n            updateCubeValue()\n            {\n                if (!this.changed) \n                {\n                    this.inputBox.value = this.tray[this.config.cubeName].value.toString();\n                    this.unitSpan.innerHTML    = this.tray[this.config.cubeName].unit;\n                }\n\n            }\n        }",
         "output": "str",
         "x": 920,
-        "y": 280,
+        "y": 240,
         "wires": [
             [
                 "9ff3df490651f2aa"
@@ -2433,7 +2600,7 @@
         "id": "4100d0c58cb16c81",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "cubeControlApp",
         "field": "payload.cubeControlApp",
         "fieldType": "msg",
@@ -2453,7 +2620,7 @@
         "id": "d41afc4ae8fe3b6b",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "numberReadCube",
         "field": "payload.numberReadCube",
         "fieldType": "msg",
@@ -2473,7 +2640,7 @@
         "id": "83a95f24de3b0a6d",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "cubeRowParameterView",
         "field": "payload.cubeRowParameterView",
         "fieldType": "msg",
@@ -2482,7 +2649,7 @@
         "template": "//cubeRowParameterView\n        class CubeRowParameterView \n        {\n            constructor(card, config)\n            {\n                this.card = card;\n                this.config = JSON.parse(JSON.stringify(config));\n            }\n\n            onDocumentReady(parentElement)\n            {\n                let inLineTable = document.createElement('table');\n                inLineTable.setAttribute('width', '100%');\n                let inLineRow  = document.createElement('tr');\n                let labelColumn  = document.createElement('td');\n                labelColumn.setAttribute('class', 'cubeRowParameterView-label-column');\n\n                let labelSpan  = document.createElement('span');\n                if ('cubeLabel' in this.config)\n                {\n                    labelSpan.innerHTML = this.config.cubeLabel;\n                }\n                else\n                {\n                    labelSpan.innerHTML = this.card.app.trays[this.config.trayIndex].type + \".\" + this.card.app.trays[this.config.trayIndex].name + \".\" + this.config.cubeName;\n                }\n                labelColumn.appendChild(labelSpan);\n                inLineRow.appendChild(labelColumn);\n                \n                let widgetColumns = [];\n                for (let iw = 0; iw < 3; ++iw)\n                {\n                    let iwcol  = document.createElement('td');\n                    iwcol.setAttribute('class', 'cubeRowParameterView-widget-column-' + (iw + 1).toString());\n                    inLineRow.appendChild(iwcol);\n                    widgetColumns.push(iwcol);\n                }\n                \n                this.addComponents(widgetColumns);\n\n                let alarmColumn  = document.createElement('td');\n                alarmColumn.setAttribute('class', 'cubeRowParameterView-alarmConfig-column');\n                this.alarmButton = document.createElement('input');\n                this.alarmButton.setAttribute('type', 'image');\n                this.alarmButton.setAttribute('src', '/img/greenLight.png');\n                this.alarmButton.setAttribute('class', 'cubeRowParameterView-alarmConfig-button');\n                this.alarmButton.onclick = event => {this.changeAlarmConfig()};\n                alarmColumn.appendChild(this.alarmButton);\n                inLineRow.appendChild(alarmColumn);\n\n                inLineTable.appendChild(inLineRow);\n                parentElement.appendChild(inLineTable);\n            }\n\n            trayUpdate(trays)\n            {\n                this.tray = trays[this.config.trayIndex];\n                this.updateCubeValue();\n                switch(this.tray[this.config.cubeName].alarm.value)\n                {\n                    case 0:\n                        this.alarmButton.src=\"/img/greenLight.png\";\n                        break;\n                    case 1:\n                        this.alarmButton.src=\"/img/blueLight.png\";\n                        break;\n                    case 2:\n                        this.alarmButton.src=\"/img/yellowLight.png\";\n                        break;\n                    case 3:\n                        this.alarmButton.src=\"/img/purpleLight.png\";\n                        break;\n                    case 4:\n                        this.alarmButton.src=\"/img/redLight.png\";\n                        break;\n                    default:\n                        this.alarmButton.src=\"/img/greyLight.png\";\n                        break;\n                    \n                }\n            }\n            changeAlarmConfig()\n            {\n                this.card.app.alarmLimitDialog.editAlarmConfig(this.config.cubeName, this.tray);\n            }\n\n        }",
         "output": "str",
         "x": 950,
-        "y": 200,
+        "y": 160,
         "wires": [
             [
                 "418f095f757062ea"
@@ -2493,7 +2660,7 @@
         "id": "19e845b708d1807f",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "alarmLimitDialog",
         "field": "payload.alarmLimitDialog",
         "fieldType": "msg",
@@ -2513,7 +2680,7 @@
         "id": "d129ed90bcad3114",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "cubeRowCard",
         "field": "payload.cubeRowCard",
         "fieldType": "msg",
@@ -2533,7 +2700,7 @@
         "id": "215e92ef1962458f",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "okCancelDialog",
         "field": "payload.okCancelDialog",
         "fieldType": "msg",
@@ -2553,13 +2720,13 @@
         "id": "c397f4613dec0684",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "dictionary",
         "field": "payload.dictionary",
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// dictionary\n        const dict = new Map([\n            ['NavBar',          NavBar          ],\n            ['CubeRowCard',     CubeRowCard     ],\n            ['OnOffSetCube',    OnOffSetCube    ],\n            ['NumberSetCube',   NumberSetCube   ],\n            ['NumberReadCube',  NumberReadCube  ],\n            ['ImageReadCube',   ImageReadCube   ],\n            ['StateChoiceCube', StateChoiceCube ],\n            ['GaugeCube',       GaugeCube       ],\n            ['HbarCube',        HbarCube        ],\n            ['ArchivePlotCard', ArchivePlotCard ],\n            ['TimePlotCard',    TimePlotCard    ],\n            ['VectorPlotCard',  VectorPlotCard  ],\n            ['IframeCard',      IframeCard      ],\n            ['UserCard',        UserCard        ]]);\n",
+        "template": "// dictionary\n        const dict = new Map([\n            ['NavBar',          NavBar          ],\n            ['CubeRowCard',     CubeRowCard     ],\n            ['OnOffSetCube',    OnOffSetCube    ],\n            ['NumberSetCube',   NumberSetCube   ],\n            ['NumberReadCube',  NumberReadCube  ],\n            ['ImageReadCube',   ImageReadCube   ],\n            ['LabelReadCube',   LabelReadCube   ],\n            ['StateChoiceCube', StateChoiceCube ],\n            ['GaugeCube',       GaugeCube       ],\n            ['HbarCube',        HbarCube        ],\n            ['ArchivePlotCard', ArchivePlotCard ],\n            ['TimePlotCard',    TimePlotCard    ],\n            ['VectorPlotCard',  VectorPlotCard  ],\n            ['IframeCard',      IframeCard      ],\n            ['UserCard',        UserCard        ]]);\n",
         "output": "str",
         "x": 1200,
         "y": 360,
@@ -2573,7 +2740,7 @@
         "id": "b1e1a1fcc7d8bcec",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "init",
         "field": "payload.init",
         "fieldType": "msg",
@@ -2593,7 +2760,7 @@
         "id": "9014c7a9a5d27c4b",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "appContent",
         "field": "payload.appContent",
         "fieldType": "msg",
@@ -2613,7 +2780,7 @@
         "id": "d5219c027ea403df",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "stateChoiceCube",
         "field": "payload.stateChoiceCube",
         "fieldType": "msg",
@@ -2633,7 +2800,7 @@
         "id": "9ff3df490651f2aa",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "imageReadCube",
         "field": "payload.imageReadCube",
         "fieldType": "msg",
@@ -2642,10 +2809,10 @@
         "template": "//ImageRead\n        class ImageReadCube extends CubeRowParameterView\n        {\n            addComponents(widgetColumns)\n            {\n                this.image = document.createElement('img');\n                this.image.setAttribute('src', this.config.images[0]);\n                this.image.setAttribute('class', 'imageReadCube');\n                widgetColumns[0].appendChild(this.image);\n            }\n            updateCubeValue()\n            {\n                for (let ival = 0; ival < this.config.values.length; ++ival)\n                {\n                    if (this.tray[this.config.cubeName].value == this.config.values[ival])\n                    {\n                        this.image.src = this.config.images[ival];\n                    }\n                }\n            }\n        }",
         "output": "str",
         "x": 930,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
-                "d41afc4ae8fe3b6b"
+                "5c26e6f2752ddd2d"
             ]
         ]
     },
@@ -2653,7 +2820,7 @@
         "id": "8f7d2b428495aa76",
         "type": "subflow:3c4d591d2098e2a3",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "x": 630,
         "y": 200,
         "wires": [
@@ -2666,7 +2833,7 @@
         "id": "bfc12ff5080d5408",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "archivePlotCard",
         "field": "payload.archivePlotCard",
         "fieldType": "msg",
@@ -2686,7 +2853,7 @@
         "id": "1d66fe75a002f9e6",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "timePlotCard",
         "field": "payload.timePlotCard",
         "fieldType": "msg",
@@ -2706,7 +2873,7 @@
         "id": "c3e7642e7bb41621",
         "type": "subflow:797ee6019a62f6e3",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "x": 640,
         "y": 440,
         "wires": [
@@ -2719,7 +2886,7 @@
         "id": "f962411e6017d6af",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "gaugeCube",
         "field": "payload.gaugeCube",
         "fieldType": "msg",
@@ -2739,7 +2906,7 @@
         "id": "f2433cc41035445d",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "hbarCube",
         "field": "payload.hbarCube",
         "fieldType": "msg",
@@ -2891,7 +3058,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
+        "x": 310,
         "y": 880,
         "wires": [
             [
@@ -2903,7 +3070,7 @@
         "id": "eb4a741d322caed8",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "vectorPlotCard",
         "field": "payload.vectorPlotCard",
         "fieldType": "msg",
@@ -2923,7 +3090,7 @@
         "id": "6c3ba5e52620f7d6",
         "type": "template",
         "z": "9c854ea3.68416",
-        "g": "489fb3bc2134b4f2",
+        "g": "7b6ea272eaa08da0",
         "name": "iframeCard",
         "field": "payload.iframeCard",
         "fieldType": "msg",
@@ -3094,6 +3261,74 @@
         "wires": [
             [
                 "a7cf439433d99ead"
+            ]
+        ]
+    },
+    {
+        "id": "5d5e63dae73c1910",
+        "type": "function",
+        "z": "9c854ea3.68416",
+        "name": "Edit machinePermit",
+        "func": "let appConfig = \n{\n    name:'machinePermit',\n    title: 'Machine Permit',\n    pingInterval: 1000,\n    allowedRoles : ['appView'],\n    navbar :\n    {\n        config  :\n        {\n            imageHeight : '75px',\n            leftLink : \"/\",\n            rightLink : \"/apps\",\n            leftImage : \"/img/mirrotron.png\",\n            centerImage : \"/img/protect.png\",\n            rightImage : \"/img/home.png\"\n        }\n    },\n    cards: \n    [\n        {\n            type        :   'CubeRowCard',\n            config      :   \n            {\n                title           :   \"Status\", \n                displayOnOpen   :   true,\n                cubeRows       :\n                [\n                    {\n                        type : 'NumberReadCube',\n                        config : {trayIndex : 0, cubeName : 'watchdog', cubeLabel: \"Watchdog\"}\n                    },\n                    {\n                        type : 'ImageReadCube',\n                        config : {trayIndex : 0, cubeName : 'permit', values : [0,1], images: [\"/img/redLight.png\",\"/img/greenLight.png\"], cubeLabel: \"Permit\"}\n                    }\n                ]\n            }\n        },\n        {\n            type        :   'CubeRowCard',\n            config      :   \n            {\n                title           :   \"Systems\", \n                displayOnOpen   :   true,\n                cubeRows       :\n                [\n                    {\n                        type : 'LabelReadCube',\n                        config : {trayIndex : 0, cubeLabel: \"rfq-temp.inlet\", cubeName : 'rfq-temp/inlet', values : [0,1,2,3], labels: [\"Permit,Watchdog\",\"Permit\",\"Watchdog\",\"OK\"], colors:['red','red','red','green']}\n                    },\n                    {\n                        type : 'LabelReadCube',\n                        config : {trayIndex : 0, cubeLabel: \"rfq-temp.outlet\", cubeName : 'rfq-temp/inlet', values : [0,1,2,3], labels: [\"Permit,Watchdog\",\"Permit\",\"Watchdog\",\"OK\"], colors:['red','red','red','green']}\n                    },\n                    {\n                        type : 'LabelReadCube',\n                        config : {trayIndex : 0, cubeLabel: \"rfq-flow.inlet\", cubeName : 'rfq-flow/inlet', values : [0,1,2,3], labels: [\"Permit,Watchdog\",\"Permit\",\"Watchdog\",\"OK\"], colors:['red','red','red','green']}\n                    },\n                    {\n                        type : 'LabelReadCube',\n                        config : {trayIndex : 0, cubeLabel: \"rfq-flow.outlet\", cubeName : 'rfq-flow/outlet', values : [0,1,2,3], labels: [\"Permit,Watchdog\",\"Permit\",\"Watchdog\",\"OK\"], colors:['red','red','red','green']}\n                    },\n                    {\n                        type : 'LabelReadCube',\n                        config : {trayIndex : 0, cubeLabel: \"scroll-pump.01\", cubeName : 'nXDS-backing-pump/01', values : [0,1,2,3], labels: [\"Permit,Watchdog\",\"Permit\",\"Watchdog\",\"OK\"], colors:['red','red','red','green']}\n                    },\n                    {\n                        type : 'LabelReadCube',\n                        config : {trayIndex : 0, cubeLabel: \"scroll-pump.02\", cubeName : 'nXDS-backing-pump/02', values : [0,1,2,3], labels: [\"Permit,Watchdog\",\"Permit\",\"Watchdog\",\"OK\"], colors:['red','red','red','green']}\n                    }\n                ]\n            }\n        },\n        {\n            type        :   'UserCard',\n            config      :   \n            {\n                title           :   \"User\", \n                displayOnOpen   :   false \n            }\n        }\n    ],\n    styleSheets :\n    [\n        {\n            category:'base',\n            css:\n            [\n                {   \":root\": \n                    {\n                        \"--color1\"          :   \"#1c6e97\",\n                        \"--color2\"          :   \"#289dd7\",\n                        \"--color3\"          :   \"#e7e7e7\",\n                        \"--color4\"          :   \"#c6c2bb\",\n                        \"--color5\"          :   \"#ffffff\",\n                        \"--color6\"          :   \"#289dd7\",\n                    }\n                },\n                {\n                    \"body\":\n                    {\n                        \"background-color\"  :   \"white !important\",\n                        \"padding-left\"      :   \"25px\",\n                        \"padding-right\"     :   \"25px\",\n                    }\n                },\n                {\n                    \"img\" :\n                    {\n                        \"object-fit\"        :   \"contain\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'dialog',\n            css:\n            [\n                {\n                    \".dialog-modal\" : \n                    {\n                        \"display\"           :   \"none\", \n                        \"position\"          :   \"fixed\", \n                        \"z-index\"           :   \"1\", \n                        \"left\"              :   \"0\",\n                        \"top\"               :   \"0\",\n                        \"width\"             :   \"100%\", \n                        \"height\"            :   \"100%\", \n                        \"overflow\"          :   \"auto\", \n    //                        \"background-color\"  :   \"rgb(0,0,0)\", \n                        \"background-color\"  :   \"rgba(0,0,0,0.4)\" \n                    }\n                },\n                {\n                    \".dialog-modal-content\" :\n                    {\n                        \"margin\"            :   \"15% auto\", \n                        \"padding\"           :   \"20px\",\n                        \"border\"            :   \"1px solid #888\",\n                        \"width\"             :   \"80%\" \n                    }\n                }\n            ]\n        },\n        {\n            category:'navbar',\n            css:\n            [\n                {\n                    \".navbar\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"color\"             :   \"var(--color6)\",\n                        \"padding-top\"       :   \"25px\",\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".navbar-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'alarmLimit',\n            css:\n            [\n                {\n                    \".alarmLimit-card\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".alarmLimit-card-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".alarmLimit-card-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".alarmLimit-label-text\" :\n                    {\n                        \"color\"             :   \"var(--color6)\",\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\"\n                    }\n                },\n                {\n                    \".alarmLimit-input-text\" :\n                    {\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"300%\",\n                        \"width\"             :   \"100%\"\n                    }\n                },\n                {\n                    \".alarmLimit-button\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"80%  !important\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'archivePlotCard',\n            css:\n            [\n                {\n                    \".archivePlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".archivePlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".archivePlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".archivePlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".archivePlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".archiveCard-timeType-span\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".archive-button\" : \n                    {\n                        \"background-color\"  :   \"var(--color1)\",\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-size\"         :   \"200%\"\n                    }\n                },\n                {\n                    \".archive-button-pressed\" : \n                    {\n                        \"background-color\"  :   \"var(--color5)\",\n                        \"color\"             :   \"var(--color1)\",\n                        \"font-size\"         :   \"200%\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'timePlotCard',\n            css:\n            [\n                {\n                    \".timePlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".timePlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".timePlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".timePlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".timePlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'vectorPlotCard',\n            css:\n            [\n                {\n                    \".vectorPlotCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".vectorPlotCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".vectorPlotCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".vectorPlotCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".vectorPlotCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'iframeCard',\n            css:\n            [\n                {\n                    \".iframeCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".iframeCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".iframeCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".iframeCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".iframeCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'cubeRowCard',\n            css:\n            [\n                {\n                    \".cubeRowCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".cubeRowCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".cubeRowCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".cubeRowCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".cubeRowCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'cubeRowParameterView',\n            css:\n            [\n                {\n                    \".cubeRowParameterView-label-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"left\",\n                        \"width\"             :   \"50%\"\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-1\" :\n                    {\n                        \"width\"             :   \"30%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-2\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-widget-column-3\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"align\"             :   \"center\",\n                        \"text-align\"        :   \"center\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".cubeRowParameterView-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                },\n                {\n                    \".cubeRowParameterView-unit-span\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'onOffSetCube',\n            css:\n            [\n                {\n                    \".onOffSetCube-button\" : \n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'numberSetCube',\n            css:\n            [\n                {\n                    \".numberSetCube-inputbox\" : \n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"width\"             :   \"100%\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".numberSetCube-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"100%\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'numberReadCube',\n            css:\n            [\n                {\n                    \".numberReadCube-span\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'imageReadCube',\n            css:\n            [\n                {\n                    \".imageReadCube\" :\n                    {\n                        \"height\"         :   \"40px\",\n                    }\n                }\n            ]\n        },\n        {\n            category:'stateChoiceCube',\n            css:\n            [\n                {\n                    \".stateChoiceCube-stateColumn-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"20%\",\n                        \"width\"             :   \"50%\"\n                    }\n                },\n                {\n                    \".stateChoiceCube-button\" :\n                    {\n                        \"font-size\"         :   \"100%\",\n                        \"color\"             :   \"black\",\n                    }\n                },\n                {\n                    \".stateChoiceCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".stateChoiceCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'gaugeCube',\n            css:\n            [\n                {\n                    \".gaugeCube-label\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".gaugeCube-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"10%\",\n                        \"width\"             :   \"90%\"\n                    }\n                },\n                {\n                    \".gaugeCube-div\" :\n                    {\n                        \"overflow\"            :   \"hidden\",\n                        \"width\"               :   \"100%\",\n                        \"display\"             :   \"flex\",\n                        \"justify-content\"     :   \"center\"\n                    }\n                },\n                {\n                    \".gaugeCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".gaugeCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'hbarCube',\n            css:\n            [\n                {\n                    \".hbarCube-label\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                    }\n                },\n                {\n                    \".hbarCube-column\" :\n                    {\n                        \"color\"             :   \"black\",\n                        \"font-size\"         :   \"200%\",\n                        \"text-align\"        :   \"center\",\n                        \"padding-left\"      :   \"10%\",\n                        \"width\"             :   \"90%\"\n                    }\n                },\n                {\n                    \".hbarCube-div\" :\n                    {\n                        \"overflow\"            :   \"hidden\",\n                        \"width\"               :   \"100%\",\n                        \"display\"             :   \"flex\",\n                        \"justify-content\"     :   \"center\"\n                    }\n                },\n                {\n                    \".hbarCube-alarmConfig-column\" :\n                    {\n                        \"width\"             :   \"10%\",\n                        \"text-align\"        :   \"right\",\n                    }\n                },\n                {\n                    \".hbarCube-alarmConfig-button\" :\n                    {\n                        \"width\"             :   \"40px\",\n                        \"height\"            :   \"40px\"\n                    }\n                }\n            ]\n        },\n        {\n            category:'userCard',\n            css:\n            [\n                {\n                    \".userCard-containerRow\" :\n                    {\n                        \"padding-bottom\"    :   \"25px\"\n                    }\n                },\n                {\n                    \".userCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".userCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".userCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".userCard-title-button\" :\n                    {\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                    }\n                },\n                {\n                    \".userCard-label\" :\n                    {\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"black\",\n                    }\n                },\n                {\n                    \".userCard-data\" :\n                    {\n                        \"text-align\"        :   \"left\",\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color6)\",\n                    }\n        \n                },\n                {\n                    \".userCard-button\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"80%  !important\"\n                    }\n        \n                }\n            ]\n        },\n        {\n            category:'okCancelCard',\n            css:\n            [\n                {\n                    \".okCancelCard\" :\n                    {\n                        \"background-color\"  :   \"var(--color2) !important\",\n                        \"text-align\"        :   \"center\"\n                    }\n                },\n                {\n                    \".okCancelCard-body\" :\n                    {\n                        \"background-color\"  :   \"var(--color3)\"\n                    }\n                },\n                {\n                    \".okCancelCard-title\" :\n                    {\n                        \"color\"             :   \"var(--color5)\",\n                        \"font-weight\"       :   \"900\",\n                        \"font-size\"         :   \"300%\",\n                        \"font-style\"        :   \"italic\"        \n                    }\n                },\n                {\n                    \".okCancelCard-button\" :\n                    {\n                        \"font-size\"         :   \"200%\",\n                        \"color\"             :   \"var(--color5) !important\",\n                        \"background-color\"  :   \"var(--color1) !important\",\n                        \"font-weight\"       :   \"900\",\n                        \"width\"             :   \"60%  !important\"\n                    }\n                },\n                {\n                    \".okCancelCard-text\" :\n                    {\n                        \"font-size\"         :   \"300%\",\n                        \"color\"             :   \"var(--color6)\",\n                    }\n                }\n            ]\n        }\n        \n    ]\n};\nreturn {topic: appConfig.name,payload:[{name:appConfig.name},appConfig]};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1120,
+        "wires": [
+            [
+                "d65875eade1e6d1c"
+            ]
+        ]
+    },
+    {
+        "id": "a3376eabee103e38",
+        "type": "inject",
+        "z": "9c854ea3.68416",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1120,
+        "wires": [
+            [
+                "5d5e63dae73c1910"
+            ]
+        ]
+    },
+    {
+        "id": "5c26e6f2752ddd2d",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "g": "7b6ea272eaa08da0",
+        "name": "labelReadCube",
+        "field": "payload.labelReadCube",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "//ImageRead\n        class LabelReadCube extends CubeRowParameterView\n        {\n            addComponents(widgetColumns)\n            {\n                this.readingSpan  = document.createElement('span');\n                this.readingSpan.setAttribute('class', 'numberReadCube-span');\n                this.readingSpan.innerHTML = '?';\n                widgetColumns[0].appendChild(this.readingSpan);\n            }\n            updateCubeValue()\n            {\n                for (let ival = 0; ival < this.config.values.length; ++ival)\n                {\n                    if (this.tray[this.config.cubeName].value == this.config.values[ival])\n                    {\n                        this.readingSpan.innerHTML = this.config.labels[ival];\n                        if ('colors' in this.config)\n                        {\n                            this.readingSpan.style.color = this.config.colors[ival];\n                        }\n                    }\n                }\n            }\n        }",
+        "output": "str",
+        "x": 920,
+        "y": 320,
+        "wires": [
+            [
+                "d41afc4ae8fe3b6b"
             ]
         ]
     },
@@ -4095,7 +4330,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-3\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-9\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"cubeDisplay?appConfig=rk-pa&trays=rk-pa.01\">Power Amplifier</option>\n                                    <option value=\"cubeDisplay?appConfig=rfq-temp&trays=rfq-temp.inlet,rfq-temp.outlet\">RFQ Temperature</option>\n                                    <option value=\"cubeDisplay?appConfig=rfq-flow&trays=rfq-flow.inlet,rfq-flow.outlet\">RFQ Cooling Flow</option>\n                                    <option value=\"cubeDisplay?appConfig=vacuum&trays=rfq-vacuum.01,nXDS-backing-pump.01,nXDS-backing-pump.02\">RFQ Vacuum</option>\n                                    <option value=\"cubeDisplay?appConfig=llrf&trays=rf-src.01,phase-detector.01,gateGen125.01,llrf-scope.01\">LLRF</option>\n                                    <option value=\"cubeDisplay?appConfig=gateGen125&trays=gateGen125.01\">Timing</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n                </div>",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-3\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-9\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"cubeDisplay?appConfig=rk-pa&trays=rk-pa.01\">Power Amplifier</option>\n                                    <option value=\"cubeDisplay?appConfig=rfq-temp&trays=rfq-temp.inlet,rfq-temp.outlet\">RFQ Temperature</option>\n                                    <option value=\"cubeDisplay?appConfig=rfq-flow&trays=rfq-flow.inlet,rfq-flow.outlet\">RFQ Cooling Flow</option>\n                                    <option value=\"cubeDisplay?appConfig=vacuum&trays=rfq-vacuum.01,nXDS-backing-pump.01,nXDS-backing-pump.02\">RFQ Vacuum</option>\n                                    <option value=\"cubeDisplay?appConfig=llrf&trays=rf-src.01,phase-detector.01,gateGen125.01,llrf-scope.01\">LLRF</option>\n                                    <option value=\"cubeDisplay?appConfig=gateGen125&trays=gateGen125.01\">Timing</option>\n                                    <option value=\"cubeDisplay?appConfig=machinePermit&trays=machine-permit.01\">Machine Permit</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n                </div>",
         "output": "str",
         "x": 940,
         "y": 60,
