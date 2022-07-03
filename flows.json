@@ -1810,7 +1810,7 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": 0.1,
+        "onceDelay": "0.1",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -1826,16 +1826,20 @@
         "id": "29e195ec27f6542e",
         "type": "function",
         "z": "508c21e47a4bdb43",
-        "name": "Setup trays to check",
-        "func": "flow.set('staleIntervalmS',12000);\nlet traysToCheck = [\n    {\n        permit          :   0, \n        watchdog        :   -1,\n        watchdogChange  :   false,\n        timeStamp       :   0,\n        trayType        :   'rfq-temp',\n        trayName        :   'inlet'\n    },\n    {\n        permit          :   0, \n        watchdog        :   -1,\n        watchdogChange  :   false,\n        timeStamp       :   0,\n        trayType        :   'rfq-temp',\n        trayName        :   'outlet'\n    },\n    {\n        permit          :   0, \n        watchdog        :   -1,\n        watchdogChange  :   false,\n        timeStamp       :   0,\n        trayType        :   'rfq-flow',\n        trayName        :   'inlet'\n    },\n    {\n        permit          :   0, \n        watchdog        :   -1,\n        watchdogChange  :   false,\n        timeStamp       :   0,\n        trayType        :   'rfq-flow',\n        trayName        :   'outlet'\n    },\n    {\n        permit          :   0, \n        watchdog        :   -1,\n        watchdogChange  :   false,\n        timeStamp       :   0,\n        trayType        :   'nXDS-backing-pump',\n        trayName        :   '01'\n    },\n    {\n        permit          :   0, \n        watchdog        :   -1,\n        watchdogChange  :   false,\n        timeStamp       :   0,\n        trayType        :   'nXDS-backing-pump',\n        trayName        :   '02'\n    }\n];\nflow.set('traysToCheck',traysToCheck);\nreturn null;",
-        "outputs": 0,
+        "name": "Init",
+        "func": "flow.set('staleIntervalmS',12000);\nflow.set(\"machine-permit\",null);\nflow.set('traysToCheck',null);\nreturn {topic: \"machine-permit\",payload:[{type:\"machine-permit\"}]};",
+        "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
+        "x": 290,
         "y": 80,
-        "wires": []
+        "wires": [
+            [
+                "1366e63bec373ddf"
+            ]
+        ]
     },
     {
         "id": "94e49563d99a0373",
@@ -1871,7 +1875,7 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Check for stale watchdog",
-        "func": "let staleIntervalmS = flow.set('staleIntervalmS',12000);\nlet traysToCheck = flow.get('traysToCheck');\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) traysToCheck[ii].watchdogChange = false;\n}\nreturn null;",
+        "func": "let staleIntervalmS = flow.set('staleIntervalmS',12000);\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) traysToCheck[ii].watchdogChange = false;\n}\nreturn null;",
         "outputs": 0,
         "noerr": 0,
         "initialize": "",
@@ -1902,47 +1906,54 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Scan Watchdogs",
-        "func": "let traysToCheck = flow.get('traysToCheck');\nlet topicSplit = msg.topic.split('/');\nlet trayType = topicSplit[1];\nlet trayName = topicSplit[2];\nlet watchdogIndex = -1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((trayType == traysToCheck[ii].trayType) && (trayName == traysToCheck[ii].trayName))\n    {\n        watchdogIndex = ii;\n        ii = traysToCheck.length;\n    }\n}\nif (watchdogIndex >= 0)\n{\n    if (traysToCheck[watchdogIndex].watchdog != msg.payload.watchdog.value)\n    {\n       traysToCheck[watchdogIndex].watchdog        =   msg.payload.watchdog.value;\n       traysToCheck[watchdogIndex].watchdogChange  =   true;\n       traysToCheck[watchdogIndex].permit          =   msg.payload.permit.value;\n       traysToCheck[watchdogIndex].timeStamp       =   new Date().getTime();\n    }\n    else\n    {\n       traysToCheck[watchdogIndex].watchdogChange  =   false;\n    }\n}\nreturn msg;",
-        "outputs": 1,
+        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet topicSplit = msg.topic.split('/');\nlet trayType = topicSplit[1];\nlet trayName = topicSplit[2];\nlet watchdogIndex = -1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((trayType == traysToCheck[ii].trayType) && (trayName == traysToCheck[ii].trayName))\n    {\n        watchdogIndex = ii;\n        ii = traysToCheck.length;\n    }\n}\nif (watchdogIndex >= 0)\n{\n    if (traysToCheck[watchdogIndex].watchdog != msg.payload.watchdog.value)\n    {\n       traysToCheck[watchdogIndex].watchdog        =   msg.payload.watchdog.value;\n       traysToCheck[watchdogIndex].watchdogChange  =   true;\n       traysToCheck[watchdogIndex].permit          =   msg.payload.permit.value;\n       traysToCheck[watchdogIndex].timeStamp       =   new Date().getTime();\n    }\n    else\n    {\n       traysToCheck[watchdogIndex].watchdogChange  =   false;\n    }\n}\nreturn null;",
+        "outputs": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 350,
         "y": 260,
-        "wires": [
-            [
-                "e6570ee27f4b7651"
-            ]
-        ]
+        "wires": []
     },
     {
-        "id": "e6570ee27f4b7651",
-        "type": "switch",
+        "id": "908decce6d141c10",
+        "type": "function",
         "z": "508c21e47a4bdb43",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "mirrotron/nXDS-backing-pump/01/reading ",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
+        "name": "Make Permit Device",
+        "func": "let tray = \n{\n  \"type\": \"machine-permit\",\n  \"name\": \"01\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1649435680293,\n  \"watchdog\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -1,\n        \"low\": -1,\n        \"high\": 36767,\n        \"hihi\": 36767\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    },\n    \"value\": 0\n  },\n  \"permit\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 3,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\": 0,\n        \"high\": 2,\n        \"hihi\": 2\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"rfq-temp/inlet\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 2,\n        \"low\": 2,\n        \"high\": 4,\n        \"hihi\": 4\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"rfq-temp/outlet\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 2,\n        \"low\": 2,\n        \"high\": 4,\n        \"hihi\": 4\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"rfq-flow/inlet\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 2,\n        \"low\": 2,\n        \"high\": 4,\n        \"hihi\": 4\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"rfq-flow/outlet\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 2,\n        \"low\": 2,\n        \"high\": 4,\n        \"hihi\": 4\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"nXDS-backing-pump/01\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 2,\n        \"low\": 2,\n        \"high\": 4,\n        \"hihi\": 4\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"nXDS-backing-pump/02\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 2,\n        \"low\": 2,\n        \"high\": 4,\n        \"hihi\": 4\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n}\nreturn {topic: \"machine-permit\",payload:[{type:\"machine-permit\"},tray]};",
         "outputs": 1,
-        "x": 530,
-        "y": 260,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 400,
         "wires": [
             [
-                "227cc938cd74480d"
+                "131a274f34d37f7a"
             ]
         ]
     },
     {
-        "id": "227cc938cd74480d",
+        "id": "131a274f34d37f7a",
+        "type": "mongodb3 in",
+        "z": "508c21e47a4bdb43",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "trays",
+        "operation": "findOneAndReplace",
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "df7cd5cc47f431f3"
+            ]
+        ]
+    },
+    {
+        "id": "df7cd5cc47f431f3",
         "type": "debug",
         "z": "508c21e47a4bdb43",
         "name": "",
@@ -1954,25 +1965,94 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 260,
+        "x": 870,
+        "y": 400,
         "wires": []
     },
     {
-        "id": "908decce6d141c10",
+        "id": "bb309f9995376d0a",
+        "type": "inject",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 400,
+        "wires": [
+            [
+                "908decce6d141c10"
+            ]
+        ]
+    },
+    {
+        "id": "7b3a750a042c1e1e",
+        "type": "mongodb3 in",
+        "z": "508c21e47a4bdb43",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "trays",
+        "operation": "findOne",
+        "x": 610,
+        "y": 80,
+        "wires": [
+            [
+                "1df1e7a4eaf92c97"
+            ]
+        ]
+    },
+    {
+        "id": "1df1e7a4eaf92c97",
         "type": "function",
         "z": "508c21e47a4bdb43",
-        "name": "Make Permit Device",
-        "func": "let tray = \n{\n  \"type\": \"machine-permit\",\n  \"name\": \"01\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1649435680293,\n  \"watchdog\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -1,\n        \"low\": -1,\n        \"high\": 36767,\n        \"hihi\": 36767\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    },\n    \"value\": 0\n  },\n  \"permit\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"\",\n    \"alarm\": {\n      \"value\": 3,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\": 0,\n        \"high\": 2,\n        \"hihi\": 2\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n}\nreturn msg;",
-        "outputs": 1,
+        "name": "Save machine permit",
+        "func": "delete msg.payload[\"_id\"];\nflow.set(\"machine-permit\",msg.payload);\nlet keys = Object.keys(msg.payload);\nlet traysToCheck = [];\nfor (let ii = 0; ii < keys.length; ++ii)\n{\n    let keySplit = keys[ii].split('/');\n    if (keySplit.length > 1)\n    {\n        let traycheck = \n        {\n            permit          :   0, \n            watchdog        :   -1,\n            watchdogChange  :   false,\n            timeStamp       :   0,\n            trayType        :   keySplit[0],\n            trayName        :   keySplit[1]\n        };\n        traysToCheck.push(traycheck);\n    }\n}\nflow.set('traysToCheck',traysToCheck);\nreturn null;",
+        "outputs": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 400,
+        "x": 840,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1366e63bec373ddf",
+        "type": "delay",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 80,
         "wires": [
-            []
+            [
+                "7b3a750a042c1e1e"
+            ]
         ]
     },
     {
