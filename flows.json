@@ -497,7 +497,9 @@
             "9a0c467162948353"
         ],
         "x": 114,
-        "y": 319
+        "y": 319,
+        "w": 292,
+        "h": 222
     },
     {
         "id": "fae3eecb97e09df5",
@@ -520,7 +522,9 @@
             "1ea7cffebed6852b"
         ],
         "x": 114,
-        "y": 79
+        "y": 79,
+        "w": 372,
+        "h": 182
     },
     {
         "id": "7b6ea272eaa08da0",
@@ -560,7 +564,9 @@
             "5c26e6f2752ddd2d"
         ],
         "x": 554,
-        "y": 119
+        "y": 119,
+        "w": 752,
+        "h": 402
     },
     {
         "id": "6ad7c930.1a06b8",
@@ -1822,7 +1828,7 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Init",
-        "func": "flow.set('staleIntervalmS',12000);\nflow.set(\"machine-permit\",null);\nflow.set('traysToCheck',null);\nreturn {topic: \"machine-permit\",payload:[{type:\"machine-permit\"}]};",
+        "func": "flow.set('staleIntervalmS',25000);\nflow.set(\"machine-permit\",null);\nflow.set('traysToCheck',null);\nreturn {topic: \"machine-permit\",payload:[{type:\"machine-permit\"}]};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1870,7 +1876,7 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Check for stale watchdog",
-        "func": "let staleIntervalmS = flow.get('staleIntervalmS');\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) traysToCheck[ii].watchdogChange = false;\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.timeStamp = new Date().getTime();\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  newMsg;  \n",
+        "func": "let staleIntervalmS = flow.get('staleIntervalmS');\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) \n    {\n//        if (traysToCheck[ii].trayType == \"rfq-temp\") node.warn(msg.payload - traysToCheck[ii].timeStamp);\n        traysToCheck[ii].watchdogChange = false;\n    }\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.timeStamp = new Date().getTime();\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  newMsg;  \n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
