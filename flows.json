@@ -513,9 +513,7 @@
             "9a0c467162948353"
         ],
         "x": 114,
-        "y": 319,
-        "w": 292,
-        "h": 222
+        "y": 319
     },
     {
         "id": "fae3eecb97e09df5",
@@ -538,9 +536,7 @@
             "1ea7cffebed6852b"
         ],
         "x": 114,
-        "y": 79,
-        "w": 372,
-        "h": 182
+        "y": 79
     },
     {
         "id": "7b6ea272eaa08da0",
@@ -580,9 +576,7 @@
             "5c26e6f2752ddd2d"
         ],
         "x": 554,
-        "y": 119,
-        "w": 752,
-        "h": 402
+        "y": 119
     },
     {
         "id": "6ad7c930.1a06b8",
@@ -2991,10 +2985,10 @@
         "type": "function",
         "z": "508c21e47a4bdb43",
         "name": "Check for stale watchdog",
-        "func": "let staleIntervalmS = flow.get('staleIntervalmS');\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) \n    {\n//        if (traysToCheck[ii].trayType == \"rfq-temp\") node.warn(msg.payload - traysToCheck[ii].timeStamp);\n        traysToCheck[ii].watchdogChange = false;\n    }\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.timeStamp = new Date().getTime();\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nmachinePermitTray.permit.alarm.value = 0;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.low)  machinePermitTray.permit.alarm.value = 1;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.lolo) machinePermitTray.permit.alarm.value = 3;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.high) machinePermitTray.permit.alarm.value = 2;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.hihi) machinePermitTray.permit.alarm.value = 4;\nmachinePermitTray.watchdog.alarm.value = 0;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  newMsg;  \n",
-        "outputs": 1,
+        "func": "let staleIntervalmS = flow.get('staleIntervalmS');\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) \n    {\n//        if (traysToCheck[ii].trayType == \"rfq-temp\") node.warn(msg.payload - traysToCheck[ii].timeStamp);\n        traysToCheck[ii].watchdogChange = false;\n    }\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.timeStamp = new Date().getTime();\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nmachinePermitTray.permit.alarm.value = 0;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.low)  machinePermitTray.permit.alarm.value = 1;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.lolo) machinePermitTray.permit.alarm.value = 3;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.high) machinePermitTray.permit.alarm.value = 2;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.hihi) machinePermitTray.permit.alarm.value = 4;\nmachinePermitTray.watchdog.alarm.value = 0;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\n\nmachinePermitTray.timeStamp = new Date().getTime();\nlet archiveMsg = null;\nlet previousMachinePermitValue = context.get('previousMachinePermitValue');\nif ((previousMachinePermitValue == 0) && (machinePermitTray.permit.alarm.value > 0) )\n{\n    archiveMsg = \n    {\n        topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/archive',\n        payload: JSON.stringify(machinePermitTray)\n    };\n}\ncontext.set('previousMachinePermitValue',machinePermitTray.permit.alarm.value);\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  [newMsg,archiveMsg];  \n",
+        "outputs": 2,
         "noerr": 0,
-        "initialize": "",
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('previousMachinePermitValue',1);",
         "finalize": "",
         "libs": [],
         "x": 350,
@@ -3002,6 +2996,10 @@
         "wires": [
             [
                 "16bba99d6cf7939b"
+            ],
+            [
+                "16bba99d6cf7939b",
+                "9efff9fdf33c57ca"
             ]
         ]
     },
@@ -3189,7 +3187,7 @@
         "correl": "",
         "expiry": "",
         "broker": "84d80994.260508",
-        "x": 620,
+        "x": 1120,
         "y": 160,
         "wires": []
     },
@@ -3290,49 +3288,76 @@
         "wires": []
     },
     {
-        "id": "c2d22bcc1f4cf7b0",
-        "type": "inject",
+        "id": "c0ad66bb5e82aa12",
+        "type": "debug",
         "z": "508c21e47a4bdb43",
-        "name": "Archive clock",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "20",
-        "topic": "archiveClock",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 220,
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "9efff9fdf33c57ca",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Send out archive broadcast",
+        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet trayArchiveMsg = [];\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let archiveMsg = \n    {\n        topic: global.get('box') + '/' + traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName + '/setting/archive',\n        payload: true\n    };\n    trayArchiveMsg.push(archiveMsg);\n}\n\nreturn {topic:'alarmBurst',payload:trayArchiveMsg};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 260,
         "wires": [
             [
-                "6a9b2f2af2f7d084"
+                "fc2ed8300a0ad6d2"
             ]
         ]
     },
     {
-        "id": "6a9b2f2af2f7d084",
-        "type": "function",
+        "id": "fc2ed8300a0ad6d2",
+        "type": "split",
         "z": "508c21e47a4bdb43",
-        "name": "Archive Pulse",
-        "func": "var tray = flow.get(\"machine-permit\");\nif (tray == null) return null;\nvar lastArchive = context.get('lastArchive');\nvar now = new Date().getTime();\nif ((now - lastArchive) <= tray.arcPeriod) return null;\ncontext.set('lastArchive', now);\nlet newMsg = \n{\n    topic: global.get('box') + '/' + tray.type + '/' + tray.name + '/archive',\n    payload: JSON.stringify(tray)\n};\nreturn  newMsg;  \n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('lastArchive', new Date().getTime());",
-        "finalize": "",
-        "libs": [],
-        "x": 350,
-        "y": 220,
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 810,
+        "y": 260,
         "wires": [
             [
+                "4139491c21cbe716"
+            ]
+        ]
+    },
+    {
+        "id": "4139491c21cbe716",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "shift",
+        "func": "return msg.payload;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 260,
+        "wires": [
+            [
+                "c0ad66bb5e82aa12",
                 "16bba99d6cf7939b"
             ]
         ]
@@ -6248,6 +6273,79 @@
         ],
         "x": 375,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1656556d47cf298b",
+        "type": "inject",
+        "z": "e17f7487.2a78e8",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 680,
+        "wires": [
+            [
+                "71fe7355082a5555",
+                "71fe7355082a5555"
+            ]
+        ]
+    },
+    {
+        "id": "71fe7355082a5555",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "Find Device Type",
+        "func": "var queryFilter = \n{\n    $and :\n    [\n        {\n            \"type\": \"machine-permit\"\n        },\n        {\n            \"name\": \"01\"\n        }\n    ] \n    \n}\nvar newMsg = \n{\n    topic           : 'getArchiveValues',\n    payload         :  [queryFilter,{projection:{timeStamp:1, _id:0}}]\n};\nreturn newMsg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 680,
+        "wires": [
+            [
+                "432070787b7c89e3",
+                "432070787b7c89e3"
+            ]
+        ]
+    },
+    {
+        "id": "432070787b7c89e3",
+        "type": "mongodb3 in",
+        "z": "e17f7487.2a78e8",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "archiver",
+        "operation": "removeMany",
+        "x": 530,
+        "y": 680,
+        "wires": [
+            [
+                "bd23fc8e480e265e",
+                "bd23fc8e480e265e"
+            ]
+        ]
+    },
+    {
+        "id": "bd23fc8e480e265e",
+        "type": "debug",
+        "z": "e17f7487.2a78e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 680,
         "wires": []
     },
     {
