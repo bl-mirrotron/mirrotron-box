@@ -91,7 +91,9 @@
         ],
         "out": [],
         "env": [],
-        "color": "#DDAA99"
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "e13648d6.d698c8",
@@ -112,7 +114,9 @@
         ],
         "out": [],
         "env": [],
-        "color": "#DDAA99"
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "df70f6f.9e4ed08",
@@ -144,7 +148,9 @@
             }
         ],
         "env": [],
-        "color": "#DDAA99"
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "2dba0745.a98d98",
@@ -186,7 +192,9 @@
             }
         ],
         "env": [],
-        "color": "#DDAA99"
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "2d027d69.1fdeb2",
@@ -219,7 +227,8 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#A6BBCF"
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "495f0879.c831c8",
@@ -251,7 +260,9 @@
             }
         ],
         "env": [],
-        "color": "#DDAA99"
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "fee416c.fb205e8",
@@ -293,7 +304,9 @@
             }
         ],
         "env": [],
-        "color": "#DDAA99"
+        "meta": {},
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "c57c2f9e65e6cb70",
@@ -326,7 +339,8 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "7744eedb71df7703",
@@ -359,7 +373,8 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "52be0ea245c63856",
@@ -392,7 +407,8 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#A6BBCF"
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "797ee6019a62f6e3",
@@ -425,7 +441,8 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#3FADB5"
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "3c4d591d2098e2a3",
@@ -458,7 +475,8 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#3FADB5"
+        "color": "#487895",
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "3fec913b325ae6ff",
@@ -492,7 +510,7 @@
         "env": [],
         "meta": {},
         "color": "#487895",
-        "icon": "font-awesome/fa-key"
+        "icon": "font-awesome/fa-cubes"
     },
     {
         "id": "0899511e715967e4",
@@ -513,7 +531,9 @@
             "9a0c467162948353"
         ],
         "x": 114,
-        "y": 319
+        "y": 319,
+        "w": 292,
+        "h": 222
     },
     {
         "id": "fae3eecb97e09df5",
@@ -536,7 +556,9 @@
             "1ea7cffebed6852b"
         ],
         "x": 114,
-        "y": 79
+        "y": 79,
+        "w": 372,
+        "h": 182
     },
     {
         "id": "7b6ea272eaa08da0",
@@ -576,7 +598,42 @@
             "5c26e6f2752ddd2d"
         ],
         "x": 554,
-        "y": 119
+        "y": 119,
+        "w": 752,
+        "h": 402
+    },
+    {
+        "id": "a91865a4478d52fd",
+        "type": "group",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "style": {
+            "stroke": "#001f60",
+            "fill": "#bfdbef",
+            "label": true
+        },
+        "nodes": [
+            "93ac4fc8e3ee1e76",
+            "29e195ec27f6542e",
+            "94e49563d99a0373",
+            "4890cba099c6fd4f",
+            "7579dedaf706f7f3",
+            "3ed96e34f377b2ed",
+            "7b3a750a042c1e1e",
+            "1df1e7a4eaf92c97",
+            "1366e63bec373ddf",
+            "16bba99d6cf7939b",
+            "f9be9054ce456982",
+            "e0d2b8e49c2e469b",
+            "5a928b853087ebdd",
+            "f812bb6a.1aec68",
+            "47de6287cc26419f",
+            "9efff9fdf33c57ca",
+            "fc2ed8300a0ad6d2",
+            "4139491c21cbe716"
+        ],
+        "x": 34,
+        "y": 39
     },
     {
         "id": "6ad7c930.1a06b8",
@@ -727,7 +784,7 @@
     {
         "id": "2b65833e.87911c",
         "type": "websocket-listener",
-        "path": "/scalarAlarmScanner/websocket",
+        "path": "/alarmScanner/websocket",
         "wholemsg": "false"
     },
     {
@@ -782,6 +839,12 @@
         "id": "0e125a6804f1db70",
         "type": "websocket-listener",
         "path": "/logbook/websocket",
+        "wholemsg": "false"
+    },
+    {
+        "id": "81f0c404d8f04cda",
+        "type": "websocket-listener",
+        "path": "/postMortem/websocket",
         "wholemsg": "false"
     },
     {
@@ -1419,7 +1482,7 @@
         "fieldType": "msg",
         "format": "css",
         "syntax": "mustache",
-        "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
+        "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --medium-text-size :200%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .medium-text\n        {\n            font-size: var(--medium-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
         "output": "str",
         "x": 350,
         "y": 80,
@@ -2428,7 +2491,7 @@
         "syntax": "mustache",
         "template": "<!-- body HTML -->\n    <div width=\"100%\">\n{{{payload.html.entries}}}\n{{{payload.html.user}}}\n    </div>",
         "output": "str",
-        "x": 930,
+        "x": 810,
         "y": 160,
         "wires": [
             [
@@ -2445,10 +2508,10 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "{{{payload.script.global}}}\n{{{payload.script.launcher}}}\n{{{payload.script.user}}}\n",
+        "template": "{{{payload.script.global}}}\n{{{payload.script.user}}}\n",
         "output": "str",
         "x": 580,
-        "y": 200,
+        "y": 160,
         "wires": [
             [
                 "93f799a0978d4996"
@@ -2466,7 +2529,7 @@
         "syntax": "mustache",
         "template": "<!-- user HTML -->\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n                <div class='card' id='userCardId'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
         "output": "str",
-        "x": 940,
+        "x": 820,
         "y": 120,
         "wires": [
             [
@@ -2489,25 +2552,6 @@
         "y": 80,
         "wires": [
             [
-                "a7dea207384409d7"
-            ]
-        ]
-    },
-    {
-        "id": "a7dea207384409d7",
-        "type": "template",
-        "z": "fd4de88e48dafe8b",
-        "name": "script.launcher",
-        "field": "payload.script.launcher",
-        "fieldType": "msg",
-        "format": "javascript",
-        "syntax": "mustache",
-        "template": "        function appSelected()\n        {\n            var application = $('#application').val();\n            if (application != 'none') launchApp();\n        }\n        function launchApp()\n        {\n            var application = $('#application').val();\n            var link = \"/\" + application;\n            window.location.href = link;\n//            window.open(link, '_blank');\n        }\n",
-        "output": "str",
-        "x": 600,
-        "y": 120,
-        "wires": [
-            [
                 "5ee76a18f0263d99"
             ]
         ]
@@ -2524,7 +2568,7 @@
         "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = box + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = box + \"Role=\" + msg.role;\n            document.cookie = box + \"ExpDate=\" + msg.expDate;\n            document.cookie = box + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", box + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
         "output": "str",
         "x": 590,
-        "y": 160,
+        "y": 120,
         "wires": [
             [
                 "414a5f4c64db0a52"
@@ -2536,7 +2580,7 @@
         "type": "subflow:c57c2f9e65e6cb70",
         "z": "fd4de88e48dafe8b",
         "name": "",
-        "x": 1110,
+        "x": 990,
         "y": 160,
         "wires": [
             [
@@ -2549,7 +2593,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "fd4de88e48dafe8b",
         "name": "",
-        "x": 1290,
+        "x": 1170,
         "y": 160,
         "wires": []
     },
@@ -2669,7 +2713,7 @@
         "syntax": "mustache",
         "template": "<!-- Dashboard HTML -->\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Entries</span>\n                            </td>\n                            <td width='15%' >\n                                <button class='btn btn-block card-title-button' id=\"addEntry\" onclick=\"addEntry()\" >Add</button>\n                            </td>\n                        </tr>\n                   </table>\n                    <div class='card-body' align=\"center\">\n                        <div class='row'  style='padding-top: 0px;' id='logEntryTableHolder'></div>\n                    </div>\n                </div>\n                <div id=\"addEntryDialog\" title=\"Add Entry\" class='card'>\n                    <div class='card-body'>\n                        <table>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span style=\"font-size:150%;\">Title</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <input  id=\"entryTitle\" type=\"text\" value=\"\" style=\"font-size:150%;\" size=\"49\"/>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span style=\"font-size:150%;\">Text</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <textarea id=\"entryText\" name=\"entryText\" rows=\"8\" cols=\"50\" style=\"font-size:150%;\"></textarea>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n                <div id=\"showEntryDialog\" title=\"\" class='card'>\n                    <div class='card-body'>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"30%\" align=\"left\" >\n                                    <span style=\"font-size:150%;\">Date:</span>\n                                </td>\n                                <td width=\"70%\" align=\"left\">\n                                    <span id=\"showEntryDialogDate\" style=\"font-size:150%;\"></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"30%\" align=\"left\" >\n                                    <span style=\"font-size:150%;\">Author:</span>\n                                </td>\n                                <td width=\"70%\" align=\"left\">\n                                    <span id=\"showEntryDialogAuthor\" style=\"font-size:150%;\"></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"30%\" align=\"left\" >\n                                    <span style=\"font-size:150%;\">Title:</span>\n                                </td>\n                                <td width=\"70%\" align=\"left\">\n                                    <span id=\"showEntryDialogTitle\" style=\"font-size:150%;\"></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=100%>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <textarea id=\"showEntryDialogText\" name=\"showEntryDialogText\" rows=\"8\" cols=\"50\" style=\"font-size:150%;\"></textarea>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n                <div id=\"editEntryDialog\" title=\"Edit Entry\" class='card'>\n                    <div class='card-body'>\n                        <table>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span style=\"font-size:150%;\">Title</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <input  id=\"editEntryTitle\" type=\"text\" value=\"\" style=\"font-size:150%;\" size=\"49\"/>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span style=\"font-size:150%;\">Text</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <textarea id=\"editEntryText\" name=\"editEntryText\" rows=\"8\" cols=\"50\" style=\"font-size:150%;\"></textarea>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span id=\"editEntryTimeStampSpan\">timestamp</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span id=\"editEntryAuthorSpan\">author</span></td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n                <div id=\"deleteEntryDialog\" title=\"Delete Entry\" class='card'>\n                    <p class='card-title' style='color:yellow;'>Danger!</p>\n                    <div class='card-body'>\n                        <table>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span style=\"font-size:150%;\">Title</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <input  id=\"deleteEntryTitle\" type=\"text\" value=\"\" style=\"font-size:150%;\" size=\"49\"/>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span style=\"font-size:150%;\">Text</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">\n                                    <textarea id=\"deleteEntryText\" name=\"editEntryText\" rows=\"8\" cols=\"50\" style=\"font-size:150%;\"></textarea>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span id=\"deleteEntryTimeStampSpan\">timestamp</span></td>\n                            </tr>\n                            <tr>\n                                <td width=\"100%\" align=\"left\">  <span id=\"deleteEntryAuthorSpan\">author</span></td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
         "output": "str",
-        "x": 950,
+        "x": 830,
         "y": 80,
         "wires": [
             [
@@ -2907,6 +2951,7 @@
         "id": "93ac4fc8e3ee1e76",
         "type": "inject",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "",
         "props": [
             {
@@ -2936,6 +2981,7 @@
         "id": "29e195ec27f6542e",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Init",
         "func": "flow.set('staleIntervalmS',45000);\nflow.set(\"machine-permit\",null);\nflow.set('traysToCheck',null);\nreturn {topic: \"machine-permit\",payload:[{type:\"machine-permit\"}]};",
         "outputs": 1,
@@ -2955,6 +3001,7 @@
         "id": "94e49563d99a0373",
         "type": "inject",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "1 sec",
         "props": [
             {
@@ -2984,21 +3031,24 @@
         "id": "4890cba099c6fd4f",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Check for stale watchdog",
-        "func": "let staleIntervalmS = flow.get('staleIntervalmS');\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) \n    {\n//        if (traysToCheck[ii].trayType == \"rfq-temp\") node.warn(msg.payload - traysToCheck[ii].timeStamp);\n        traysToCheck[ii].watchdogChange = false;\n    }\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.timeStamp = new Date().getTime();\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nmachinePermitTray.permit.alarm.value = 0;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.low)  machinePermitTray.permit.alarm.value = 1;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.lolo) machinePermitTray.permit.alarm.value = 3;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.high) machinePermitTray.permit.alarm.value = 2;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.hihi) machinePermitTray.permit.alarm.value = 4;\nmachinePermitTray.watchdog.alarm.value = 0;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\n\nmachinePermitTray.timeStamp = new Date().getTime();\nlet archiveMsg = null;\nlet previousMachinePermitValue = context.get('previousMachinePermitValue');\nif ((previousMachinePermitValue == 0) && (machinePermitTray.permit.alarm.value > 0) )\n{\n    archiveMsg = \n    {\n        topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/archive',\n        payload: JSON.stringify(machinePermitTray)\n    };\n}\ncontext.set('previousMachinePermitValue',machinePermitTray.permit.alarm.value);\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  [newMsg,archiveMsg];  \n",
-        "outputs": 2,
+        "func": "let staleIntervalmS = flow.get('staleIntervalmS');\nlet traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((msg.payload - traysToCheck[ii].timeStamp) > staleIntervalmS) \n    {\n//        if (traysToCheck[ii].trayType == \"rfq-temp\") node.warn(msg.payload - traysToCheck[ii].timeStamp);\n        traysToCheck[ii].watchdogChange = false;\n    }\n}\nlet machinePermitTray = flow.get(\"machine-permit\");\nif (machinePermitTray == null) return null;\nmachinePermitTray.permit.value = 1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let cubeKey = traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName;\n    let cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) && !traysToCheck[ii].watchdogChange) cubeValue = 0;\n    if ((traysToCheck[ii].permit == 0) &&  traysToCheck[ii].watchdogChange) cubeValue = 1;\n    if ((traysToCheck[ii].permit == 1) && !traysToCheck[ii].watchdogChange) cubeValue = 2;\n    if ((traysToCheck[ii].permit == 1) &&  traysToCheck[ii].watchdogChange) cubeValue = 3;\n    machinePermitTray[cubeKey].value = cubeValue;\n    machinePermitTray[cubeKey].alarm.value = 0;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.low)  machinePermitTray[cubeKey].alarm.value = 1;\n    if (cubeValue <= machinePermitTray[cubeKey].alarm.limits.lolo) machinePermitTray[cubeKey].alarm.value = 3;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.high) machinePermitTray[cubeKey].alarm.value = 2;\n    if (cubeValue >= machinePermitTray[cubeKey].alarm.limits.hihi) machinePermitTray[cubeKey].alarm.value = 4;\n    if (machinePermitTray[cubeKey].alarm.value > 0) machinePermitTray.permit.value = 0;\n}\nmachinePermitTray.timeStamp = new Date().getTime();\nmachinePermitTray.watchdog.value = machinePermitTray.watchdog.value + 1;\nmachinePermitTray.permit.alarm.value = 0;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.low)  machinePermitTray.permit.alarm.value = 1;\nif (machinePermitTray.permit.value <= machinePermitTray.permit.alarm.limits.lolo) machinePermitTray.permit.alarm.value = 3;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.high) machinePermitTray.permit.alarm.value = 2;\nif (machinePermitTray.permit.value >= machinePermitTray.permit.alarm.limits.hihi) machinePermitTray.permit.alarm.value = 4;\nmachinePermitTray.watchdog.alarm.value = 0;\nif (machinePermitTray.watchdog.value > 32760) machinePermitTray.watchdog.value = 0;\n\nmachinePermitTray.timeStamp = new Date().getTime();\nlet archiveMsg = null;\nlet postMortemMsg = null;\nlet previousMachinePermitValue = context.get('previousMachinePermitValue');\nif ((previousMachinePermitValue == 0) && (machinePermitTray.permit.alarm.value > 0) )\n{\n    machinePermitTray.postMortem = machinePermitTray.timeStamp;\n    archiveMsg = \n    {\n        topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/archive',\n        payload: JSON.stringify(machinePermitTray)\n    };\n    postMortemMsg = \n    {\n        topic: 'postMortem',\n        payload: machinePermitTray.postMortem\n    };\n}\ncontext.set('previousMachinePermitValue',machinePermitTray.permit.alarm.value);\nlet newMsg = \n{\n    topic: global.get('box') + '/' + machinePermitTray.type + '/' + machinePermitTray.name + '/reading',\n    payload: JSON.stringify(machinePermitTray)\n};\nreturn  [newMsg,archiveMsg,postMortemMsg];  \n",
+        "outputs": 3,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('previousMachinePermitValue',1);",
         "finalize": "",
         "libs": [],
-        "x": 350,
+        "x": 310,
         "y": 160,
         "wires": [
             [
                 "16bba99d6cf7939b"
             ],
             [
-                "16bba99d6cf7939b",
+                "16bba99d6cf7939b"
+            ],
+            [
                 "9efff9fdf33c57ca"
             ]
         ]
@@ -3007,12 +3057,13 @@
         "id": "7579dedaf706f7f3",
         "type": "link in",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Subscribe Readings In",
         "links": [
             "4ffc61b266cd720c"
         ],
-        "x": 85,
-        "y": 300,
+        "x": 245,
+        "y": 240,
         "wires": [
             [
                 "3ed96e34f377b2ed"
@@ -3023,15 +3074,16 @@
         "id": "3ed96e34f377b2ed",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Scan Watchdogs",
-        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet topicSplit = msg.topic.split('/');\nlet trayType = topicSplit[1];\nlet trayName = topicSplit[2];\nlet watchdogIndex = -1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((trayType == traysToCheck[ii].trayType) && (trayName == traysToCheck[ii].trayName))\n    {\n        watchdogIndex = ii;\n        ii = traysToCheck.length;\n    }\n}\nif (watchdogIndex >= 0)\n{\n    if (traysToCheck[watchdogIndex].watchdog != msg.payload.watchdog.value)\n    {\n       traysToCheck[watchdogIndex].watchdog        =   msg.payload.watchdog.value;\n       traysToCheck[watchdogIndex].watchdogChange  =   true;\n       traysToCheck[watchdogIndex].permit          =   msg.payload.permit.value;\n       traysToCheck[watchdogIndex].timeStamp       =   new Date().getTime();\n    }\n}\nreturn null;",
+        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet topicSplit = msg.topic.split('/');\nlet trayType = msg.tray.type;\nlet trayName = msg.tray.name;\nlet watchdogIndex = -1;\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    if ((trayType == traysToCheck[ii].trayType) && (trayName == traysToCheck[ii].trayName))\n    {\n        watchdogIndex = ii;\n        ii = traysToCheck.length;\n    }\n}\nif (watchdogIndex >= 0)\n{\n    if (traysToCheck[watchdogIndex].watchdog != msg.tray.watchdog.value)\n    {\n       traysToCheck[watchdogIndex].watchdog        =   msg.tray.watchdog.value;\n       traysToCheck[watchdogIndex].watchdogChange  =   true;\n       traysToCheck[watchdogIndex].permit          =   msg.tray.permit.value;\n       traysToCheck[watchdogIndex].timeStamp       =   new Date().getTime();\n    }\n}\nreturn null;",
         "outputs": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 230,
-        "y": 300,
+        "x": 390,
+        "y": 240,
         "wires": []
     },
     {
@@ -3046,7 +3098,7 @@
         "finalize": "",
         "libs": [],
         "x": 320,
-        "y": 600,
+        "y": 440,
         "wires": [
             [
                 "131a274f34d37f7a"
@@ -3063,7 +3115,7 @@
         "collection": "trays",
         "operation": "findOneAndReplace",
         "x": 600,
-        "y": 600,
+        "y": 440,
         "wires": [
             [
                 "df7cd5cc47f431f3"
@@ -3084,7 +3136,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 850,
-        "y": 600,
+        "y": 440,
         "wires": []
     },
     {
@@ -3109,7 +3161,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 600,
+        "y": 440,
         "wires": [
             [
                 "908decce6d141c10"
@@ -3120,6 +3172,7 @@
         "id": "7b3a750a042c1e1e",
         "type": "mongodb3 in",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "service": "_ext_",
         "configNode": "9cd5ff5e.caf86",
         "name": "",
@@ -3137,6 +3190,7 @@
         "id": "1df1e7a4eaf92c97",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Save machine permit",
         "func": "delete msg.payload[\"_id\"];\nmsg.payload.watchdog.value = 0;\nflow.set(\"machine-permit\",msg.payload);\nlet keys = Object.keys(msg.payload);\nlet traysToCheck = [];\nfor (let ii = 0; ii < keys.length; ++ii)\n{\n    let keySplit = keys[ii].split('/');\n    if (keySplit.length > 1)\n    {\n        let traycheck = \n        {\n            permit          :   0, \n            watchdog        :   -1,\n            watchdogChange  :   false,\n            timeStamp       :   0,\n            trayType        :   keySplit[0],\n            trayName        :   keySplit[1]\n        };\n        traysToCheck.push(traycheck);\n    }\n}\nflow.set('traysToCheck',traysToCheck);\nreturn null;",
         "outputs": 0,
@@ -3152,6 +3206,7 @@
         "id": "1366e63bec373ddf",
         "type": "delay",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "",
         "pauseType": "delay",
         "timeout": "5",
@@ -3177,6 +3232,7 @@
         "id": "16bba99d6cf7939b",
         "type": "mqtt out",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Publish Machine Protection",
         "topic": "",
         "qos": "0",
@@ -3187,7 +3243,7 @@
         "correl": "",
         "expiry": "",
         "broker": "84d80994.260508",
-        "x": 620,
+        "x": 1060,
         "y": 160,
         "wires": []
     },
@@ -3195,6 +3251,7 @@
         "id": "f9be9054ce456982",
         "type": "switch",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -3209,7 +3266,7 @@
         "repair": false,
         "outputs": 1,
         "x": 710,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
                 "47de6287cc26419f"
@@ -3220,6 +3277,7 @@
         "id": "e0d2b8e49c2e469b",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Filter MQTT",
         "func": "return {topic:msg.topic.split('/')[4], payload:msg.payload};",
         "outputs": 1,
@@ -3228,7 +3286,7 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
                 "f9be9054ce456982"
@@ -3239,6 +3297,7 @@
         "id": "5a928b853087ebdd",
         "type": "mqtt in",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "",
         "topic": "mirrotron/machine-permit/01/setting/#",
         "qos": "0",
@@ -3249,7 +3308,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 210,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
                 "f812bb6a.1aec68"
@@ -3260,12 +3319,13 @@
         "id": "f812bb6a.1aec68",
         "type": "json",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "",
         "property": "payload",
         "action": "obj",
         "pretty": false,
         "x": 430,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
                 "e0d2b8e49c2e469b"
@@ -3276,6 +3336,7 @@
         "id": "47de6287cc26419f",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Save alarm config",
         "func": "let cubeAlarm = flow.get(\"machine-permit\")[msg.payload.cube].alarm;\ncubeAlarm.limits.lolo = msg.payload.limits.lolo;\ncubeAlarm.limits.low  = msg.payload.limits.low;\ncubeAlarm.limits.high = msg.payload.limits.high;\ncubeAlarm.limits.hihi = msg.payload.limits.hihi;\ncubeAlarm.notify.name = msg.payload.notify.name;\ncubeAlarm.notify.number = msg.payload.notify.number;\nreturn null;",
         "outputs": 0,
@@ -3284,39 +3345,23 @@
         "finalize": "",
         "libs": [],
         "x": 870,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "c0ad66bb5e82aa12",
-        "type": "debug",
-        "z": "508c21e47a4bdb43",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 260,
+        "y": 320,
         "wires": []
     },
     {
         "id": "9efff9fdf33c57ca",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "Send out archive broadcast",
-        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet trayArchiveMsg = [];\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let archiveMsg = \n    {\n        topic: global.get('box') + '/' + traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName + '/setting/archive',\n        payload: true\n    };\n    trayArchiveMsg.push(archiveMsg);\n}\n\nreturn {topic:'alarmBurst',payload:trayArchiveMsg};",
+        "func": "let traysToCheck = flow.get('traysToCheck');\nif (traysToCheck == null) return null;\nlet trayArchiveMsg = [];\nfor (let ii = 0; ii < traysToCheck.length; ++ii)\n{\n    let archiveMsg = \n    {\n        topic: global.get('box') + '/' + traysToCheck[ii].trayType + '/' + traysToCheck[ii].trayName + '/setting/postMortem',\n        payload: msg.payload\n    };\n    trayArchiveMsg.push(archiveMsg);\n}\n\nreturn {topic:'alarmBurst',payload:trayArchiveMsg};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 260,
+        "x": 560,
+        "y": 180,
         "wires": [
             [
                 "fc2ed8300a0ad6d2"
@@ -3327,6 +3372,7 @@
         "id": "fc2ed8300a0ad6d2",
         "type": "split",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "",
         "splt": "\\n",
         "spltType": "str",
@@ -3334,8 +3380,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 810,
-        "y": 260,
+        "x": 750,
+        "y": 180,
         "wires": [
             [
                 "4139491c21cbe716"
@@ -3346,6 +3392,7 @@
         "id": "4139491c21cbe716",
         "type": "function",
         "z": "508c21e47a4bdb43",
+        "g": "a91865a4478d52fd",
         "name": "shift",
         "func": "return msg.payload;",
         "outputs": 1,
@@ -3353,11 +3400,900 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 260,
+        "x": 870,
+        "y": 180,
         "wires": [
             [
-                "c0ad66bb5e82aa12"
+                "16bba99d6cf7939b"
+            ]
+        ]
+    },
+    {
+        "id": "4f2951515ee32161",
+        "type": "http in",
+        "z": "508c21e47a4bdb43",
+        "name": "/postMortem",
+        "url": "/postMortem",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 580,
+        "wires": [
+            [
+                "9b97b32916a322af"
+            ]
+        ]
+    },
+    {
+        "id": "24bb43b5ce34dc1c",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "Set Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Post-Mortem",
+        "output": "str",
+        "x": 360,
+        "y": 620,
+        "wires": [
+            [
+                "596fffb76fe06f49"
+            ]
+        ]
+    },
+    {
+        "id": "378e9224c78afee0",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "toeTag.png",
+        "output": "str",
+        "x": 370,
+        "y": 580,
+        "wires": [
+            [
+                "24bb43b5ce34dc1c"
+            ]
+        ]
+    },
+    {
+        "id": "428a70e58e7f06fd",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['appView','coreView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 160,
+        "y": 660,
+        "wires": [
+            [
+                "83e095e251a86479"
+            ]
+        ]
+    },
+    {
+        "id": "83e095e251a86479",
+        "type": "subflow:2d027d69.1fdeb2",
+        "z": "508c21e47a4bdb43",
+        "x": 160,
+        "y": 700,
+        "wires": [
+            [
+                "378e9224c78afee0"
+            ]
+        ]
+    },
+    {
+        "id": "2f8e7da070ec9b1c",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- body HTML -->\n    <div width=\"100%\">\n{{{payload.html.entries}}}\n{{{payload.html.user}}}\n    </div>",
+        "output": "str",
+        "x": 790,
+        "y": 660,
+        "wires": [
+            [
+                "4d15bdd1443e95a2"
+            ]
+        ]
+    },
+    {
+        "id": "e4799320057411c9",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "{{{payload.script.global}}}\n{{{payload.script.user}}}\n",
+        "output": "str",
+        "x": 560,
+        "y": 660,
+        "wires": [
+            [
+                "0e503a5b3f6de148"
+            ]
+        ]
+    },
+    {
+        "id": "23f0f9204c0b2969",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "html.user",
+        "field": "payload.html.user",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- user HTML -->\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n                <div class='card' id='userCardId'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
+        "output": "str",
+        "x": 800,
+        "y": 620,
+        "wires": [
+            [
+                "2f8e7da070ec9b1c"
+            ]
+        ]
+    },
+    {
+        "id": "596fffb76fe06f49",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "script.global",
+        "field": "payload.script.global",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(true);\n        let programStarted = false;\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n            $('#alarmCardHolder').hide();\n//            initLaunchMenu();\n            \n        }\n        function onWebSocketOpen()\n        {\n            if (!programStarted)\n            {\n                let actionMsg = \n                {\n                    topic   : 'lastWeekAborts',\n                    payload : true\n                };\n                sendActionMsg('lastWeekAborts','readDatabase',actionMsg);\n            }\n            programStarted = true;\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'lastWeekAborts':\n                    if (msg.userID == userID)\n                    {\n                        displayAbortTable(msg.payload);\n                    }\n                    break;\n                case 'getAbortedTrays':\n                    if (msg.userID == userID)\n                    {\n                        displayAlarms(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function displayAbortTable(records)\n        {\n            let abortTableContainer = document.getElementById('abortTableHolder');\n\n            while (abortTableContainer.firstChild) \n            {\n                while(abortTableContainer.lastChild.firstChild)\n                {\n                    abortTableContainer.lastChild.removeChild(abortTableContainer.lastChild.lastChild);\n                }\n                abortTableContainer.removeChild(abortTableContainer.lastChild);\n            }\n            let fontSize = '200%';\n            let fontSizeHeader = '200%';\n\n            let abortTable = document.createElement('table');\n            abortTable.setAttribute('width', '100%');\n            let headerRow  = document.createElement('tr');\n            let headerDateCol  = document.createElement('td');\n            headerDateCol.setAttribute('width', '80%');\n            headerDateCol.setAttribute('align', 'left');\n            let  headerDateColSpan  = document.createElement('span');\n            headerDateColSpan.style.color = 'green';\n            headerDateColSpan.style.fontWeight = 'bold';\n            headerDateColSpan.style.fontSize = fontSizeHeader;\n            headerDateColSpan.innerHTML = 'Date';\n            headerDateCol.appendChild(headerDateColSpan);\n            headerRow.appendChild(headerDateCol);\n\n            let headerActionCol  = document.createElement('td');\n            headerActionCol.setAttribute('width', '20%');\n            headerActionCol.setAttribute('align', 'center');\n            let  headerActionColSpan  = document.createElement('span');\n            headerActionColSpan.style.color = 'green';\n            headerActionColSpan.style.fontWeight = 'bold';\n            headerActionColSpan.style.fontSize = fontSizeHeader;\n            headerActionColSpan.innerHTML = 'Action';\n            headerActionCol.appendChild(headerActionColSpan);\n            headerRow.appendChild(headerActionCol);\n            \n            abortTable.appendChild(headerRow);\n            \n            for (let ii = 0; ii < records.length; ++ii)\n            {\n                let irec = ii;\n                let recRow  = document.createElement('tr');\n                let recDateCol  = document.createElement('td');\n                recDateCol.setAttribute('align', 'left');\n                let  recDateColSpan  = document.createElement('span');\n                recDateColSpan.style.fontSize = fontSize;\n                let time =  new Date(records[irec]).toLocaleString('en-SE',{year: '2-digit', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', '');\n                recDateColSpan.innerHTML = time;\n                recDateCol.appendChild(recDateColSpan);\n                recRow.appendChild(recDateCol);\n\n                let recActionCol  = document.createElement('td');\n                recActionCol.setAttribute('align', 'center');\n                let recActionColButton = document.createElement('button');\n                recActionColButton.setAttribute('class', 'btn card-button btn-block');\n                recActionColButton.style.fontSize = fontSize;\n                recActionColButton.innerHTML = 'Display';\n                recActionColButton.onclick = event => {displayAbortRecord(records[irec])};\n                recActionCol.appendChild(recActionColButton);\n\n                recRow.appendChild(recActionCol);\n                \n                abortTable.appendChild(recRow);\n\n            }\n\n            abortTableContainer.appendChild(abortTable);\n        }\n        function displayAbortRecord(record)\n        {\n            let actionMsg = \n            {\n                topic   : 'getAbortedTrays',\n                payload : record\n            };\n            sendActionMsg('getAbortedTrays','readDatabase',actionMsg);\n        }\n        function displayAlarms(alarm)\n        {\n            $('#alarmCardHolder').show();\n            let time =  new Date(alarm.postMortem).toLocaleString('en-SE',{year: '2-digit', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', '');\n            $('#alarmCardTitle').text('Alarm List - ' + time);\n\n            let alarmTableContainer = document.getElementById('alarmTableHolder');\n\n            while (alarmTableContainer.firstChild) \n            {\n                while(alarmTableContainer.lastChild.firstChild)\n                {\n                    alarmTableContainer.lastChild.removeChild(alarmTableContainer.lastChild.lastChild);\n                }\n                alarmTableContainer.removeChild(alarmTableContainer.lastChild);\n            }\n            let fontSize = '200%';\n            let fontSizeHeader = '200%';\n\n            let alarmTable = document.createElement('table');\n            alarmTable.setAttribute('width', '100%');\n            let headerRow  = document.createElement('tr');\n            let headerCubeCol  = document.createElement('td');\n            headerCubeCol.setAttribute('width', '40%');\n            headerCubeCol.setAttribute('align', 'left');\n            let  headerCubeColSpan  = document.createElement('span');\n            headerCubeColSpan.style.color = 'green';\n            headerCubeColSpan.style.fontWeight = 'bold';\n            headerCubeColSpan.style.fontSize = fontSizeHeader;\n            headerCubeColSpan.innerHTML = 'Cube';\n            headerCubeCol.appendChild(headerCubeColSpan);\n            headerRow.appendChild(headerCubeCol);\n\n            let headerValueCol  = document.createElement('td');\n            headerValueCol.setAttribute('width', '20%');\n            headerValueCol.setAttribute('align', 'center');\n            let  headerValueColSpan  = document.createElement('span');\n            headerValueColSpan.style.color = 'green';\n            headerValueColSpan.style.fontWeight = 'bold';\n            headerValueColSpan.style.fontSize = fontSizeHeader;\n            headerValueColSpan.innerHTML = 'Value';\n            headerValueCol.appendChild(headerValueColSpan);\n            headerRow.appendChild(headerValueCol);\n            \n            let headerUnitCol  = document.createElement('td');\n            headerUnitCol.setAttribute('width', '20%');\n            headerUnitCol.setAttribute('align', 'center');\n            let  headerUnitColSpan  = document.createElement('span');\n            headerUnitColSpan.style.color = 'green';\n            headerUnitColSpan.style.fontWeight = 'bold';\n            headerUnitColSpan.style.fontSize = fontSizeHeader;\n            headerUnitColSpan.innerHTML = 'Unit';\n            headerUnitCol.appendChild(headerUnitColSpan);\n            headerRow.appendChild(headerUnitCol);\n\n            \n            let headerAlarmCol  = document.createElement('td');\n            headerAlarmCol.setAttribute('width', '10%');\n            headerAlarmCol.setAttribute('align', 'right');\n            let  headerAlarmColSpan  = document.createElement('span');\n            headerAlarmColSpan.style.color = 'green';\n            headerAlarmColSpan.style.fontWeight = 'bold';\n            headerAlarmColSpan.style.fontSize = fontSizeHeader;\n            headerAlarmColSpan.innerHTML = 'Alarm';\n            headerAlarmCol.appendChild(headerAlarmColSpan);\n            headerRow.appendChild(headerAlarmCol);\n\n            alarmTable.appendChild(headerRow);\n            \n            for (let ii = 0; ii < alarm.alarmedCubeArray.length; ++ii)\n            {\n                let irec = ii;\n                let recRow  = document.createElement('tr');\n\n                let recCubeCol  = document.createElement('td');\n                recCubeCol.setAttribute('align', 'left');\n                let  recCubeColSpan  = document.createElement('span');\n                recCubeColSpan.style.fontSize = fontSize;\n                let cubeName =  alarm.alarmedCubeArray[irec].type +'.' + alarm.alarmedCubeArray[irec].name +'.' + alarm.alarmedCubeArray[irec].cube;\n                recCubeColSpan.innerHTML = cubeName;\n                recCubeCol.appendChild(recCubeColSpan);\n                recRow.appendChild(recCubeCol);\n\n                let recValCol  = document.createElement('td');\n                recValCol.setAttribute('align', 'center');\n                let  recValColSpan  = document.createElement('span');\n                recValColSpan.style.fontSize = fontSize;\n                recValColSpan.innerHTML = alarm.alarmedCubeArray[irec].value.toString();\n                recValCol.appendChild(recValColSpan);\n                recRow.appendChild(recValCol);\n\n                let recUnitCol  = document.createElement('td');\n                recUnitCol.setAttribute('align', 'center');\n                let  recUnitColSpan  = document.createElement('span');\n                recUnitColSpan.style.fontSize = fontSize;\n                recUnitColSpan.innerHTML = alarm.alarmedCubeArray[irec].unit;\n                recUnitCol.appendChild(recUnitColSpan);\n                recRow.appendChild(recUnitCol);\n\n                let recAlarmCol  = document.createElement('td');\n                recAlarmCol.setAttribute('align', 'right');\n                let  recAlarmColImg  = document.createElement('img');\n                recAlarmColImg.style.width = \"40px\";\n                recAlarmColImg.style.height = \"40px\";\n                switch(alarm.alarmedCubeArray[irec].alarm) \n                {\n                    case 0:\n                        recAlarmColImg.src=\"/img/greenLight.png\";\n                        break;\n                    case 1:\n                        recAlarmColImg.src=\"/img/blueLight.png\";\n                        break;\n                    case 2:\n                        recAlarmColImg.src=\"/img/yellowLight.png\";\n                        break;\n                    case 3:\n                        recAlarmColImg.src=\"/img/purpleLight.png\";\n                        break;\n                    case 4:\n                        recAlarmColImg.src=\"/img/redLight.png\";\n                        break;\n                    default:\n                        recAlarmColImg.src=\"/img/greyLight.png\";\n                        break;\n                }\n                recAlarmCol.appendChild(recAlarmColImg);\n                recRow.appendChild(recAlarmCol);\n\n                alarmTable.appendChild(recRow);\n\n            }\n\n            alarmTableContainer.appendChild(alarmTable);\n        }\n",
+        "output": "str",
+        "x": 570,
+        "y": 580,
+        "wires": [
+            [
+                "66814dabdc4734ff"
+            ]
+        ]
+    },
+    {
+        "id": "66814dabdc4734ff",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "script.user",
+        "field": "payload.script.user",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = box + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = box + \"Role=\" + msg.role;\n            document.cookie = box + \"ExpDate=\" + msg.expDate;\n            document.cookie = box + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", box + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "output": "str",
+        "x": 570,
+        "y": 620,
+        "wires": [
+            [
+                "e4799320057411c9"
+            ]
+        ]
+    },
+    {
+        "id": "4d15bdd1443e95a2",
+        "type": "subflow:c57c2f9e65e6cb70",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 970,
+        "y": 660,
+        "wires": [
+            [
+                "0a31e37958a47ab5"
+            ]
+        ]
+    },
+    {
+        "id": "0a31e37958a47ab5",
+        "type": "subflow:ca529822.9112f8",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 1110,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "9b97b32916a322af",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 160,
+        "y": 620,
+        "wires": [
+            [
+                "428a70e58e7f06fd"
+            ]
+        ]
+    },
+    {
+        "id": "0e503a5b3f6de148",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "html.entries",
+        "field": "payload.html.entries",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Dashboard HTML -->\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Abort List</span>\n                            </td>\n                            <td width='15%' >\n\n                            </td>\n                        </tr>\n                   </table>\n                    <div class='card-body' align=\"center\">\n                        <div class='row'  style='padding-top: 0px;' id='abortTableHolder'></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;' id='alarmCardHolder'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title' id='alarmCardTitle'>Alarm List</span>\n                            </td>\n                            <td width='15%' >\n\n                            </td>\n                        </tr>\n                   </table>\n                    <div class='card-body' align=\"center\">\n                        <div class='row'  style='padding-top: 0px;' id='alarmTableHolder'></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
+        "output": "str",
+        "x": 810,
+        "y": 580,
+        "wires": [
+            [
+                "23f0f9204c0b2969"
+            ]
+        ]
+    },
+    {
+        "id": "90a747f4ef83dc1d",
+        "type": "websocket out",
+        "z": "508c21e47a4bdb43",
+        "name": "/postMortem/websocket",
+        "server": "81f0c404d8f04cda",
+        "client": "",
+        "x": 1430,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "64f9c345e7da77a7",
+        "type": "websocket in",
+        "z": "508c21e47a4bdb43",
+        "name": "/postMortem/websocket",
+        "server": "81f0c404d8f04cda",
+        "client": "",
+        "x": 200,
+        "y": 960,
+        "wires": [
+            [
+                "516711d9f7df2542"
+            ]
+        ]
+    },
+    {
+        "id": "516711d9f7df2542",
+        "type": "subflow:fee416c.fb205e8",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 430,
+        "y": 960,
+        "wires": [
+            [
+                "a51ea3c29e6f1ac8"
+            ],
+            [
+                "90a747f4ef83dc1d"
+            ]
+        ]
+    },
+    {
+        "id": "a51ea3c29e6f1ac8",
+        "type": "switch",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "renew",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "lastWeekAborts",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "getAbortedTrays",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 510,
+        "y": 840,
+        "wires": [
+            [
+                "1ec59b77510a9b9a"
+            ],
+            [
+                "0a6fc13d59a2f91c"
+            ],
+            [
+                "437e4f22d5577a86"
+            ]
+        ]
+    },
+    {
+        "id": "1ec59b77510a9b9a",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Renew Token",
+        "func": "msg.token.expDate = new Date().getTime() + msg.token.timeoutMin * 60000;\ndelete msg.token['iat']\nmsg.payload = JSON.parse(JSON.stringify(msg.token));\ndelete msg['token'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 800,
+        "wires": [
+            [
+                "b6c91e63a98c14fc"
+            ]
+        ]
+    },
+    {
+        "id": "b6c91e63a98c14fc",
+        "type": "JsonWebToken",
+        "z": "508c21e47a4bdb43",
+        "name": "encrypt token",
+        "tokenconfig": "6acefdd9.69f124",
+        "x": 880,
+        "y": 800,
+        "wires": [
+            [
+                "f500a66900d8ed78"
+            ]
+        ]
+    },
+    {
+        "id": "f500a66900d8ed78",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Renew Cookies",
+        "func": "var newMsg = \n{\n    topic : 'renew',\n    payload: \n    {\n        topic       : 'renew',\n        userID      : msg.userID,\n        role        : msg.token,\n        expDate     : msg.payload.expDate.toString(),\n        username    : msg.payload.username\n    }\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1180,
+        "y": 800,
+        "wires": [
+            [
+                "90a747f4ef83dc1d"
+            ]
+        ]
+    },
+    {
+        "id": "0a6fc13d59a2f91c",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Last Week aborts",
+        "func": "let now = new Date().getTime();\nlet oneWeek = now - (7 * 24 * 3600 * 1000);\nvar projectionFilter =  \n{\n    projection:\n    {\n        _id                         :   0, \n    } \n};\nlet queryFilter = \n{\n    $and :\n    [\n        {\n            type: 'machine-permit'\n        },\n        {\n            name: '01'\n        },\n        {\n            timeStamp :\n            {\n                $gte: oneWeek,\n                $lte: now\n            }\n        }\n    ] \n    \n}\nlet newMsg = \n{\n    topic           : msg.topic,\n    userID          : msg.userID,\n    payload         : [queryFilter,projectionFilter]\n};\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 840,
+        "wires": [
+            [
+                "0e4d5aa4e1407244"
+            ]
+        ]
+    },
+    {
+        "id": "0e4d5aa4e1407244",
+        "type": "mongodb3 in",
+        "z": "508c21e47a4bdb43",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "archiver",
+        "operation": "find.toArray",
+        "x": 930,
+        "y": 840,
+        "wires": [
+            [
+                "036cfd01371e7617"
+            ]
+        ]
+    },
+    {
+        "id": "036cfd01371e7617",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Sort records",
+        "func": "function objectLength( object ) {\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\n\nfunction sortByKey(arr, key) \n{\n    return arr.sort( function(a, b) \n        {\n            var x = a[key]; \n            var y = b[key];\n            return ((x > y) ? -1 : ((x < y) ? 1 : 0));\n        } );\n}\n\nvar numRecords = objectLength(msg.payload);\nif (numRecords < 1)\n{\n    return {\n        topic : msg.route,\n        payload:{\n            topic           : msg.topic,\n            payload         : [],\n            userID          : msg.userID,\n        }\n    };\n}\nlet records = [];\nfor (var ii = 0; ii < numRecords; ++ii) records[ii] = msg.payload[ii]; \nsortByKey(records, 'postMortem');\nlet postMortem = [];\nfor (var ii = 0; ii < numRecords; ++ii) postMortem[ii] = records[ii].postMortem; \nreturn {\n    topic : msg.topic,\n    payload:{\n        topic           : msg.topic,\n        payload         : postMortem,\n        userID          : msg.userID,\n    }\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 840,
+        "wires": [
+            [
+                "90a747f4ef83dc1d"
+            ]
+        ]
+    },
+    {
+        "id": "437e4f22d5577a86",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "getAbortedTrays",
+        "func": "queryFilter = {postMortem: msg.payload.payload}\nlet newMsg = \n{\n    topic           : msg.topic,\n    userID          : msg.userID,\n    payload         : [queryFilter],\n};\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 880,
+        "wires": [
+            [
+                "d19bca28711ab8a8"
+            ]
+        ]
+    },
+    {
+        "id": "d19bca28711ab8a8",
+        "type": "mongodb3 in",
+        "z": "508c21e47a4bdb43",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "postMortem",
+        "operation": "find.toArray",
+        "x": 940,
+        "y": 880,
+        "wires": [
+            [
+                "419e828fcc3f5823"
+            ]
+        ]
+    },
+    {
+        "id": "419e828fcc3f5823",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Filter Records",
+        "func": "var numRecords = objectLength(msg.payload);\nlet alarmedCubeArray = [];\nlet postMortem  = 0;\nfor (let ii = 0; ii < numRecords; ++ii)\n{\n    let keys = Object.keys(msg.payload[ii]);\n    for (let ikey = 0; ikey < keys.length; ++ikey)\n    {\n        if (msg.payload[ii][keys[ikey]].hasOwnProperty(\"type\"))\n        {\n            if (msg.payload[ii][keys[ikey]].type == \"scalar\")\n            {\n                if ((msg.payload[ii][keys[ikey]].action == \"reading\") || (msg.payload[ii][keys[ikey]].action == \"setting\"))\n                {\n                    if (msg.payload[ii][keys[ikey]].alarm.value > 0)\n                    {\n                        let alarmNotice = \n                        {\n                            type    :   msg.payload[ii].type, \n                            name    :   msg.payload[ii].name,\n                            cube    :   keys[ikey],\n                            value   :   msg.payload[ii][keys[ikey]].value,\n                            unit    :   msg.payload[ii][keys[ikey]].unit,\n                            alarm   :   msg.payload[ii][keys[ikey]].alarm.value\n                        }\n                        alarmedCubeArray.push(alarmNotice);\n                    }\n                }\n            }\n        }\n    }\n}\nif (numRecords > 0) postMortem = msg.payload[0].postMortem;\nreturn {\n    topic : msg.topic,\n    payload:{\n        topic           : msg.topic,\n        payload         : {postMortem : postMortem, alarmedCubeArray: alarmedCubeArray},\n        userID          : msg.userID,\n    }\n};\n\nfunction objectLength( object ) \n{\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 880,
+        "wires": [
+            [
+                "90a747f4ef83dc1d"
+            ]
+        ]
+    },
+    {
+        "id": "d9995d0a25bd71dd",
+        "type": "websocket out",
+        "z": "508c21e47a4bdb43",
+        "name": "/alarmScanner/websocket",
+        "server": "2b65833e.87911c",
+        "client": "",
+        "x": 830,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "f7c84df380a5dcc4",
+        "type": "mongodb3 in",
+        "z": "508c21e47a4bdb43",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "trays",
+        "operation": "find.toArray",
+        "x": 390,
+        "y": 1340,
+        "wires": [
+            [
+                "90d508cdeca33de5"
+            ]
+        ]
+    },
+    {
+        "id": "22fc84cbb37b7567",
+        "type": "inject",
+        "z": "508c21e47a4bdb43",
+        "name": "Every 10 sec",
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "'name'",
+        "payloadType": "str",
+        "x": 160,
+        "y": 1340,
+        "wires": [
+            [
+                "f7c84df380a5dcc4"
+            ]
+        ]
+    },
+    {
+        "id": "90d508cdeca33de5",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Scan for alarms",
+        "func": "function objectLength( object ) {\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\nvar oldAlarmList = context.get('oldAlarmList')\nif (oldAlarmList == undefined) oldAlarmList = [];\nvar numTrays = objectLength(msg.payload);\nvar props = ['readings', 'settings'];\nvar alarmList = [];\nvar alarmCount = 0;\nfor (var itray = 0; itray < numTrays; ++itray)\n{\n    var tray = msg.payload[itray];\n \n    var keys = Object.keys(tray);\n    for (var ii = 0; ii < keys.length; ++ii)\n    {\n        if (tray[keys[ii]].hasOwnProperty('type'))\n        {\n            if (tray[keys[ii]].type == 'scalar')\n            {\n                if (tray[keys[ii]].alarm.value > 0)\n                {\n                    alarmList[alarmCount] = \n                    {\n                        type: tray.type,\n                        name  : tray.name,\n                        prop  : tray[keys[ii]].action,\n                        attr  : keys[ii],\n                        value : tray[keys[ii]].value,\n                        unit  : tray[keys[ii]].unit,\n                        alarm : tray[keys[ii]].alarm.value,\n                        id    : tray.type + '-' +  tray.name + '-' +  tray[keys[ii]].action + '-' + keys[ii],\n                        notify: tray[keys[ii]].alarm.notify\n                    };\n                    ++alarmCount;\n                }\n            }\n        }\n    }\n}\n\nvar newAlarmList = [];\nvar newAlarmCount = 0;\nfor (var ialarm = 0; ialarm < alarmCount; ++ialarm)\n{\n    var oldAlarm = oldAlarmList.find(oldAlarm => oldAlarm.id === alarmList[ialarm].id);\n    if (oldAlarm == undefined) \n    {\n        newAlarmList[newAlarmCount] = alarmList[ialarm];\n        ++newAlarmCount;\n    }\n}\ncontext.set('oldAlarmList', alarmList);\nreturn [{topic:'alarmList', payload:{topic:'alarmList',payload:alarmList}},{topic:'newAlarmList', payload:newAlarmList}];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1340,
+        "wires": [
+            [
+                "d9995d0a25bd71dd"
+            ],
+            [
+                "6869304b4c15ddc0"
+            ]
+        ]
+    },
+    {
+        "id": "239540fc8e2c8151",
+        "type": "sendsms",
+        "z": "508c21e47a4bdb43",
+        "creds": "23623a1c.e4ce46",
+        "to": "{{msg.to}}",
+        "fr": "{{msg.from}}",
+        "text": "{{msg.payload}}",
+        "unicode": false,
+        "x": 1290,
+        "y": 1400,
+        "wires": [
+            [
+                "ad32cb74730302e3"
+            ]
+        ]
+    },
+    {
+        "id": "ad32cb74730302e3",
+        "type": "debug",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1430,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "6869304b4c15ddc0",
+        "type": "split",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 770,
+        "y": 1400,
+        "wires": [
+            [
+                "cfebe2798b89c9c8"
+            ]
+        ]
+    },
+    {
+        "id": "cfebe2798b89c9c8",
+        "type": "delay",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 920,
+        "y": 1400,
+        "wires": [
+            [
+                "1dbfc91bdc4409cc"
+            ]
+        ]
+    },
+    {
+        "id": "1dbfc91bdc4409cc",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Prepare SMS",
+        "func": "if (msg.payload.notify.name.length < 1) return null;\nif (msg.payload.notify.number.length < 1) return null;\nvar type = '';\nif (msg.payload.alarm == 1) type = 'LOW';\nif (msg.payload.alarm == 2) type = 'HIGH';\nif (msg.payload.alarm == 3) type = 'LOLO';\nif (msg.payload.alarm == 4) type = 'HIHI';\nvar message = 'Alarm-' + type + ': ' + msg.payload.id;\nmessage = message + ' is at ' + msg.payload.value.toString() + ' ' + msg.payload.unit\nreturn {topic:'sms',to:msg.payload.notify.number, payload:message, from:'46000000000'};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1100,
+        "y": 1400,
+        "wires": [
+            [
+                "109a5adbe56a0d79",
+                "239540fc8e2c8151"
+            ]
+        ]
+    },
+    {
+        "id": "109a5adbe56a0d79",
+        "type": "debug",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1290,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "11e636d54c113d4a",
+        "type": "http in",
+        "z": "508c21e47a4bdb43",
+        "name": "/alarmScanner",
+        "url": "/alarmScanner",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 1580,
+        "wires": [
+            [
+                "6ff47bef77487677"
+            ]
+        ]
+    },
+    {
+        "id": "9f3f386d39dd356c",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "Set Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Alarm Scanner",
+        "output": "str",
+        "x": 380,
+        "y": 1620,
+        "wires": [
+            [
+                "c3ec763af8141c94"
+            ]
+        ]
+    },
+    {
+        "id": "20c49aef498656ef",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "alarm.png",
+        "output": "str",
+        "x": 390,
+        "y": 1580,
+        "wires": [
+            [
+                "9f3f386d39dd356c"
+            ]
+        ]
+    },
+    {
+        "id": "42863ccb4a7b450c",
+        "type": "function",
+        "z": "508c21e47a4bdb43",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['appView','coreView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 1660,
+        "wires": [
+            [
+                "a84d31ab56b38e31"
+            ]
+        ]
+    },
+    {
+        "id": "a84d31ab56b38e31",
+        "type": "subflow:2d027d69.1fdeb2",
+        "z": "508c21e47a4bdb43",
+        "x": 180,
+        "y": 1700,
+        "wires": [
+            [
+                "20c49aef498656ef"
+            ]
+        ]
+    },
+    {
+        "id": "d15a9864e6c8c2fc",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- body HTML -->\n    <div width=\"100%\">\n{{{payload.html.entries}}}\n{{{payload.html.user}}}\n    </div>",
+        "output": "str",
+        "x": 810,
+        "y": 1660,
+        "wires": [
+            [
+                "6e64fa8dc21455b4"
+            ]
+        ]
+    },
+    {
+        "id": "336ea6eb87d34f28",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "{{{payload.script.global}}}\n{{{payload.script.user}}}\n",
+        "output": "str",
+        "x": 600,
+        "y": 1660,
+        "wires": [
+            [
+                "cedd40d0b506adb3"
+            ]
+        ]
+    },
+    {
+        "id": "7196e33d98be7433",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "html.user",
+        "field": "payload.html.user",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- user HTML -->\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n                <div class='card' id='userCardId'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
+        "output": "str",
+        "x": 820,
+        "y": 1620,
+        "wires": [
+            [
+                "d15a9864e6c8c2fc"
+            ]
+        ]
+    },
+    {
+        "id": "c3ec763af8141c94",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "script.global",
+        "field": "payload.script.global",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(true);\n        let programStarted = false;\n        let showAlarms = true;\n        let showWarnings = true;\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n//            initLaunchMenu();\n            \n        }\n        function onWebSocketOpen()\n        {\n            if (!programStarted)\n            {\n            }\n            programStarted = true;\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'alarmList':\n                    displayAlarms(msg.payload, 'alarmTableHolder', 'Alarm',3,4);\n                    displayAlarms(msg.payload, 'warningTableHolder', 'Warning',1,2);\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function displayAlarms(alarm, tableholder,alarmLabel, alarm1,alarm2)\n        {\n\n            let alarmTableContainer = document.getElementById(tableholder);\n\n            while (alarmTableContainer.firstChild) \n            {\n                while(alarmTableContainer.lastChild.firstChild)\n                {\n                    alarmTableContainer.lastChild.removeChild(alarmTableContainer.lastChild.lastChild);\n                }\n                alarmTableContainer.removeChild(alarmTableContainer.lastChild);\n            }\n            let fontSize = '200%';\n            let fontSizeHeader = '200%';\n\n            let alarmTable = document.createElement('table');\n            alarmTable.setAttribute('width', '100%');\n            let headerRow  = document.createElement('tr');\n            let headerCubeCol  = document.createElement('td');\n            headerCubeCol.setAttribute('width', '40%');\n            headerCubeCol.setAttribute('align', 'left');\n            let  headerCubeColSpan  = document.createElement('span');\n            headerCubeColSpan.style.color = 'green';\n            headerCubeColSpan.style.fontWeight = 'bold';\n            headerCubeColSpan.style.fontSize = fontSizeHeader;\n            headerCubeColSpan.innerHTML = 'Cube';\n            headerCubeCol.appendChild(headerCubeColSpan);\n            headerRow.appendChild(headerCubeCol);\n\n            let headerValueCol  = document.createElement('td');\n            headerValueCol.setAttribute('width', '20%');\n            headerValueCol.setAttribute('align', 'center');\n            let  headerValueColSpan  = document.createElement('span');\n            headerValueColSpan.style.color = 'green';\n            headerValueColSpan.style.fontWeight = 'bold';\n            headerValueColSpan.style.fontSize = fontSizeHeader;\n            headerValueColSpan.innerHTML = 'Value';\n            headerValueCol.appendChild(headerValueColSpan);\n            headerRow.appendChild(headerValueCol);\n            \n            let headerUnitCol  = document.createElement('td');\n            headerUnitCol.setAttribute('width', '20%');\n            headerUnitCol.setAttribute('align', 'center');\n            let  headerUnitColSpan  = document.createElement('span');\n            headerUnitColSpan.style.color = 'green';\n            headerUnitColSpan.style.fontWeight = 'bold';\n            headerUnitColSpan.style.fontSize = fontSizeHeader;\n            headerUnitColSpan.innerHTML = 'Unit';\n            headerUnitCol.appendChild(headerUnitColSpan);\n            headerRow.appendChild(headerUnitCol);\n\n            \n            let headerAlarmCol  = document.createElement('td');\n            headerAlarmCol.setAttribute('width', '10%');\n            headerAlarmCol.setAttribute('align', 'right');\n            let  headerAlarmColSpan  = document.createElement('span');\n            headerAlarmColSpan.style.color = 'green';\n            headerAlarmColSpan.style.fontWeight = 'bold';\n            headerAlarmColSpan.style.fontSize = fontSizeHeader;\n            headerAlarmColSpan.innerHTML = alarmLabel;\n            headerAlarmCol.appendChild(headerAlarmColSpan);\n            headerRow.appendChild(headerAlarmCol);\n\n            alarmTable.appendChild(headerRow);\n            \n            for (let irec = 0; irec < alarm.length; ++irec)\n            {\n                if ((alarm[irec].alarm == alarm1) || (alarm[irec].alarm == alarm2))\n                {\n                    let recRow  = document.createElement('tr');\n    \n                    let recCubeCol  = document.createElement('td');\n                    recCubeCol.setAttribute('align', 'left');\n                    let  recCubeColSpan  = document.createElement('span');\n                    recCubeColSpan.style.fontSize = fontSize;\n                    let cubeName =  alarm[irec].type +'.' + alarm[irec].name +'.' + alarm[irec].attr;\n                    recCubeColSpan.innerHTML = cubeName;\n                    recCubeCol.appendChild(recCubeColSpan);\n                    recRow.appendChild(recCubeCol);\n    \n                    let recValCol  = document.createElement('td');\n                    recValCol.setAttribute('align', 'center');\n                    let  recValColSpan  = document.createElement('span');\n                    recValColSpan.style.fontSize = fontSize;\n                    recValColSpan.innerHTML = alarm[irec].value.toString();\n                    recValCol.appendChild(recValColSpan);\n                    recRow.appendChild(recValCol);\n    \n                    let recUnitCol  = document.createElement('td');\n                    recUnitCol.setAttribute('align', 'center');\n                    let  recUnitColSpan  = document.createElement('span');\n                    recUnitColSpan.style.fontSize = fontSize;\n                    recUnitColSpan.innerHTML = alarm[irec].unit;\n                    recUnitCol.appendChild(recUnitColSpan);\n                    recRow.appendChild(recUnitCol);\n    \n                    let recAlarmCol  = document.createElement('td');\n                    recAlarmCol.setAttribute('align', 'right');\n                    let  recAlarmColImg  = document.createElement('img');\n                    recAlarmColImg.style.width = \"40px\";\n                    recAlarmColImg.style.height = \"40px\";\n                    switch(alarm[irec].alarm) \n                    {\n                        case 0:\n                            recAlarmColImg.src=\"/img/greenLight.png\";\n                            break;\n                        case 1:\n                            recAlarmColImg.src=\"/img/blueLight.png\";\n                            break;\n                        case 2:\n                            recAlarmColImg.src=\"/img/yellowLight.png\";\n                            break;\n                        case 3:\n                            recAlarmColImg.src=\"/img/purpleLight.png\";\n                            break;\n                        case 4:\n                            recAlarmColImg.src=\"/img/redLight.png\";\n                            break;\n                        default:\n                            recAlarmColImg.src=\"/img/greyLight.png\";\n                            break;\n                    }\n                    recAlarmCol.appendChild(recAlarmColImg);\n                    recRow.appendChild(recAlarmCol);\n    \n                    alarmTable.appendChild(recRow);\n                }\n\n            }\n\n            alarmTableContainer.appendChild(alarmTable);\n        }\n        function toggleAlarms()\n        {\n            if (showAlarms)\n            {\n                $('#alarmCardBody').hide();\n                showAlarms = false;\n                $('#toggleAlarmsId').text('+')\n            }\n            else\n            {\n                $('#alarmCardBody').show();\n                showAlarms = true;\n                $('#toggleAlarmsId').text('-')\n            }\n        }\n        function toggleWarnings()\n        {\n            if (showWarnings)\n            {\n                $('#warningCardBody').hide();\n                showWarnings = false;\n                $('#toggleWarningsId').text('+')\n            }\n            else\n            {\n                $('#warningCardBody').show();\n                showWarnings = true;\n                $('#toggleWarningsId').text('-')\n            }\n        }\n",
+        "output": "str",
+        "x": 610,
+        "y": 1580,
+        "wires": [
+            [
+                "62deccaf589e479c"
+            ]
+        ]
+    },
+    {
+        "id": "62deccaf589e479c",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "script.user",
+        "field": "payload.script.user",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = box + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = box + \"Role=\" + msg.role;\n            document.cookie = box + \"ExpDate=\" + msg.expDate;\n            document.cookie = box + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", box + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "output": "str",
+        "x": 610,
+        "y": 1620,
+        "wires": [
+            [
+                "336ea6eb87d34f28"
+            ]
+        ]
+    },
+    {
+        "id": "6e64fa8dc21455b4",
+        "type": "subflow:c57c2f9e65e6cb70",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 990,
+        "y": 1660,
+        "wires": [
+            [
+                "5a9f6e8b1d8f8bfe"
+            ]
+        ]
+    },
+    {
+        "id": "5a9f6e8b1d8f8bfe",
+        "type": "subflow:ca529822.9112f8",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 1150,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "6ff47bef77487677",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "508c21e47a4bdb43",
+        "name": "",
+        "x": 180,
+        "y": 1620,
+        "wires": [
+            [
+                "42863ccb4a7b450c"
+            ]
+        ]
+    },
+    {
+        "id": "cedd40d0b506adb3",
+        "type": "template",
+        "z": "508c21e47a4bdb43",
+        "name": "html.entries",
+        "field": "payload.html.entries",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Dashboard HTML -->\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Alarms</span>\n                            </td>\n                            <td width='15%' >\n                                <button class='btn btn-block card-title-button' id=\"toggleAlarmsId\" onclick=\"toggleAlarms()\" >-</button>\n                            </td>\n                        </tr>\n                   </table>\n                    <div class='card-body' align=\"center\"  id='alarmCardBody'>\n                        <div class='row'  style='padding-top: 0px;' id='alarmTableHolder'></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Warnings</span>\n                            </td>\n                            <td width='15%' >\n                                <button class='btn btn-block card-title-button' id=\"toggleWarningsId\" onclick=\"toggleWarnings()\" >-</button>\n                            </td>\n                        </tr>\n                   </table>\n                    <div class='card-body' align=\"center\"   id='warningCardBody'>\n                        <div class='row'  style='padding-top: 0px;' id='warningTableHolder'></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
+        "output": "str",
+        "x": 830,
+        "y": 1580,
+        "wires": [
+            [
+                "7196e33d98be7433"
             ]
         ]
     },
@@ -5263,7 +6199,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.launcher}}}\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class=\"btn btn-block card-button big-text\" href=\"/logbook\" >Logbook</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class=\"btn btn-block card-button big-text\" href=\"/cubeDisplay?appConfig=rfq-manuals&trays=none.none\" >Manuals</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' >Core Apps</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.user}}}\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <table width=\"100%\">\n                    <tr>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/alarmScanner\">\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/alarm.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Alarm Scanner\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                        <td width=\"10%\"></td>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=machinePermit&trays=machine-permit.01\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/protect.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Machine Permit\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/postMortem\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/toeTag.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Post Mortem\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                        <td width=\"10%\"></td>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/logbook\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/logbook.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Logbook\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=rk-pa&trays=rk-pa.01,rfpower-scope.01,gateGen125.01\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/amp.png\" height=\"50px\" width=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Power Amplifier\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                        <td width=\"10%\"></td>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=vacuum&trays=rfq-vacuum.01,nXDS-backing-pump.01,nXDS-backing-pump.02\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/vacuum.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            RFQ Vacuum\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=rfq-temp&trays=rfq-temp.inlet,rfq-temp.outlet\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/thermo.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            RFQ Water Temp\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                        <td width=\"10%\"></td>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=rfq-flow&trays=rfq-flow.inlet,rfq-flow.outlet\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/pump.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            RFQ Water Flow\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=llrf&trays=rf-src.01,phase-detector.01,gateGen125.01,llrf-scope.01\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/dsp.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            LLRF\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                        <td width=\"10%\"></td>\n                        <td width=\"45%\" style=\"padding-bottom:25px;\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=gateGen125&trays=gateGen125.01,easySetupTimer.01\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/timer.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Timing\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width=\"45%\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/cubeDisplay?appConfig=rfq-manuals&trays=none.none\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/manual.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Manuals\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                        <td width=\"10%\"></td>\n                        <td width=\"45%\">\n                            <a class=\"btn btn-block card-button medium-text\" href=\"/core\" >\n                                <table width=\"100%\">\n                                    <tr>\n                                        <td width=\"25%\" align='left'>\n                                            <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                        </td>\n                                        <td width=\"75%\" align='center'>\n                                            Core Apps\n                                        </td>\n                                    </tr>\n                                </table>\n                            </a>\n                        </td>\n                    </tr>\n                </table>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.user}}}\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 910,
         "y": 140,
@@ -5805,25 +6741,6 @@
         ]
     },
     {
-        "id": "e020461d.044ee8",
-        "type": "function",
-        "z": "e17f7487.2a78e8",
-        "name": "Check if Tray Exists",
-        "func": "function isEmpty(obj) \n{\n    for(var key in obj) \n    {\n        if(obj.hasOwnProperty(key))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload)) return null;\nmsg.tray.timeStamp = new Date().getTime();\nvar keys = Object.keys(msg.tray);\nfor (var ii = 0; ii < keys.length; ++ii) msg.payload[keys[ii]] = msg.tray[keys[ii]];\n\nvar updateTrayMsg = \n{\n    topic:'updateTray',\n    payload:\n    [\n        {\n            $and   :    \n            [\n                {\n                    type : msg.payload.type\n                },\n                {\n                    name : msg.payload.name\n                }\n            ]\n        }, \n        msg.payload\n    ]\n};\nreturn updateTrayMsg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 80,
-        "wires": [
-            [
-                "f20b241f2c715e8e"
-            ]
-        ]
-    },
-    {
         "id": "5d93334c.7b160c",
         "type": "inject",
         "z": "e17f7487.2a78e8",
@@ -5845,7 +6762,7 @@
         "payload": "BOX",
         "payloadType": "env",
         "x": 130,
-        "y": 320,
+        "y": 660,
         "wires": [
             [
                 "e06b15ee.c3bf78"
@@ -5864,7 +6781,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 320,
+        "y": 660,
         "wires": [
             []
         ]
@@ -5882,7 +6799,7 @@
         "payload": "MAXDBSIZE",
         "payloadType": "env",
         "x": 140,
-        "y": 380,
+        "y": 720,
         "wires": [
             [
                 "2208dd06.5d2ba2"
@@ -5898,65 +6815,9 @@
         "outputs": 1,
         "noerr": 0,
         "x": 360,
-        "y": 380,
+        "y": 720,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "c3761de5.51f6a",
-        "type": "mqtt in",
-        "z": "e17f7487.2a78e8",
-        "name": "Subscribe Readings",
-        "topic": "$(READINGTOPIC)",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "84d80994.260508",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 130,
-        "y": 80,
-        "wires": [
-            [
-                "1de67fe2.40e2e"
-            ]
-        ]
-    },
-    {
-        "id": "1de67fe2.40e2e",
-        "type": "json",
-        "z": "e17f7487.2a78e8",
-        "name": "",
-        "property": "payload",
-        "action": "obj",
-        "pretty": false,
-        "x": 290,
-        "y": 80,
-        "wires": [
-            [
-                "2f6b8176.8101fe",
-                "4ffc61b266cd720c"
-            ]
-        ]
-    },
-    {
-        "id": "2f6b8176.8101fe",
-        "type": "function",
-        "z": "e17f7487.2a78e8",
-        "name": "Split MQTT topic",
-        "func": "var mqttArray = msg.topic.split('/');\nreturn {\n    topic   :   msg.topic, \n    payload : \n    [\n        {\n            $and   :    \n            [\n                {\n                    type : mqttArray[1]\n                },\n                {\n                    name : mqttArray[2]\n                }\n            ]\n        }, \n        {\n            projection  :\n            {\n                _id :   0\n                \n            }\n        }\n    ],\n    'tray'    :   msg.payload\n};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 450,
-        "y": 80,
-        "wires": [
-            [
-                "8b525b1894b3837c"
-            ]
         ]
     },
     {
@@ -5984,7 +6845,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 170,
-        "y": 520,
+        "y": 860,
         "wires": [
             [
                 "e6a006f16634c572"
@@ -6003,7 +6864,7 @@
         "finalize": "",
         "libs": [],
         "x": 670,
-        "y": 520,
+        "y": 860,
         "wires": [
             [
                 "2a00870ef464cbe5"
@@ -6022,7 +6883,7 @@
         "finalize": "",
         "libs": [],
         "x": 1200,
-        "y": 520,
+        "y": 860,
         "wires": [
             [
                 "4855b6b5352f7431"
@@ -6051,7 +6912,7 @@
         "payload": "IPREFWEB",
         "payloadType": "env",
         "x": 130,
-        "y": 440,
+        "y": 780,
         "wires": [
             [
                 "daa5f679.c0a968"
@@ -6069,100 +6930,9 @@
         "initialize": "",
         "finalize": "",
         "x": 350,
-        "y": 440,
+        "y": 780,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "5a5fe4ea1ede37d5",
-        "type": "function",
-        "z": "e17f7487.2a78e8",
-        "name": "Check if Tray Exists",
-        "func": "function isEmpty(obj) \n{\n    for(var key in obj) \n    {\n        if(obj.hasOwnProperty(key))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload)) return null;\nmsg.tray.timeStamp = new Date().getTime();\nvar keys = Object.keys(msg.tray);\nfor (var ii = 0; ii < keys.length; ++ii) msg.payload[keys[ii]] = msg.tray[keys[ii]];\n\nvar archiveMsg = null;\nvar archiveTray = JSON.parse(JSON.stringify(msg.tray));\ndelete archiveTray.arcPeriod;\nkeys = Object.keys(archiveTray);\nfor (var ii = 0; ii < keys.length; ++ii)\n{\n    if (archiveTray[keys[ii]].hasOwnProperty('type'))\n    {\n        \n        archiveTray[keys[ii]] = JSON.parse(JSON.stringify(msg.tray[keys[ii]].value));\n    }\n}\narchiveMsg = {topic:'archiveData',payload: [archiveTray]};\nreturn archiveMsg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 220,
-        "wires": [
-            [
-                "cbc7b398eda6857f"
-            ]
-        ]
-    },
-    {
-        "id": "2303dd99201256ca",
-        "type": "mqtt in",
-        "z": "e17f7487.2a78e8",
-        "name": "Subscribe Archive",
-        "topic": "$(ARCHIVETOPIC)",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "84d80994.260508",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 130,
-        "y": 220,
-        "wires": [
-            [
-                "f466e0c7abc11a5b"
-            ]
-        ]
-    },
-    {
-        "id": "f466e0c7abc11a5b",
-        "type": "json",
-        "z": "e17f7487.2a78e8",
-        "name": "",
-        "property": "payload",
-        "action": "obj",
-        "pretty": false,
-        "x": 290,
-        "y": 220,
-        "wires": [
-            [
-                "d4cb2feeeff12f54"
-            ]
-        ]
-    },
-    {
-        "id": "d4cb2feeeff12f54",
-        "type": "function",
-        "z": "e17f7487.2a78e8",
-        "name": "Split MQTT topic",
-        "func": "var mqttArray = msg.topic.split('/');\nreturn {\n    topic   :   msg.topic, \n    payload : \n    [\n        {\n            $and   :    \n            [\n                {\n                    type : mqttArray[1]\n                },\n                {\n                    name : mqttArray[2]\n                }\n            ]\n        }, \n        {\n            projection  :\n            {\n                _id :   0\n                \n            }\n        }\n    ],\n    'tray'    :   msg.payload\n};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 450,
-        "y": 220,
-        "wires": [
-            [
-                "e19908dddac16508"
-            ]
-        ]
-    },
-    {
-        "id": "8b525b1894b3837c",
-        "type": "mongodb3 in",
-        "z": "e17f7487.2a78e8",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "trays",
-        "operation": "findOne",
-        "x": 670,
-        "y": 80,
-        "wires": [
-            [
-                "e020461d.044ee8"
-            ]
         ]
     },
     {
@@ -6174,40 +6944,8 @@
         "name": "",
         "collection": "trays",
         "operation": "update",
-        "x": 1100,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e19908dddac16508",
-        "type": "mongodb3 in",
-        "z": "e17f7487.2a78e8",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "trays",
-        "operation": "findOne",
-        "x": 670,
-        "y": 220,
-        "wires": [
-            [
-                "5a5fe4ea1ede37d5"
-            ]
-        ]
-    },
-    {
-        "id": "cbc7b398eda6857f",
-        "type": "mongodb3 in",
-        "z": "e17f7487.2a78e8",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "archiver",
-        "operation": "insertOne",
-        "x": 1120,
-        "y": 220,
+        "x": 1320,
+        "y": 120,
         "wires": [
             []
         ]
@@ -6222,7 +6960,7 @@
         "collection": "archiver",
         "operation": "stats",
         "x": 410,
-        "y": 520,
+        "y": 860,
         "wires": [
             [
                 "cdfc8294.43d83"
@@ -6239,7 +6977,7 @@
         "collection": "archiver",
         "operation": "find.toArray",
         "x": 950,
-        "y": 520,
+        "y": 860,
         "wires": [
             [
                 "f226d7aa.824b28"
@@ -6256,7 +6994,7 @@
         "collection": "archiver",
         "operation": "removeMany",
         "x": 1450,
-        "y": 520,
+        "y": 860,
         "wires": [
             []
         ]
@@ -6270,53 +7008,217 @@
         "links": [
             "7579dedaf706f7f3"
         ],
-        "x": 375,
-        "y": 120,
+        "x": 1065,
+        "y": 60,
         "wires": []
     },
     {
-        "id": "1656556d47cf298b",
-        "type": "inject",
+        "id": "d0942eab7e4a8590",
+        "type": "mqtt in",
         "z": "e17f7487.2a78e8",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 680,
+        "name": "Subscribe ",
+        "topic": "$(SUBSCRIBETOPIC)",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "84d80994.260508",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 80,
+        "y": 180,
         "wires": [
             [
-                "71fe7355082a5555",
-                "71fe7355082a5555"
+                "e30d52b0766a90c3"
             ]
         ]
     },
     {
-        "id": "71fe7355082a5555",
+        "id": "e30d52b0766a90c3",
+        "type": "json",
+        "z": "e17f7487.2a78e8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "079ec35186fa23a5"
+            ]
+        ]
+    },
+    {
+        "id": "079ec35186fa23a5",
         "type": "function",
         "z": "e17f7487.2a78e8",
-        "name": "Find Device Type",
-        "func": "var queryFilter = \n{\n    $and :\n    [\n        {\n            \"type\": \"machine-permit\"\n        },\n        {\n            \"name\": \"01\"\n        }\n    ] \n    \n}\nvar newMsg = \n{\n    topic           : 'getArchiveValues',\n    payload         :  [queryFilter,{projection:{timeStamp:1, _id:0}}]\n};\nreturn newMsg",
+        "name": "Split MQTT topic",
+        "func": "var mqttArray = msg.topic.split('/');\nreturn {\n    topic   :   msg.topic, \n    payload : \n    [\n        {\n            $and   :    \n            [\n                {\n                    type : mqttArray[1]\n                },\n                {\n                    name : mqttArray[2]\n                }\n            ]\n        }, \n        {\n            projection  :\n            {\n                _id :   0\n                \n            }\n        }\n    ],\n    'tray'    :   msg.payload,\n    'action'  :   mqttArray[3]\n};\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 680,
+        "x": 370,
+        "y": 180,
         "wires": [
             [
-                "432070787b7c89e3",
-                "432070787b7c89e3"
+                "34606eece52fa71b"
             ]
         ]
     },
     {
-        "id": "432070787b7c89e3",
+        "id": "34606eece52fa71b",
+        "type": "mongodb3 in",
+        "z": "e17f7487.2a78e8",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "trays",
+        "operation": "findOne",
+        "x": 590,
+        "y": 180,
+        "wires": [
+            [
+                "fcb77c04cd512365"
+            ]
+        ]
+    },
+    {
+        "id": "fcb77c04cd512365",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "Check if Tray Exists",
+        "func": "function isEmpty(obj) \n{\n    for(var key in obj) \n    {\n        if(obj.hasOwnProperty(key))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload)) return null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 180,
+        "wires": [
+            [
+                "c10c2247f9504692"
+            ]
+        ]
+    },
+    {
+        "id": "c10c2247f9504692",
+        "type": "switch",
+        "z": "e17f7487.2a78e8",
+        "name": "",
+        "property": "action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "reading",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "archive",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "postMortem",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 970,
+        "y": 180,
+        "wires": [
+            [
+                "a190426bb07ca2a4",
+                "4ffc61b266cd720c"
+            ],
+            [
+                "2641ddb623e2304e"
+            ],
+            [
+                "51d9c19228581a47"
+            ]
+        ]
+    },
+    {
+        "id": "a190426bb07ca2a4",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "update reading",
+        "func": "msg.tray.timeStamp = new Date().getTime();\nvar keys = Object.keys(msg.tray);\nfor (var ii = 0; ii < keys.length; ++ii) msg.payload[keys[ii]] = msg.tray[keys[ii]];\n\nvar updateTrayMsg = \n{\n    topic:'updateTray',\n    payload:\n    [\n        {\n            $and   :    \n            [\n                {\n                    type : msg.payload.type\n                },\n                {\n                    name : msg.payload.name\n                }\n            ]\n        }, \n        msg.payload\n    ]\n};\nreturn updateTrayMsg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 120,
+        "wires": [
+            [
+                "f20b241f2c715e8e"
+            ]
+        ]
+    },
+    {
+        "id": "2641ddb623e2304e",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "archive data",
+        "func": "msg.tray.timeStamp = new Date().getTime();\nvar keys = Object.keys(msg.tray);\nfor (var ii = 0; ii < keys.length; ++ii) msg.payload[keys[ii]] = msg.tray[keys[ii]];\n\nvar archiveMsg = null;\nvar archiveTray = JSON.parse(JSON.stringify(msg.tray));\ndelete archiveTray.arcPeriod;\nkeys = Object.keys(archiveTray);\nfor (var ii = 0; ii < keys.length; ++ii)\n{\n    if (archiveTray[keys[ii]].hasOwnProperty('type'))\n    {\n        \n        archiveTray[keys[ii]] = JSON.parse(JSON.stringify(msg.tray[keys[ii]].value));\n    }\n}\narchiveMsg = {topic:'archiveData',payload: [archiveTray]};\nreturn archiveMsg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 180,
+        "wires": [
+            [
+                "22b380bf271f32a6"
+            ]
+        ]
+    },
+    {
+        "id": "22b380bf271f32a6",
+        "type": "mongodb3 in",
+        "z": "e17f7487.2a78e8",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "archiver",
+        "operation": "insertOne",
+        "x": 1340,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6512c27e78eca32",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "Make Permit Device",
+        "func": "return {\n    topic   :   'removeFromArchiver', \n    payload :  [ { $and   : [{type : \"machine-permit\"}, {name :\"01\"}]} ]\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 480,
+        "wires": [
+            [
+                "85720fd023515cd8"
+            ]
+        ]
+    },
+    {
+        "id": "85720fd023515cd8",
         "type": "mongodb3 in",
         "z": "e17f7487.2a78e8",
         "service": "_ext_",
@@ -6324,17 +7226,16 @@
         "name": "",
         "collection": "archiver",
         "operation": "removeMany",
-        "x": 530,
-        "y": 680,
+        "x": 550,
+        "y": 480,
         "wires": [
             [
-                "bd23fc8e480e265e",
-                "bd23fc8e480e265e"
+                "cd90d612ed2a2218"
             ]
         ]
     },
     {
-        "id": "bd23fc8e480e265e",
+        "id": "cd90d612ed2a2218",
         "type": "debug",
         "z": "e17f7487.2a78e8",
         "name": "",
@@ -6342,10 +7243,76 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 770,
-        "y": 680,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 480,
         "wires": []
+    },
+    {
+        "id": "893874ffb26184f9",
+        "type": "inject",
+        "z": "e17f7487.2a78e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "d6512c27e78eca32"
+            ]
+        ]
+    },
+    {
+        "id": "51d9c19228581a47",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "add postMortem",
+        "func": "msg.tray.timeStamp = new Date().getTime();\nvar addPostMortemMsg = \n{\n    topic:'updateTray',\n    payload: [msg.tray]\n};\nreturn addPostMortemMsg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 240,
+        "wires": [
+            [
+                "58d6ed06f139a48c"
+            ]
+        ]
+    },
+    {
+        "id": "58d6ed06f139a48c",
+        "type": "mongodb3 in",
+        "z": "e17f7487.2a78e8",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "postMortem",
+        "operation": "insertOne",
+        "x": 1350,
+        "y": 240,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "2666eb47.cb2c24",
@@ -6654,218 +7621,6 @@
         ]
     },
     {
-        "id": "4140c1ee.dca18",
-        "type": "inject",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 700,
-        "wires": [
-            [
-                "8bfd61eb.0f8f1"
-            ]
-        ]
-    },
-    {
-        "id": "8bfd61eb.0f8f1",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "remove 127.0.0.1 from settings log",
-        "func": "var queryFilter = \n{\n    'ipInfo.ip' : '127.0.0.1'\n}\nvar newMsg = \n{\n    topic           : 'remove127',\n    payload         : [queryFilter, null],\n};\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 380,
-        "y": 700,
-        "wires": [
-            [
-                "f7ff007a.8d8b"
-            ]
-        ]
-    },
-    {
-        "id": "f7ff007a.8d8b",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "settingsLog",
-        "operation": "removeMany",
-        "x": 700,
-        "y": 700,
-        "wires": [
-            [
-                "ab1257ae.74fda8"
-            ]
-        ]
-    },
-    {
-        "id": "ab1257ae.74fda8",
-        "type": "debug",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 940,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "79a0dc4b.21aaa4",
-        "type": "inject",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 780,
-        "wires": [
-            [
-                "d3d9bc03.02e38"
-            ]
-        ]
-    },
-    {
-        "id": "d3d9bc03.02e38",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "remove 127.0.0.1 from access log",
-        "func": "var queryFilter = \n{\n    'ip' : '127.0.0.1'\n}\nvar newMsg = \n{\n    topic           : 'remove127',\n    payload         : [queryFilter, null],\n};\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 380,
-        "y": 780,
-        "wires": [
-            [
-                "7ffae9ab.87bee8"
-            ]
-        ]
-    },
-    {
-        "id": "7ffae9ab.87bee8",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "accessLog",
-        "operation": "removeMany",
-        "x": 700,
-        "y": 780,
-        "wires": [
-            [
-                "35a0f533.d24c2a"
-            ]
-        ]
-    },
-    {
-        "id": "35a0f533.d24c2a",
-        "type": "debug",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 940,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "aea924a9.6a9e68",
-        "type": "http in",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "url": "/tray",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 130,
-        "y": 960,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fe60c45b.b5b258",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "trays",
-        "operation": "findOne",
-        "x": 1070,
-        "y": 960,
-        "wires": [
-            [
-                "5610900e.5ca0b"
-            ]
-        ]
-    },
-    {
-        "id": "5610900e.5ca0b",
-        "type": "http response",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1250,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "7db15dac.050a44",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Prep query",
-        "func": "var queryMsg = \n[\n    {\n        $and    :\n        [\n            {\n                type  :   msg.payload.type\n            },\n            {\n                name        :   msg.payload.name\n            }\n        ]\n    },\n    {\n        projection: \n        {\n            _id :   0\n        }\n    }\n];\nmsg.payload = queryMsg;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 870,
-        "y": 960,
-        "wires": [
-            [
-                "fe60c45b.b5b258"
-            ]
-        ]
-    },
-    {
-        "id": "281ae8e3.adc998",
-        "type": "comment",
-        "z": "90f83725.6dae08",
-        "name": "curl \"http://localhost:60427/tray?type=blinky-basic&name=01&token=$(< blinky-lite-v2-token.txt)\"",
-        "info": "",
-        "x": 420,
-        "y": 880,
-        "wires": []
-    },
-    {
         "id": "3dbc8e22.aafca2",
         "type": "http in",
         "z": "90f83725.6dae08",
@@ -6875,7 +7630,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 150,
-        "y": 1640,
+        "y": 700,
         "wires": [
             [
                 "2623a5b9.60e51a"
@@ -6892,7 +7647,7 @@
         "collection": "users",
         "operation": "findOne",
         "x": 510,
-        "y": 1640,
+        "y": 700,
         "wires": [
             [
                 "d0b46e62.c61f3"
@@ -6910,7 +7665,7 @@
         "initialize": "",
         "finalize": "",
         "x": 310,
-        "y": 1640,
+        "y": 700,
         "wires": [
             [
                 "c7dcd2fd.f38ec"
@@ -6929,7 +7684,7 @@
         "finalize": "",
         "libs": [],
         "x": 730,
-        "y": 1640,
+        "y": 700,
         "wires": [
             [
                 "d1cf61fb.35fc1"
@@ -6949,7 +7704,7 @@
         "hash": "payload.hash",
         "rounds": 10,
         "x": 930,
-        "y": 1680,
+        "y": 740,
         "wires": [
             [
                 "25cbcda4.aaf522"
@@ -6968,7 +7723,7 @@
         "finalize": "",
         "libs": [],
         "x": 1130,
-        "y": 1680,
+        "y": 740,
         "wires": [
             [
                 "abf9b132.7c298"
@@ -6985,7 +7740,7 @@
         "name": "get Token",
         "tokenconfig": "6acefdd9.69f124",
         "x": 940,
-        "y": 1760,
+        "y": 820,
         "wires": [
             [
                 "26477e37.472222"
@@ -7004,7 +7759,7 @@
         "template": "<!-- Body HTML -->\n    <h1 style=\"text-align:center;color:#415c71;\">{{{payload.errorMsg}}}</h1>\n    <form action=\"/process-login\" method=\"POST\">\n        <table align='center'>\n            <tr>\n                <td>\n                    <label for=\"username\" class=\"big-text\">User</label>\n                </td>\n                <td>\n                    <input name=\"username\" type=\"text\" class=\"big-text\"/>\n                </td>\n            </tr>\n            <tr>\n                <td>\n                    <label for=\"password\" class=\"big-text\">Password</label>\n                </td>\n                <td>\n                    <input name=\"password\" type=\"password\" class=\"big-text\"/>\n                </td>\n            </tr>\n            <tr>\n                <td>\n                </td>\n                <td>\n                    <input type=\"submit\" class=\"btn jumbotron-button btn-block big-text bold-text\"/>\n                </td>\n            </tr>\n        </table>    \n        <input type=\"hidden\" name=\"url\" value=\"{{{userData.url}}}\" />\n    </form>  ",
         "output": "str",
         "x": 630,
-        "y": 1540,
+        "y": 600,
         "wires": [
             [
                 "e6b8fa70ebc5179c"
@@ -7023,7 +7778,7 @@
         "template": "Log-in",
         "output": "str",
         "x": 350,
-        "y": 1540,
+        "y": 600,
         "wires": [
             [
                 "5a857f25.a6af6"
@@ -7042,7 +7797,7 @@
         "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
         "output": "str",
         "x": 210,
-        "y": 1540,
+        "y": 600,
         "wires": [
             [
                 "7e91110a.c2165"
@@ -7061,7 +7816,7 @@
         "template": "basic.png",
         "output": "str",
         "x": 490,
-        "y": 1540,
+        "y": 600,
         "wires": [
             [
                 "c10f4686.4bfa58"
@@ -7079,7 +7834,7 @@
         "initialize": "",
         "finalize": "",
         "x": 1110,
-        "y": 1760,
+        "y": 820,
         "wires": [
             [
                 "fee60e7.48d0cf"
@@ -7094,7 +7849,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1270,
-        "y": 1760,
+        "y": 820,
         "wires": []
     },
     {
@@ -7107,7 +7862,7 @@
             "abf9b132.7c298"
         ],
         "x": 75,
-        "y": 1540,
+        "y": 600,
         "wires": [
             [
                 "aff12a21.2e53c8"
@@ -7123,7 +7878,7 @@
             "e322d811.8b4178"
         ],
         "x": 855,
-        "y": 1620,
+        "y": 680,
         "wires": []
     },
     {
@@ -7135,197 +7890,8 @@
             "e322d811.8b4178"
         ],
         "x": 1315,
-        "y": 1640,
+        "y": 700,
         "wires": []
-    },
-    {
-        "id": "ab328d8b.b827a",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "users",
-        "operation": "insertOne",
-        "x": 570,
-        "y": 1860,
-        "wires": [
-            [
-                "1965db8f.5178e4"
-            ]
-        ]
-    },
-    {
-        "id": "1965db8f.5178e4",
-        "type": "debug",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 830,
-        "y": 1860,
-        "wires": []
-    },
-    {
-        "id": "ba337c11.0eb2f",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Add User",
-        "func": "var user = {\n    \"username\"  :   \"dmcginnis427\",\n    \"password\"  :   \"$2a$10$A0..ostRUI2TSke4/c.g8.B4afXgy.J1tCX0g7zOP07YBG1ntInm2\",\n    \"profile\"   :   \n    {\n        \"timeoutMin\"    :   15,\n        \"roles\"         :   [\"reading\",\"setting\",\"rsetting\",\"ping\",\"readDatabase\",\"renew\",\"appView\",\"coreView\"]\n        \n    }\n}\nreturn {topic:'user',payload:user};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 360,
-        "y": 1860,
-        "wires": [
-            [
-                "ab328d8b.b827a"
-            ]
-        ]
-    },
-    {
-        "id": "297ec315.26eb4c",
-        "type": "inject",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 1860,
-        "wires": [
-            [
-                "ba337c11.0eb2f"
-            ]
-        ]
-    },
-    {
-        "id": "ea16c2f2.cc51f",
-        "type": "bcrypt",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "action": "encrypt",
-        "field": "",
-        "hash": "payload",
-        "rounds": 10,
-        "x": 310,
-        "y": 1920,
-        "wires": [
-            [
-                "b3869c42.e862d"
-            ]
-        ]
-    },
-    {
-        "id": "78dde377.f2284c",
-        "type": "inject",
-        "z": "90f83725.6dae08",
-        "name": "TestEncrypt",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "maxlab2015",
-        "payloadType": "str",
-        "x": 170,
-        "y": 1920,
-        "wires": [
-            [
-                "ea16c2f2.cc51f"
-            ]
-        ]
-    },
-    {
-        "id": "b3869c42.e862d",
-        "type": "debug",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "x": 430,
-        "y": 1920,
-        "wires": []
-    },
-    {
-        "id": "174053b9.1f51bc",
-        "type": "inject",
-        "z": "90f83725.6dae08",
-        "name": "TestVerify",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"txt\":\"zebograf\",\"hash\":\"$2a$10$NO0QftMJiHQPA8z7BmlFWOW0uajRSg3gP4Nq1IdwjEndxHRRihjkW\"}",
-        "payloadType": "json",
-        "x": 160,
-        "y": 1980,
-        "wires": [
-            [
-                "3a224a45.c10eb6"
-            ]
-        ]
-    },
-    {
-        "id": "f1f8d58.a302028",
-        "type": "debug",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "x": 430,
-        "y": 1980,
-        "wires": []
-    },
-    {
-        "id": "3a224a45.c10eb6",
-        "type": "bcrypt",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "action": "verify",
-        "field": "payload.txt",
-        "hash": "payload.hash",
-        "rounds": 10,
-        "x": 310,
-        "y": 1980,
-        "wires": [
-            [
-                "f1f8d58.a302028"
-            ]
-        ]
     },
     {
         "id": "44733e49.ba7ec",
@@ -7479,540 +8045,12 @@
         ]
     },
     {
-        "id": "1b76d304.e576bd",
-        "type": "JsonWebToken",
-        "z": "90f83725.6dae08",
-        "name": "check token",
-        "tokenconfig": "6acefdd9.69f124",
-        "x": 490,
-        "y": 960,
-        "wires": [
-            [
-                "e57a1a0e.507818"
-            ]
-        ]
-    },
-    {
-        "id": "96140e28.f0af",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Set token and Role",
-        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"readDatabase\"];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 310,
-        "y": 960,
-        "wires": [
-            [
-                "1b76d304.e576bd"
-            ]
-        ]
-    },
-    {
-        "id": "e57a1a0e.507818",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Check permitted roles",
-        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = 'Error-BadToken';\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error-LoginExpired';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error-CredentialsNotValidForApp';\n    return [null,msg];\n}\ndelete msg.token;\ndelete msg.payload.allowedRoles;\nreturn [msg,null];\n",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 960,
-        "wires": [
-            [
-                "7db15dac.050a44"
-            ],
-            [
-                "8cf93fbc.123f4"
-            ]
-        ]
-    },
-    {
-        "id": "8cf93fbc.123f4",
-        "type": "http response",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 850,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "544d2b75.abe264",
-        "type": "comment",
-        "z": "90f83725.6dae08",
-        "name": "curl \"http://localhost:60427/tray?type=blinky-basic&name=01&token=$(< blinky-lite-v2-token.txt)\" | json_pp > out.json",
-        "info": "",
-        "x": 460,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "9a2f9ea0.84376",
-        "type": "http in",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "url": "/setTray",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 140,
-        "y": 1120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8fb8e5ba.bc08a8",
-        "type": "JsonWebToken",
-        "z": "90f83725.6dae08",
-        "name": "check token",
-        "tokenconfig": "6acefdd9.69f124",
-        "x": 510,
-        "y": 1120,
-        "wires": [
-            [
-                "39c11e39.486842"
-            ]
-        ]
-    },
-    {
-        "id": "aa38fdda.bad9d",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Set token and Role",
-        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"rsetting\"];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 330,
-        "y": 1120,
-        "wires": [
-            [
-                "8fb8e5ba.bc08a8"
-            ]
-        ]
-    },
-    {
-        "id": "39c11e39.486842",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Check permitted roles",
-        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = 'Error-BadToken';\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error-LoginExpired';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error-CredentialsNotValidFoApp';\n    return [null,msg];\n}\ndelete msg.token;\ndelete msg.payload.allowedRoles;\nreturn [msg,null];\n",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 700,
-        "y": 1120,
-        "wires": [
-            [
-                "ac020639.dbe368"
-            ],
-            [
-                "9f2b501a.06c8c"
-            ]
-        ]
-    },
-    {
-        "id": "9f2b501a.06c8c",
-        "type": "http response",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1050,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "ac020639.dbe368",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Prep query",
-        "func": "msg['userData'] = [];\nvar ikey = 0;\nfor( var key in msg.payload ) \n{\n    if ((key != 'type') && (key != 'name') )\n    {\n        msg['userData'][ikey] = {attr : key, value: Number(msg.payload[key])};\n        ++ikey\n    }\n}\nif (msg['userData'] < 1)\n{\n    msg.payload = 'Error-NoAttributesFound';\n    return [null,msg];\n}\nvar queryMsg = \n[\n    {\n        $and    :\n        [\n            {\n                type  :   msg.payload.type\n            },\n            {\n                name        :   msg.payload.name\n            }\n        ]\n    },\n    {\n        projection: \n        {\n            _id :   0\n        }\n    }\n];\nmsg.payload = queryMsg;\nreturn [msg,null];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 1120,
-        "wires": [
-            [
-                "4a7b7cdd.65e2a4"
-            ],
-            [
-                "9f2b501a.06c8c"
-            ]
-        ]
-    },
-    {
-        "id": "4a7b7cdd.65e2a4",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "trays",
-        "operation": "findOne",
-        "x": 1090,
-        "y": 1120,
-        "wires": [
-            [
-                "50d24d87.ef19d4"
-            ]
-        ]
-    },
-    {
-        "id": "50d24d87.ef19d4",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Setup MQTT",
-        "func": "function isEmpty(obj) \n{\n    for(var prop in obj) {\n        if(obj.hasOwnProperty(prop))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload))\n{\n    msg.payload = 'Error-TrayNotFound';\n    return [null,null,msg];\n}\nfor (var ii = 0; ii < msg.userData.length; ++ii)\n{\n    try\n    {\n        msg.payload[msg.userData[ii]['attr']].value = msg.userData[ii]['value'];\n    }\n    catch (e)\n    {\n        msg.payload = 'Error-' + msg.userData[ii]['attr'] + 'NotFound';\n        return [null,null,msg];\n    }\n}\nvar newMsg = \n{\n    topic : global.get('box') + '/' + msg.payload.type + '/' + msg.payload.name + '/setting',\n    payload : JSON.stringify(msg.payload)\n}\nmsg.payload = 'Success';\nflow.set('setTrayMqtt',{mqttTopic:newMsg.topic, mqttTray: JSON.parse(newMsg.payload)})\nreturn [newMsg,msg,msg];",
-        "outputs": 3,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1290,
-        "y": 1120,
-        "wires": [
-            [
-                "56debf6b.c8177"
-            ],
-            [
-                "624fda40.949a64"
-            ],
-            [
-                "1448fbc5.6b29b4"
-            ]
-        ]
-    },
-    {
-        "id": "1448fbc5.6b29b4",
-        "type": "http response",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1390,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "56debf6b.c8177",
-        "type": "gzip",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "x": 1450,
-        "y": 1100,
-        "wires": [
-            [
-                "6c992b47.a19184"
-            ]
-        ]
-    },
-    {
-        "id": "6c992b47.a19184",
-        "type": "mqtt out",
-        "z": "90f83725.6dae08",
-        "name": "Publish Setting",
-        "topic": "",
-        "qos": "0",
-        "retain": "false",
-        "broker": "84d80994.260508",
-        "x": 1620,
-        "y": 1100,
-        "wires": []
-    },
-    {
-        "id": "624fda40.949a64",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "IP filter",
-        "func": "var ipfilter = [\n    \"127.0.0.16\"];\nvar ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nif (ipAddress==undefined) return null;\nvar ipAddressSplit = ipAddress.split(\".\");\nfor (var ii =  0; ii < ipfilter.length; ++ii)\n{\n    var ipfilterSplit = ipfilter[ii].split(\".\");\n    if (ipAddress == ipfilter[ii])\n    { \n        return null;\n    }\n    if (ipfilterSplit[2] == '*')\n    {\n        if ((ipfilterSplit[0] == ipAddressSplit[0]) && (ipfilterSplit[1] == ipAddressSplit[1]))\n        {\n            return null;\n        }\n    }\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1570,
-        "y": 1160,
-        "wires": [
-            [
-                "32e0be49.2d3482"
-            ]
-        ]
-    },
-    {
-        "id": "32e0be49.2d3482",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "ClientInfo",
-        "func": "var ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nreturn {\n    topic:'clientInfo', \n    payload:{\n        ipAddress   : ipAddress\n    },\n    extraInfo       : {},\n};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1580,
-        "y": 1200,
-        "wires": [
-            [
-                "f2042f45.64c2a"
-            ]
-        ]
-    },
-    {
-        "id": "f2042f45.64c2a",
-        "type": "http request",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://tools.keycdn.com/geo.json?host={{{payload.ipAddress}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "basic",
-        "x": 1590,
-        "y": 1240,
-        "wires": [
-            [
-                "b7dcd98.26fbd28"
-            ]
-        ]
-    },
-    {
-        "id": "b7dcd98.26fbd28",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "parseIpRequest",
-        "func": "var data = msg.payload.data.geo;\ndata['url'] = '/setTray';\ndata['userID'] = -1;\ndata['timeStamp'] = new Date().getTime();\nvar setTrayMqtt = flow.get('setTrayMqtt');\nvar newMsg = \n{\n    topic:'settingLogEntry',\n    payload:\n    {\n        topic     : setTrayMqtt.mqttTopic,\n        userID    : -1,\n        tray    : setTrayMqtt.mqttTray,\n        timeStamp : data['timeStamp'],\n        ipInfo    : data\n    }\n}\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1600,
-        "y": 1280,
-        "wires": [
-            [
-                "54b525ac.6a602c"
-            ]
-        ]
-    },
-    {
-        "id": "54b525ac.6a602c",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "settingsLog",
-        "operation": "insertOne",
-        "x": 1650,
-        "y": 1320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "80520db7.bb9d6",
-        "type": "comment",
-        "z": "90f83725.6dae08",
-        "name": "curl \"http://localhost:60427/setTray?type=blinky-basic&name=02&ledOn=0&token=$(< blinky-lite-v2-token.txt)\"",
-        "info": "",
-        "x": 440,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "95559ed1.ef85a",
-        "type": "http in",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "url": "/rlogin",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 120,
-        "y": 1400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7ec14c90.e05b84",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "users",
-        "operation": "findOne",
-        "x": 470,
-        "y": 1400,
-        "wires": [
-            [
-                "e8388d01.1c89a"
-            ]
-        ]
-    },
-    {
-        "id": "167b94d7.2438fb",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "user query",
-        "func": "msg.userData = {cred : {}, url : msg.payload.url};\nmsg.userData.cred = \n{\n    username : msg.payload.username, \n    password : msg.payload.password,\n};\nmsg.payload =  [{username : msg.userData.cred.username },  {projection  :{_id :   0}}]\nreturn msg;\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 270,
-        "y": 1400,
-        "wires": [
-            [
-                "7ec14c90.e05b84"
-            ]
-        ]
-    },
-    {
-        "id": "e8388d01.1c89a",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Check username",
-        "func": "function isEmpty(obj) {\n    for(var key in obj) {\n        if(obj.hasOwnProperty(key))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload))\n{\n    delete msg.userData['cred'];\n    msg.payload = 'Error-UserNotFound';\n    return [msg, null];\n}\nvar pwcheck = \n{\n    \"topic\"     : \"checkPassword\",\n    \"txt\"       : msg.userData.cred.password,\n    \"hash\"      : msg.payload.password\n}\nmsg.payload.profile['expDate'] = -1;\nif ( msg.payload.profile.timeoutMin > 0)\n{\n    msg.payload.profile['expDate'] = new Date().getTime() + msg.payload.profile.timeoutMin * 60000;\n}\nmsg.payload.profile['username'] = msg.payload.username;\nmsg.userData.cred.profile = msg.payload.profile;\nmsg.payload = pwcheck;\nreturn [null,msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 690,
-        "y": 1400,
-        "wires": [
-            [
-                "25881126.cb17ae"
-            ],
-            [
-                "c8f33f39.e1014"
-            ]
-        ]
-    },
-    {
-        "id": "25881126.cb17ae",
-        "type": "http response",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 850,
-        "y": 1340,
-        "wires": []
-    },
-    {
-        "id": "c8f33f39.e1014",
-        "type": "bcrypt",
-        "z": "90f83725.6dae08",
-        "name": "decrypt password",
-        "action": "verify",
-        "field": "payload.txt",
-        "hash": "payload.hash",
-        "rounds": 10,
-        "x": 890,
-        "y": 1400,
-        "wires": [
-            [
-                "50b2e9d4.8c3558"
-            ]
-        ]
-    },
-    {
-        "id": "50b2e9d4.8c3558",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Check password",
-        "func": "if (msg.match == false)  \n{\n    delete msg.userData['cred'];\n    msg.payload = 'Error-InvalidPassword';\n    return [msg, null];\n\n}\nmsg.payload = msg.userData.cred.profile;\ndelete msg.userData['cred'];\ndelete msg['match'];\nreturn [null, msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1090,
-        "y": 1400,
-        "wires": [
-            [
-                "25881126.cb17ae"
-            ],
-            [
-                "2585d0a4.d3cd9"
-            ]
-        ]
-    },
-    {
-        "id": "2585d0a4.d3cd9",
-        "type": "JsonWebToken",
-        "z": "90f83725.6dae08",
-        "name": "get Token",
-        "tokenconfig": "6acefdd9.69f124",
-        "x": 1300,
-        "y": 1400,
-        "wires": [
-            [
-                "9f2410e6.14e8"
-            ]
-        ]
-    },
-    {
-        "id": "9f2410e6.14e8",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Set token",
-        "func": "msg.payload = msg.token;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1440,
-        "y": 1400,
-        "wires": [
-            [
-                "9f444dd0.9583"
-            ]
-        ]
-    },
-    {
-        "id": "9f444dd0.9583",
-        "type": "http response",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1570,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "8e76fa92.a3ca88",
-        "type": "comment",
-        "z": "90f83725.6dae08",
-        "name": "curl \"http://localhost:60427/rlogin?username=user&password=blinky-lite\" > blinky-lite-v2-token.txt",
-        "info": "",
-        "x": 400,
-        "y": 1300,
-        "wires": []
-    },
-    {
         "id": "e6b8fa70ebc5179c",
         "type": "subflow:c57c2f9e65e6cb70",
         "z": "90f83725.6dae08",
         "name": "",
         "x": 770,
-        "y": 1540,
+        "y": 600,
         "wires": [
             [
                 "7738e37c816651ac"
@@ -8025,7 +8063,7 @@
         "z": "90f83725.6dae08",
         "name": "",
         "x": 910,
-        "y": 1540,
+        "y": 600,
         "wires": []
     },
     {
@@ -8069,77 +8107,6 @@
                 "787329f7fa16e517"
             ]
         ]
-    },
-    {
-        "id": "17b9fca689ef9517",
-        "type": "inject",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 600,
-        "wires": [
-            [
-                "0650d939d988beb8"
-            ]
-        ]
-    },
-    {
-        "id": "0650d939d988beb8",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "remove tray from archiver",
-        "func": "var projectionFilter =  \n{\n    projection:\n    {\n        _id                         :   0, \n        type                        :   1,  \n        name                        :   1,  \n        timeStamp                   :   1 \n    } \n};\nvar query = \n{\n    $and :\n    [\n        {\n            type: \"enter-tray-type\"\n        },\n        {\n            name: \"enter-tray-name\"\n        }\n    ]\n};\nvar newMsg = \n{\n    topic           : 'llrf-dsp',\n    payload         :  [query,projectionFilter]  \n};\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 350,
-        "y": 600,
-        "wires": [
-            [
-                "852ce27fc81a91ca"
-            ]
-        ]
-    },
-    {
-        "id": "852ce27fc81a91ca",
-        "type": "mongodb3 in",
-        "z": "90f83725.6dae08",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "archiver",
-        "operation": "removeMany",
-        "x": 690,
-        "y": 600,
-        "wires": [
-            [
-                "5ba7a9f7da1a4c3d"
-            ]
-        ]
-    },
-    {
-        "id": "5ba7a9f7da1a4c3d",
-        "type": "debug",
-        "z": "90f83725.6dae08",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 940,
-        "y": 600,
-        "wires": []
     },
     {
         "id": "b760a3b7466678da",
@@ -8815,244 +8782,6 @@
         "wires": []
     },
     {
-        "id": "482179b1.0efb28",
-        "type": "http in",
-        "z": "dc20c6e0.0feb98",
-        "name": "/scalarAlarmScanner",
-        "url": "/scalarAlarmScanner",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 220,
-        "wires": [
-            [
-                "4fa9c0988a15eb70"
-            ]
-        ]
-    },
-    {
-        "id": "9661ff85.f96c8",
-        "type": "template",
-        "z": "dc20c6e0.0feb98",
-        "name": "Body",
-        "field": "payload.body",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "    <div width=\"100%\">\n        <div class=\"row\"> \n            <div class=\"col-md-3\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\"></div>\n            <div class=\"col-md-6\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\">\n                <button class=\"btn jumbotron-button btn-block\" id=\"toggleSoundButton\" type=\"button\" onclick=\"toggleSound()\">Turn Sound On</button>\n            </div>\n            <div class=\"col-md-3\" align=\"center\" style=\"padding-top:10px;padding-bottom:10px;\"></div>\n        </div>\n    </div>\n    <div width=\"100%\">\n        <table width=\"100%\" id='alarmTable'>\n            <tr class=\"tableHeading\">\n                <td width='12%'>Alarm</td>\n                <td width='12%'>Tray</td>\n                <td width='12%'>Name</td>\n                <td width='12%'>Property</td>\n                <td width='12%'>Cube</td>\n                <td width='12%'>Value</td>\n                <td width='12%'>Unit</td>\n                <td width='12%'>Type</td>\n            </tr>\n        </table>\n    </div>",
-        "output": "str",
-        "x": 1370,
-        "y": 220,
-        "wires": [
-            [
-                "d7c2577456ab9e19"
-            ]
-        ]
-    },
-    {
-        "id": "30fbb3de.45ba1c",
-        "type": "template",
-        "z": "dc20c6e0.0feb98",
-        "name": "JavaScript",
-        "field": "payload.javascript",
-        "fieldType": "msg",
-        "format": "javascript",
-        "syntax": "mustache",
-        "template": "        var ws;\n        var retries = 0;\n        var userID = -1;\n        var audioAlarm = new Audio('/audio/alarm.ogg');\n        var alarmSoundOn = false;\n        var soundLastPlayed = 0;\n        var soundInterval = 4000;\n        \n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            createAlarmTableRows(100);\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n               case 'alarmList':\n                    alarmScan(msg.payload);\n                    break;\n                default:\n                // code block\n            }\n        }\n        function createAlarmTableRows(nrows)\n        {\n            var alarmTable = document.getElementById('alarmTable');\n            for (var irow = 0; irow < nrows; ++irow)\n            {\n                var row = alarmTable.insertRow(irow + 1);\n                row.setAttribute(\"id\", \"alarmTable\" + irow.toString());\n                row.setAttribute(\"class\", \"tableText\");\n                var iconCell = row.insertCell(0);\n                var trayCell  = row.insertCell(1);\n                var nameCell = row.insertCell(2);\n                var propCell = row.insertCell(3);\n                var attrCell = row.insertCell(4);\n                var valueCell= row.insertCell(5);\n                var unitCell = row.insertCell(6);\n                var typeCell = row.insertCell(7);\n                iconCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_icon\");\n                trayCell.setAttribute( \"id\", \"alarmTable\" + irow.toString() + \"_tray\");\n                nameCell.setAttribute( \"id\", \"alarmTable\" + irow.toString() + \"_name\");\n                propCell.setAttribute( \"id\", \"alarmTable\" + irow.toString() + \"_prop\");\n                attrCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_attr\");\n                valueCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_value\");\n                unitCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_unit\");\n                typeCell.setAttribute(\"id\", \"alarmTable\" + irow.toString() + \"_type\");\n                $('#alarmTable' + irow.toString()).hide();\n                iconCell.innerHTML = \"<img id='alarmTable\" + irow.toString() + \"_led'\" + \" src='/img/redLight.png' height='50px'/>\";\n            }\n        \n        }\n        function alarmScan(alarmList)\n        {\n            var trayInfo = [];\n            var nrows = $('#alarmTable tr').length;\n            nrows = nrows - 1;\n            if (alarmList.length > nrows) alert('Too many alarms to display!');\n            for (var itray = 0; itray < alarmList.length; ++itray)\n            {\n                $('#alarmTable' + itray.toString()).show();\n                $('#alarmTable' + itray.toString() + '_tray').html(alarmList[itray].type);\n                $('#alarmTable' + itray.toString() + '_name').html(alarmList[itray].name);\n                $('#alarmTable' + itray.toString() + '_prop').html(alarmList[itray].prop);\n                $('#alarmTable' + itray.toString() + '_attr').html(alarmList[itray].attr);\n                $('#alarmTable' + itray.toString() + '_value').html(alarmList[itray].value);\n                $('#alarmTable' + itray.toString() + '_unit').html(alarmList[itray].unit);\n                var type = '';\n                if (alarmList[itray].alarm == 1) type = 'LOW';\n                if (alarmList[itray].alarm == 2) type = 'HIGH';\n                if (alarmList[itray].alarm == 3) type = 'LOLO';\n                if (alarmList[itray].alarm == 4) type = 'HIHI';\n                $('#alarmTable' + itray.toString() + '_type').html(type);\n                if (alarmList[itray].alarm < 3)\n                {\n                    $('#alarmTable' + itray.toString() + '_led').attr('src','/img/yellowLight.png');\n                }\n                else\n                {\n                    $('#alarmTable' + itray.toString() + '_led').attr('src','/img/redLight.png');\n                    if (alarmSoundOn)\n                    {\n                        if ((new Date().getTime() - soundLastPlayed) > soundInterval)\n                        {\n                            audioAlarm.play();\n                            soundLastPlayed = new Date().getTime();\n                        }\n                    }\n                    \n                }\n        \n            }\n            for (var itray = alarmList.length; itray < nrows; ++itray)\n            {\n                $('#alarmTable' + itray.toString()).hide();\n            }\n        \n        }\n        function toggleSound()\n        {\n            alarmSoundOn = !alarmSoundOn;\n            var soundButtonText = 'Turn Sound On';\n            if (alarmSoundOn) soundButtonText = 'Turn Sound Off';\n            $('#toggleSoundButton').html(soundButtonText);\n        }",
-        "output": "str",
-        "x": 1110,
-        "y": 220,
-        "wires": [
-            [
-                "f98b12be.28903"
-            ]
-        ]
-    },
-    {
-        "id": "f98b12be.28903",
-        "type": "template",
-        "z": "dc20c6e0.0feb98",
-        "name": "Title",
-        "field": "payload.title",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "Alarm Scanner",
-        "output": "str",
-        "x": 1250,
-        "y": 220,
-        "wires": [
-            [
-                "9661ff85.f96c8"
-            ]
-        ]
-    },
-    {
-        "id": "8923ffe3.37bda",
-        "type": "websocket out",
-        "z": "dc20c6e0.0feb98",
-        "name": "/scalarAlarmScanner",
-        "server": "2b65833e.87911c",
-        "client": "",
-        "x": 800,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "60f8d457.92c10c",
-        "type": "mongodb3 in",
-        "z": "dc20c6e0.0feb98",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "trays",
-        "operation": "find.toArray",
-        "x": 370,
-        "y": 740,
-        "wires": [
-            [
-                "902a8791.29d718"
-            ]
-        ]
-    },
-    {
-        "id": "6eaf67b8.ba2648",
-        "type": "inject",
-        "z": "dc20c6e0.0feb98",
-        "name": "Every 10 sec",
-        "repeat": "10",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "'name'",
-        "payloadType": "str",
-        "x": 140,
-        "y": 740,
-        "wires": [
-            [
-                "60f8d457.92c10c"
-            ]
-        ]
-    },
-    {
-        "id": "902a8791.29d718",
-        "type": "function",
-        "z": "dc20c6e0.0feb98",
-        "name": "Scan for alarms",
-        "func": "function objectLength( object ) {\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\nvar oldAlarmList = context.get('oldAlarmList')\nif (oldAlarmList == undefined) oldAlarmList = [];\nvar numTrays = objectLength(msg.payload);\nvar props = ['readings', 'settings'];\nvar alarmList = [];\nvar alarmCount = 0;\nfor (var itray = 0; itray < numTrays; ++itray)\n{\n    var tray = msg.payload[itray];\n \n    var keys = Object.keys(tray);\n    for (var ii = 0; ii < keys.length; ++ii)\n    {\n        if (tray[keys[ii]].hasOwnProperty('type'))\n        {\n            if (tray[keys[ii]].type == 'scalar')\n            {\n                if (tray[keys[ii]].alarm.value > 0)\n                {\n                    alarmList[alarmCount] = \n                    {\n                        type: tray.type,\n                        name  : tray.name,\n                        prop  : tray[keys[ii]].action,\n                        attr  : keys[ii],\n                        value : tray[keys[ii]].value,\n                        unit  : tray[keys[ii]].unit,\n                        alarm : tray[keys[ii]].alarm.value,\n                        id    : tray.type + '-' +  tray.name + '-' +  tray[keys[ii]].action + '-' + keys[ii],\n                        notify: tray[keys[ii]].alarm.notify\n                    };\n                    ++alarmCount;\n                }\n            }\n        }\n    }\n}\n\nvar newAlarmList = [];\nvar newAlarmCount = 0;\nfor (var ialarm = 0; ialarm < alarmCount; ++ialarm)\n{\n    var oldAlarm = oldAlarmList.find(oldAlarm => oldAlarm.id === alarmList[ialarm].id);\n    if (oldAlarm == undefined) \n    {\n        newAlarmList[newAlarmCount] = alarmList[ialarm];\n        ++newAlarmCount;\n    }\n}\ncontext.set('oldAlarmList', alarmList);\nreturn [{topic:'alarmList', payload:{topic:'alarmList',payload:alarmList}},{topic:'newAlarmList', payload:newAlarmList}];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 740,
-        "wires": [
-            [
-                "8923ffe3.37bda"
-            ],
-            [
-                "fcd3d5a6.7bdaf8"
-            ]
-        ]
-    },
-    {
-        "id": "1c8b36de.a489c9",
-        "type": "sendsms",
-        "z": "dc20c6e0.0feb98",
-        "creds": "23623a1c.e4ce46",
-        "to": "{{msg.to}}",
-        "fr": "{{msg.from}}",
-        "text": "{{msg.payload}}",
-        "unicode": false,
-        "x": 1310,
-        "y": 800,
-        "wires": [
-            [
-                "30c5692.3ac4c96"
-            ]
-        ]
-    },
-    {
-        "id": "30c5692.3ac4c96",
-        "type": "debug",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1450,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "fcd3d5a6.7bdaf8",
-        "type": "split",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 750,
-        "y": 800,
-        "wires": [
-            [
-                "81b10ec2.0f878"
-            ]
-        ]
-    },
-    {
-        "id": "81b10ec2.0f878",
-        "type": "delay",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "2",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "outputs": 1,
-        "x": 900,
-        "y": 800,
-        "wires": [
-            [
-                "77c8c2b5.2b57ec"
-            ]
-        ]
-    },
-    {
-        "id": "77c8c2b5.2b57ec",
-        "type": "function",
-        "z": "dc20c6e0.0feb98",
-        "name": "Prepare SMS",
-        "func": "if (msg.payload.notify.name.length < 1) return null;\nif (msg.payload.notify.number.length < 1) return null;\nvar type = '';\nif (msg.payload.alarm == 1) type = 'LOW';\nif (msg.payload.alarm == 2) type = 'HIGH';\nif (msg.payload.alarm == 3) type = 'LOLO';\nif (msg.payload.alarm == 4) type = 'HIHI';\nvar message = 'Alarm-' + type + ': ' + msg.payload.id;\nmessage = message + ' is at ' + msg.payload.value.toString() + ' ' + msg.payload.unit\nreturn {topic:'sms',to:msg.payload.notify.number, payload:message, from:'46000000000'};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1080,
-        "y": 800,
-        "wires": [
-            [
-                "78c1fcc3.ec6164",
-                "1c8b36de.a489c9"
-            ]
-        ]
-    },
-    {
         "id": "2e134ccf.236a14",
         "type": "subflow:e13648d6.d698c8",
         "z": "dc20c6e0.0feb98",
@@ -9161,20 +8890,6 @@
         ]
     },
     {
-        "id": "78c1fcc3.ec6164",
-        "type": "debug",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 1270,
-        "y": 880,
-        "wires": []
-    },
-    {
         "id": "83301a46.e7b368",
         "type": "function",
         "z": "dc20c6e0.0feb98",
@@ -9233,37 +8948,6 @@
         "wires": [
             [
                 "fa0c0cab.d9876"
-            ]
-        ]
-    },
-    {
-        "id": "fac3ac47.cbce",
-        "type": "function",
-        "z": "dc20c6e0.0feb98",
-        "name": "Allowed Role",
-        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 470,
-        "y": 220,
-        "wires": [
-            [
-                "6141143b.207eec"
-            ]
-        ]
-    },
-    {
-        "id": "6141143b.207eec",
-        "type": "subflow:495f0879.c831c8",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "x": 640,
-        "y": 220,
-        "wires": [
-            [
-                "30fbb3de.45ba1c"
             ]
         ]
     },
@@ -9346,27 +9030,6 @@
         ]
     },
     {
-        "id": "9a9ee9382b7149c7",
-        "type": "subflow:ca529822.9112f8",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "x": 1650,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "d7c2577456ab9e19",
-        "type": "subflow:7744eedb71df7703",
-        "z": "dc20c6e0.0feb98",
-        "x": 1510,
-        "y": 220,
-        "wires": [
-            [
-                "9a9ee9382b7149c7"
-            ]
-        ]
-    },
-    {
         "id": "2c7e9f2f8657e2cf",
         "type": "subflow:ca529822.9112f8",
         "z": "dc20c6e0.0feb98",
@@ -9426,19 +9089,6 @@
         "wires": [
             [
                 "94f6cca52d4c60da"
-            ]
-        ]
-    },
-    {
-        "id": "4fa9c0988a15eb70",
-        "type": "subflow:3fec913b325ae6ff",
-        "z": "dc20c6e0.0feb98",
-        "name": "",
-        "x": 300,
-        "y": 220,
-        "wires": [
-            [
-                "fac3ac47.cbce"
             ]
         ]
     },
