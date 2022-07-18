@@ -1,9 +1,9 @@
-# bl-mc box
+# mirrotron-box
 ## need to add .env file with the following
-PROJECT=blinky-lite-v3  
-ARCHIVETOPIC=blinky-lite-v3/+/+/reading  
-MONGODBIP=mongodb+srv://blinky-lite...  
-MQTTCLIENTID=blinky-basic-box-local  
+BOX=mirrotron  
+SUBSCRIBETOPIC=mirrotron/+/+/#  
+MONGODBIP=mongodb+srv://admin:xxxxx@clu...  
+MQTTCLIENTID=mirrotron-box-local  
 MQTTSERVERIP=hhhh.cloudmqtt.com  
 MQTTUSERNAME=xxx  
 MQTTPASSWORD=yyy  
