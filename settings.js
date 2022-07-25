@@ -354,28 +354,6 @@ module.exports = {
                  */
                 mode: "manual"
             }
-        },
-
-        codeEditor: {
-            /** Select the text editor component used by the editor.
-             * Defaults to "ace", but can be set to "ace" or "monaco"
-             */
-            lib: "ace",
-            options: {
-                /** The follow options only apply if the editor is set to "monaco"
-                 *
-                 * theme - must match the file name of a theme in
-                 * packages/node_modules/@node-red/editor-client/src/vendor/monaco/dist/theme
-                 * e.g. "tomorrow-night", "upstream-sunburst", "github", "my-theme"
-                 */
-                theme: "vs",
-                /** other overrides can be set e.g. fontSize, fontFamily, fontLigatures etc.
-                 * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.istandaloneeditorconstructionoptions.html
-                 */
-                //fontSize: 14,
-                //fontFamily: "Cascadia Code, Fira Code, Consolas, 'Courier New', monospace",
-                //fontLigatures: true,
-            }
         }
     },
 
