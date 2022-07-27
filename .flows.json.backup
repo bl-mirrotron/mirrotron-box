@@ -567,9 +567,7 @@
             "6e5fe8f4665ee2fd"
         ],
         "x": 34,
-        "y": 39,
-        "w": 1312,
-        "h": 142
+        "y": 39
     },
     {
         "id": "222f7527456f431b",
@@ -592,9 +590,7 @@
             "c4e92c75751127a2"
         ],
         "x": 34,
-        "y": 219,
-        "w": 1312,
-        "h": 142
+        "y": 219
     },
     {
         "id": "8513d2368ac7161f",
@@ -617,9 +613,7 @@
             "b690e92951ea57f3"
         ],
         "x": 34,
-        "y": 399,
-        "w": 1312,
-        "h": 142
+        "y": 399
     },
     {
         "id": "e02813d59f160a5c",
@@ -642,9 +636,7 @@
             "4f5138b1c21ad771"
         ],
         "x": 34,
-        "y": 579,
-        "w": 1312,
-        "h": 142
+        "y": 579
     },
     {
         "id": "e0c14b4f190836c9",
@@ -667,9 +659,7 @@
             "66ce09a4d677808a"
         ],
         "x": 34,
-        "y": 759,
-        "w": 1312,
-        "h": 142
+        "y": 759
     },
     {
         "id": "674af16debdd8f0f",
@@ -692,9 +682,7 @@
             "6ab0f551657f68ec"
         ],
         "x": 34,
-        "y": 939,
-        "w": 1312,
-        "h": 142
+        "y": 939
     },
     {
         "id": "9e9aab81c0c1e479",
@@ -717,9 +705,7 @@
             "25f8c290f03f8dce"
         ],
         "x": 34,
-        "y": 1119,
-        "w": 1312,
-        "h": 142
+        "y": 1119
     },
     {
         "id": "ff1586c44763ab25",
@@ -742,9 +728,7 @@
             "bb3bc9ccb4b7ccfa"
         ],
         "x": 34,
-        "y": 1299,
-        "w": 1312,
-        "h": 142
+        "y": 1299
     },
     {
         "id": "e61434d43b450009",
@@ -767,9 +751,7 @@
             "ddd27203e99450e3"
         ],
         "x": 34,
-        "y": 1479,
-        "w": 1312,
-        "h": 142
+        "y": 1479
     },
     {
         "id": "8b1ca40e143d36e4",
@@ -792,9 +774,7 @@
             "17ea133e78cd791e"
         ],
         "x": 34,
-        "y": 1659,
-        "w": 1312,
-        "h": 142
+        "y": 1659
     },
     {
         "id": "6ad7c930.1a06b8",
@@ -1446,7 +1426,7 @@
         "type": "function",
         "z": "2dba0745.a98d98",
         "name": "Check permitted roles",
-        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload.errorMsg = tokenError;\n    msg.cookies = { };\n    delete msg.token;\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload.errorMsg = 'Login Expired. Please login again';\n        msg.cookies = { };\n        delete msg.token;\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (let irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (let itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload.errorMsg = 'Credentials not valid for App';\n    msg.cookies = { };\n    delete msg.token;\n    return [null,msg];\n}\nmsg.payload['profile'] = JSON.stringify(msg.token);\ndelete msg.token;\nreturn [msg,null];\n",
+        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload.errorMsg = tokenError;\n    msg.cookies = { };\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload.errorMsg = 'Login Expired. Please login again';\n        msg.cookies = { };\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (let irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (let itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload.errorMsg = 'Credentials not valid for App';\n    msg.cookies = { };\n    return [null,msg];\n}\nmsg.payload['profile'] = JSON.stringify(msg.token);\nreturn [msg,null];\n",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -6030,7 +6010,7 @@
         "type": "function",
         "z": "9c854ea3.68416",
         "name": "Edit app05 Manuals",
-        "func": "let appConfig = \n{\n    app:'app05',\n    title: 'RFQ Manuals',\n    allowedRoles : ['appView'],\n    trayTypes: ['none'],\n    trayUpdateFilter:\n        [\n            { type: 'none', name: 'none' }\n        ],\n    styleSheet: 'mirrotron-gp',\n    navbar :\n    {\n        config  :\n        {\n            imageHeight : '75px',\n            leftLink : \"/\",\n            rightLink : \"/apps\",\n            leftImage : \"/img/mirrotron.png\",\n            centerImage : \"/img/manual.png\",\n            rightImage : \"/img/home.png\"\n        }\n    },\n    cards: \n    [\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Vacuum System Startup\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vRb992owcUG5dzdLysMhxQ99Z72ljUnpg4bJLxU4EFH49XTueTTM46NTtIJE_xuMgfJsK2j-mE5ikdW/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Vacuum System Shutdown\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vToHxSeg-3ooG84976MqWZgpFcDfbUPd-Ph5BfhFN56wStbb-twZfQ-MgsBSZ6-86l8UHW9kD7LXcpN/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Cooling System Startup\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vQZwL07FZO9akR_VK-hgD2GUB14AqjJCHmA5CHauzChndahSS4QO9NeKfQMQV3L-K_n_rkYPeaGdj4U/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Cooling System Shutdown\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vSPADSlMoFjnkSTmuNA3cYRoOFnGCoWbuUt1BMhXs-TMJhzIIpQcHafMTx3ZTt1uqVE2QIwHiKVO73S/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Cooling System Maintenance\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vRLxfF0yt1dPpfS96CNj79VMkmdqVdOf-JlJmromyRxHaALcXxCAowR7dJPjwz778k2rbJFjcAYf_jT/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"LLRF and Timing System\", \n                displayOnOpen   :   false,\n                url             :   \"https://bl-mirrotron.github.io/mirrotron-rfq-doc/\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'UserCard',\n            config      :   \n            {\n                title           :   \"User\", \n                displayOnOpen   :   false \n            }\n        }\n    ]\n};\nreturn { topic: appConfig.app, payload: [{ app: appConfig.app }, appConfig] };",
+        "func": "let appConfig = \n{\n    app:'app05',\n    title: 'RFQ Manuals',\n    allowedRoles : ['appView'],\n    trayTypes: ['none'],\n    trayUpdateFilter:\n        [\n            { type: 'none', name: 'none' }\n        ],\n    styleSheet: 'mirrotron-gp',\n    navbar :\n    {\n        config  :\n        {\n            imageHeight : '75px',\n            leftLink : \"/\",\n            rightLink : \"/apps\",\n            leftImage : \"/img/mirrotron.png\",\n            centerImage : \"/img/manual.png\",\n            rightImage : \"/img/home.png\"\n        }\n    },\n    cards: \n    [\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Vacuum System Startup\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vRb992owcUG5dzdLysMhxQ99Z72ljUnpg4bJLxU4EFH49XTueTTM46NTtIJE_xuMgfJsK2j-mE5ikdW/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Vacuum System Shutdown\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vToHxSeg-3ooG84976MqWZgpFcDfbUPd-Ph5BfhFN56wStbb-twZfQ-MgsBSZ6-86l8UHW9kD7LXcpN/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Cooling System Startup\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vQZwL07FZO9akR_VK-hgD2GUB14AqjJCHmA5CHauzChndahSS4QO9NeKfQMQV3L-K_n_rkYPeaGdj4U/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Cooling System Shutdown\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vSPADSlMoFjnkSTmuNA3cYRoOFnGCoWbuUt1BMhXs-TMJhzIIpQcHafMTx3ZTt1uqVE2QIwHiKVO73S/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"Cooling System Maintenance\", \n                displayOnOpen   :   false,\n                url             :   \"https://docs.google.com/presentation/d/e/2PACX-1vRLxfF0yt1dPpfS96CNj79VMkmdqVdOf-JlJmromyRxHaALcXxCAowR7dJPjwz778k2rbJFjcAYf_jT/embed?start=false&loop=false&delayms=3000\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'IframeCard',\n            config      :   \n            {\n                title           :   \"LLRF and Timing System\", \n                displayOnOpen   :   false,\n                url:   \"https://bl-mirrotron.github.io/\",\n                extraAttr       :\n                {\n                    frameborder             :   \"0\",\n                    width                   :   \"100%\",\n                    height                  :   \"100%\", \n                    allowfullscreen         :   \"true\",\n                    mozallowfullscreen      :   \"true\",\n                    webkitallowfullscreen   :   \"true\"\n                },\n                height          :   \"75vw\"\n            }\n        },\n        {\n            type        :   'UserCard',\n            config      :   \n            {\n                title           :   \"User\", \n                displayOnOpen   :   false \n            }\n        }\n    ]\n};\nreturn { topic: appConfig.app, payload: [{ app: appConfig.app }, appConfig] };",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8217,13 +8197,13 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"100%\" align=\"center\">\n                    <table width=\"900px\" style=\"border: 5px solid;border-color: var(--color2);\">\n                        <tr>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp01.jpg\" width=\"100%\"/>\n                            </td>\n                            <td width=\"193px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp06.jpg\" width=\"100%\"/>                            \n                            </td>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp04.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp02.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp05.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp03.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td width=\"100%\"  align=\"center\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/apps\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/apps.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Applications\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                            <td width=\"4%\"></td>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/info\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/manual.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Information\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n                <td  align=\"center\" style=\"padding-top:15px;\">\n                    <span>Powered by <a href=\"https://www.bl-mc.se/\" target=\"_blank\" style=\"color:var(--color1);\">Blinky-Lite</a></span>\n                </td>\n            <tr>\n        </table>\n    </div>",
         "output": "str",
         "x": 830,
         "y": 460,
         "wires": [
             [
-                "1f560185d5f75c55"
+                "d9755ad363ee133c"
             ]
         ]
     },
@@ -8236,7 +8216,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "",
+        "template": "Compact Neutron Source Control System",
         "output": "str",
         "x": 550,
         "y": 460,
@@ -8255,7 +8235,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n            window.location = '/apps';\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n//            window.location = '/apps';\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
         "output": "str",
         "x": 410,
         "y": 460,
@@ -8402,24 +8382,11 @@
         "wires": []
     },
     {
-        "id": "1f560185d5f75c55",
-        "type": "subflow:c57c2f9e65e6cb70",
-        "z": "a858ad3a.95706",
-        "name": "",
-        "x": 990,
-        "y": 460,
-        "wires": [
-            [
-                "9c22cdee29daadc2"
-            ]
-        ]
-    },
-    {
         "id": "9c22cdee29daadc2",
         "type": "subflow:ca529822.9112f8",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 1170,
+        "x": 1250,
         "y": 460,
         "wires": []
     },
@@ -8433,7 +8400,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 110,
-        "y": 560,
+        "y": 740,
         "wires": [
             [
                 "0ae559dfc1cd42e5"
@@ -8452,7 +8419,7 @@
         "template": "Core Applications",
         "output": "str",
         "x": 340,
-        "y": 600,
+        "y": 780,
         "wires": [
             [
                 "bc0420f20d9cbb1e"
@@ -8471,7 +8438,7 @@
         "template": "coreWhite.png",
         "output": "str",
         "x": 350,
-        "y": 560,
+        "y": 740,
         "wires": [
             [
                 "bcc9d059a6bc454a"
@@ -8490,7 +8457,7 @@
         "finalize": "",
         "libs": [],
         "x": 140,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "eef7526027034b14"
@@ -8509,7 +8476,7 @@
         "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"45%\" style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/access-log\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Access Log\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n                <td width=\"10%\"></td>\n                <td width=\"45%\" style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/settings-log\" >\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Settings Log\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n            </tr>\n            <tr>\n                <td style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/scalarPlotter\" >\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Scalar Plotter\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n                <td></td>\n                <td style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/scalarArchivePlotter\" >\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Scalar Archive Plotter\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n            </tr>\n            <tr>\n                <td style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/scalarViewer\" >\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\" width=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Scalar Viewer\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n                <td></td>\n                <td style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/alarmScanner\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/alarm.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Alarm Scanner\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n            </tr>\n            <tr>\n                <td style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/vectorPlotter\" >\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Vector Plotter\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n                <td></td>\n                <td style=\"padding-bottom:25px;\">\n                    <a class=\"btn btn-block card-button medium-text\" href=\"/vectorArchivePlotter\" >\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"25%\" align='left'>\n                                    <img src=\"/img/coreWhite.png\" height=\"50px\"/>\n                                </td>\n                                <td width=\"75%\" align='center'>\n                                    Vector Archive Plotter\n                                </td>\n                            </tr>\n                        </table>\n                    </a>\n                </td>\n            </tr>\n        </table>\n    </div>\n{{{payload.html.user}}}\n ",
         "output": "str",
         "x": 930,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "b8beb9d4a4852b99"
@@ -8528,7 +8495,7 @@
         "template": "{{{payload.script.global}}}\n{{{payload.script.user}}}\n",
         "output": "str",
         "x": 580,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "80d61259105f4c7f"
@@ -8547,7 +8514,7 @@
         "template": "                <div class='card' id='userCardId'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
         "output": "str",
         "x": 940,
-        "y": 600,
+        "y": 780,
         "wires": [
             [
                 "1aa5a01e79a89464"
@@ -8566,7 +8533,7 @@
         "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n//            initLaunchMenu();\n            \n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n",
         "output": "str",
         "x": 590,
-        "y": 560,
+        "y": 740,
         "wires": [
             [
                 "673a1835af1e335a"
@@ -8585,7 +8552,7 @@
         "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = box + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = box + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = box + \"Role=\" + msg.role;\n            document.cookie = box + \"ExpDate=\" + msg.expDate;\n            document.cookie = box + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", box + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
         "output": "str",
         "x": 590,
-        "y": 600,
+        "y": 780,
         "wires": [
             [
                 "0305b5890a8d7283"
@@ -8604,7 +8571,7 @@
         "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-3\" align=\"center\">\n                                <span class='card-text' >Core App</span>\n                            </div>\n                            <div class=\"col-md-9\" align=\"center\">\n                                <select class=\"app-dropdown-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"access-log\">Access Log</option>\n                                    <option value=\"settings-log\">Settings Log</option>\n                                    <option value=\"scalarPlotter\">Scalar Plotter</option>\n                                    <option value=\"scalarArchivePlotter\">Scalar Archive Plotter</option>\n                                    <option value=\"scalarViewer\">Scalar Viewer</option>\n                                    <option value=\"scalarAlarmScanner\">Scalar Alarm Scanner</option>\n                                    <option value=\"vectorPlotter\">Vector Plotter</option>\n                                    <option value=\"vectorArchivePlotter\">Vector Archive Plotter</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                \n<!--                \n                \n                    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarPlotter\" >Scalar Plotter</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarArchivePlotter\" >Scalar Archive Plotter</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarViewer\" >Scalar Viewer</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/scalarAlarmScanner\" >Scalar Alarm Scanner</a> \n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/vectorPlotter\" >Vector Plotter</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/vectorArchivePlotter\" >Vector Archive Plotter</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-6' align='center'>\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/access-log\" >Access Log</a> \n            </div>\n            <div class='col-md-6' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/settings-log\" >Settings Log</a>\n            </div>\n        </div>\n        <div class='row' style='padding-top:10px; padding-bottom:10px;'>\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block\" width='80%' href=\"/apps\" >Custom App Index</a> \n            </div>\n        </div>\n    </div>\n    \n-->",
         "output": "str",
         "x": 960,
-        "y": 560,
+        "y": 740,
         "wires": [
             [
                 "093e2704d0cd3eb3"
@@ -8619,7 +8586,7 @@
         "server": "e2674addbc6ccaef",
         "client": "",
         "x": 140,
-        "y": 840,
+        "y": 1020,
         "wires": [
             [
                 "22ec08a66c477512"
@@ -8637,7 +8604,7 @@
         "initialize": "",
         "finalize": "",
         "x": 560,
-        "y": 800,
+        "y": 980,
         "wires": [
             [
                 "b7503a417361a0ae"
@@ -8651,7 +8618,7 @@
         "name": "encrypt token",
         "tokenconfig": "6acefdd9.69f124",
         "x": 740,
-        "y": 800,
+        "y": 980,
         "wires": [
             [
                 "6ee42571a1da7c50"
@@ -8669,7 +8636,7 @@
         "initialize": "",
         "finalize": "",
         "x": 920,
-        "y": 800,
+        "y": 980,
         "wires": [
             [
                 "91eeea509dde57c9"
@@ -8684,7 +8651,7 @@
         "server": "e2674addbc6ccaef",
         "client": "",
         "x": 1120,
-        "y": 840,
+        "y": 1020,
         "wires": []
     },
     {
@@ -8693,7 +8660,7 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 1090,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "9c42cf48893ca54d"
@@ -8706,7 +8673,7 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 1230,
-        "y": 640,
+        "y": 820,
         "wires": []
     },
     {
@@ -8715,7 +8682,7 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 140,
-        "y": 680,
+        "y": 860,
         "wires": [
             [
                 "501167e444420726"
@@ -8728,7 +8695,7 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 350,
-        "y": 840,
+        "y": 1020,
         "wires": [
             [
                 "b204425f16f67466"
@@ -8770,10 +8737,201 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 140,
-        "y": 600,
+        "y": 780,
         "wires": [
             [
                 "36b3529f9403ec99"
+            ]
+        ]
+    },
+    {
+        "id": "d9755ad363ee133c",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                    <a href='/' >\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>                \n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                </td>\n            </tr>\n        </table>\n    </div>",
+        "output": "str",
+        "x": 960,
+        "y": 460,
+        "wires": [
+            [
+                "844cb8e5e649edf2"
+            ]
+        ]
+    },
+    {
+        "id": "844cb8e5e649edf2",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --medium-text-size :200%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .medium-text\n        {\n            font-size: var(--medium-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
+        "output": "str",
+        "x": 1110,
+        "y": 460,
+        "wires": [
+            [
+                "9c22cdee29daadc2"
+            ]
+        ]
+    },
+    {
+        "id": "6b4fe7c10aab1426",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/info",
+        "url": "/info",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 520,
+        "wires": [
+            [
+                "495ee486b52465a5"
+            ]
+        ]
+    },
+    {
+        "id": "83ced5e0f12c6bf7",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "Body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Information</span>\n                            </td>\n                            <td width='15%'>\n                            </td>\n                        </tr>\n                    </table>\n                    <div class='card-body' align=\"center\">\n                        <div style=\"width: 100%; height: 1200px; overflow:hidden; max-height:1200px;\">\n                            <iframe src=\"https://bl-mirrotron.github.io/\" frameborder=\"0\" width=\"100%\" height=\"1200\"\n                                allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
+        "output": "str",
+        "x": 830,
+        "y": 520,
+        "wires": [
+            [
+                "c07d3c81bb6360b0"
+            ]
+        ]
+    },
+    {
+        "id": "891be1bb5762014d",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Compact Neutron Source Control System",
+        "output": "str",
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "ea905f0725cd83e8"
+            ]
+        ]
+    },
+    {
+        "id": "55d190b7d0c1bef9",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "JavaScript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n//            window.location = '/apps';\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "output": "str",
+        "x": 410,
+        "y": 520,
+        "wires": [
+            [
+                "891be1bb5762014d"
+            ]
+        ]
+    },
+    {
+        "id": "ea905f0725cd83e8",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "manual.png",
+        "output": "str",
+        "x": 690,
+        "y": 520,
+        "wires": [
+            [
+                "83ced5e0f12c6bf7"
+            ]
+        ]
+    },
+    {
+        "id": "09a50e80e09d582f",
+        "type": "subflow:ca529822.9112f8",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 1250,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "495ee486b52465a5",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 240,
+        "y": 520,
+        "wires": [
+            [
+                "55d190b7d0c1bef9"
+            ]
+        ]
+    },
+    {
+        "id": "c07d3c81bb6360b0",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span></span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
+        "output": "str",
+        "x": 960,
+        "y": 520,
+        "wires": [
+            [
+                "c870b83446739026"
+            ]
+        ]
+    },
+    {
+        "id": "c870b83446739026",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --medium-text-size :200%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .medium-text\n        {\n            font-size: var(--medium-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
+        "output": "str",
+        "x": 1110,
+        "y": 520,
+        "wires": [
+            [
+                "09a50e80e09d582f"
             ]
         ]
     },
