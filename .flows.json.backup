@@ -8197,9 +8197,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"100%\" align=\"center\">\n                    <table width=\"900px\" style=\"border: 5px solid;border-color: var(--color2);\">\n                        <tr>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp01.jpg\" width=\"100%\"/>\n                            </td>\n                            <td width=\"193px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp06.jpg\" width=\"100%\"/>                            \n                            </td>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp04.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp02.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp05.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp03.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td width=\"100%\"  align=\"center\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/apps\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/apps.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Applications\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                            <td width=\"4%\"></td>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/info\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/manual.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Information\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n                <td  align=\"center\" style=\"padding-top:15px;\">\n                    <span>Powered by <a href=\"https://www.bl-mc.se/\" target=\"_blank\" style=\"color:var(--color1);\">Blinky-Lite</a></span>\n                </td>\n            <tr>\n        </table>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"100%\" align=\"center\">\n                    <table width=\"900px\" style=\"border: 5px solid;border-color: var(--color2);\">\n                        <tr>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp01.jpg\" width=\"100%\"/>\n                            </td>\n                            <td width=\"193px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp06.jpg\" width=\"100%\"/>                            \n                            </td>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp04.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp02.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp05.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp03.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td width=\"100%\"  align=\"center\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/appManual\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/manual.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Users' Guide\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                            <td width=\"4%\"></td>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/architecture\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/architecture.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Architecture\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td align=\"center\" style=\"padding-top:20px;\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"100%\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/apps\">\n                                    <table width=\"48%\" align=\"center\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/apps.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Applications\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td  align=\"center\" style=\"padding-top:15px;\">\n                    <span>Powered by <a href=\"https://www.bl-mc.se/\" target=\"_blank\" style=\"color:var(--color1);\">Blinky-Lite</a></span>\n                </td>\n            <tr>\n        </table>\n    </div>",
         "output": "str",
-        "x": 830,
+        "x": 870,
         "y": 460,
         "wires": [
             [
@@ -8218,7 +8218,7 @@
         "syntax": "mustache",
         "template": "Compact Neutron Source Control System",
         "output": "str",
-        "x": 550,
+        "x": 590,
         "y": 460,
         "wires": [
             [
@@ -8237,7 +8237,7 @@
         "syntax": "mustache",
         "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n//            window.location = '/apps';\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
         "output": "str",
-        "x": 410,
+        "x": 450,
         "y": 460,
         "wires": [
             [
@@ -8256,7 +8256,7 @@
         "syntax": "mustache",
         "template": "basic.png",
         "output": "str",
-        "x": 690,
+        "x": 730,
         "y": 460,
         "wires": [
             [
@@ -8386,7 +8386,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 1250,
+        "x": 1290,
         "y": 460,
         "wires": []
     },
@@ -8710,7 +8710,7 @@
         "type": "subflow:3fec913b325ae6ff",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 240,
+        "x": 280,
         "y": 460,
         "wires": [
             [
@@ -8755,7 +8755,7 @@
         "syntax": "mustache",
         "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                    <a href='/' >\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>                \n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                </td>\n            </tr>\n        </table>\n    </div>",
         "output": "str",
-        "x": 960,
+        "x": 1000,
         "y": 460,
         "wires": [
             [
@@ -8774,7 +8774,7 @@
         "syntax": "mustache",
         "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --medium-text-size :200%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .medium-text\n        {\n            font-size: var(--medium-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
         "output": "str",
-        "x": 1110,
+        "x": 1150,
         "y": 460,
         "wires": [
             [
@@ -8786,12 +8786,12 @@
         "id": "6b4fe7c10aab1426",
         "type": "http in",
         "z": "a858ad3a.95706",
-        "name": "/info",
-        "url": "/info",
+        "name": "/architecture",
+        "url": "/architecture",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
+        "x": 110,
         "y": 520,
         "wires": [
             [
@@ -8808,9 +8808,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Information</span>\n                            </td>\n                            <td width='15%'>\n                            </td>\n                        </tr>\n                    </table>\n                    <div class='card-body' align=\"center\">\n                        <div style=\"width: 100%; height: 1200px; overflow:hidden; max-height:1200px;\">\n                            <iframe src=\"https://bl-mirrotron.github.io/\" frameborder=\"0\" width=\"100%\" height=\"1200\"\n                                allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Architecture</span>\n                            </td>\n                            <td width='15%'>\n                            </td>\n                        </tr>\n                    </table>\n                    <div class='card-body' align=\"center\">\n                        <div style=\"width: 100%; height: 1200px; overflow:hidden; max-height:1200px;\">\n                            <iframe src=\"https://bl-mirrotron.github.io/mirrotron-box/\" frameborder=\"0\" width=\"100%\" height=\"1200\"\n                                allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
         "output": "str",
-        "x": 830,
+        "x": 870,
         "y": 520,
         "wires": [
             [
@@ -8827,9 +8827,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "Compact Neutron Source Control System",
+        "template": "Architecture",
         "output": "str",
-        "x": 550,
+        "x": 590,
         "y": 520,
         "wires": [
             [
@@ -8848,7 +8848,7 @@
         "syntax": "mustache",
         "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n//            window.location = '/apps';\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
         "output": "str",
-        "x": 410,
+        "x": 450,
         "y": 520,
         "wires": [
             [
@@ -8865,9 +8865,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "manual.png",
+        "template": "architecture.png",
         "output": "str",
-        "x": 690,
+        "x": 730,
         "y": 520,
         "wires": [
             [
@@ -8880,7 +8880,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 1250,
+        "x": 1290,
         "y": 520,
         "wires": []
     },
@@ -8889,7 +8889,7 @@
         "type": "subflow:3fec913b325ae6ff",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 240,
+        "x": 280,
         "y": 520,
         "wires": [
             [
@@ -8906,9 +8906,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span></span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>Architecture</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
         "output": "str",
-        "x": 960,
+        "x": 1000,
         "y": 520,
         "wires": [
             [
@@ -8927,11 +8927,164 @@
         "syntax": "mustache",
         "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --medium-text-size :200%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .medium-text\n        {\n            font-size: var(--medium-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
         "output": "str",
-        "x": 1110,
+        "x": 1150,
         "y": 520,
         "wires": [
             [
                 "09a50e80e09d582f"
+            ]
+        ]
+    },
+    {
+        "id": "653837bf471fd71c",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/appManual",
+        "url": "/appManual",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "b9a59ed1d8b548b5"
+            ]
+        ]
+    },
+    {
+        "id": "988477fedd46bfe8",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "Body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Architecture</span>\n                            </td>\n                            <td width='15%'>\n                            </td>\n                        </tr>\n                    </table>\n                    <div class='card-body' align=\"center\">\n                        <div style=\"width: 100%; height: 1200px; overflow:hidden; max-height:1200px;\">\n                            <iframe src=\"https://bl-mirrotron.github.io/\" frameborder=\"0\" width=\"100%\" height=\"1200\"\n                                allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\">\n                            </iframe>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
+        "output": "str",
+        "x": 870,
+        "y": 580,
+        "wires": [
+            [
+                "0902a0c7b68d068a"
+            ]
+        ]
+    },
+    {
+        "id": "eae985434f05985a",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Users' Guide",
+        "output": "str",
+        "x": 590,
+        "y": 580,
+        "wires": [
+            [
+                "6221c5eacdf7bd62"
+            ]
+        ]
+    },
+    {
+        "id": "351cbd07b3f549c6",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "JavaScript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n//            window.location = '/apps';\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "output": "str",
+        "x": 450,
+        "y": 580,
+        "wires": [
+            [
+                "eae985434f05985a"
+            ]
+        ]
+    },
+    {
+        "id": "6221c5eacdf7bd62",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "manual.png",
+        "output": "str",
+        "x": 730,
+        "y": 580,
+        "wires": [
+            [
+                "988477fedd46bfe8"
+            ]
+        ]
+    },
+    {
+        "id": "2fa39a3f6282f8f1",
+        "type": "subflow:ca529822.9112f8",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 1290,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b9a59ed1d8b548b5",
+        "type": "subflow:3fec913b325ae6ff",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 280,
+        "y": 580,
+        "wires": [
+            [
+                "351cbd07b3f549c6"
+            ]
+        ]
+    },
+    {
+        "id": "0902a0c7b68d068a",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>Architecture</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
+        "output": "str",
+        "x": 1000,
+        "y": 580,
+        "wires": [
+            [
+                "de0bb0f0dd1f1161"
+            ]
+        ]
+    },
+    {
+        "id": "de0bb0f0dd1f1161",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n            --color1          :   #1c6e97;\n            --color2          :   #289dd7;\n            --color3          :   #e7e7e7;\n            --color4          :   #c6c2bb;\n            --color5          :   #ffffff;\n            --color6          :   #289dd7;\n          --big-text-size :300%;\n          --medium-text-size :200%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n            color             :   var(--color5);\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-title-button\n        {\n            color             :   var(--color5) !important;\n            background-color  :   var(--color1) !important;\n            font-weight       :   900;\n            font-size         :   300%;\n            font-style        :   italic;        \n        }\n        .card-text\n        {\n          color: var(--color6);\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .medium-text\n        {\n            font-size: var(--medium-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
+        "output": "str",
+        "x": 1150,
+        "y": 580,
+        "wires": [
+            [
+                "2fa39a3f6282f8f1"
             ]
         ]
     },
