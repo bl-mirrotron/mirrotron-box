@@ -567,9 +567,7 @@
             "6e5fe8f4665ee2fd"
         ],
         "x": 34,
-        "y": 39,
-        "w": 1312,
-        "h": 142
+        "y": 39
     },
     {
         "id": "222f7527456f431b",
@@ -592,9 +590,7 @@
             "c4e92c75751127a2"
         ],
         "x": 34,
-        "y": 219,
-        "w": 1312,
-        "h": 142
+        "y": 219
     },
     {
         "id": "8513d2368ac7161f",
@@ -617,9 +613,7 @@
             "b690e92951ea57f3"
         ],
         "x": 34,
-        "y": 399,
-        "w": 1312,
-        "h": 142
+        "y": 399
     },
     {
         "id": "e02813d59f160a5c",
@@ -642,9 +636,7 @@
             "4f5138b1c21ad771"
         ],
         "x": 34,
-        "y": 579,
-        "w": 1312,
-        "h": 142
+        "y": 579
     },
     {
         "id": "e0c14b4f190836c9",
@@ -667,9 +659,7 @@
             "66ce09a4d677808a"
         ],
         "x": 34,
-        "y": 759,
-        "w": 1312,
-        "h": 142
+        "y": 759
     },
     {
         "id": "674af16debdd8f0f",
@@ -692,9 +682,7 @@
             "6ab0f551657f68ec"
         ],
         "x": 34,
-        "y": 939,
-        "w": 1312,
-        "h": 142
+        "y": 939
     },
     {
         "id": "9e9aab81c0c1e479",
@@ -717,9 +705,7 @@
             "25f8c290f03f8dce"
         ],
         "x": 34,
-        "y": 1119,
-        "w": 1312,
-        "h": 142
+        "y": 1119
     },
     {
         "id": "ff1586c44763ab25",
@@ -742,9 +728,7 @@
             "bb3bc9ccb4b7ccfa"
         ],
         "x": 34,
-        "y": 1299,
-        "w": 1312,
-        "h": 142
+        "y": 1299
     },
     {
         "id": "e61434d43b450009",
@@ -767,9 +751,7 @@
             "ddd27203e99450e3"
         ],
         "x": 34,
-        "y": 1479,
-        "w": 1312,
-        "h": 142
+        "y": 1479
     },
     {
         "id": "8b1ca40e143d36e4",
@@ -792,9 +774,7 @@
             "17ea133e78cd791e"
         ],
         "x": 34,
-        "y": 1659,
-        "w": 1312,
-        "h": 142
+        "y": 1659
     },
     {
         "id": "6ad7c930.1a06b8",
@@ -8926,7 +8906,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>Architecture</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
         "output": "str",
         "x": 1000,
         "y": 520,
@@ -8981,7 +8961,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>App Users' Guide</span>\n                            </td>\n                            <td width='15%'>\n                            </td>\n                        </tr>\n                    </table>\n                    <div class='card-body' align=\"center\">\n                        <div style=\"width: 100%; height: 1200px; overflow:hidden; max-height:1200px;\">\n                            <iframe id=\"iframeId\" src=\"/\" frameborder=\"0\" width=\"100%\" height=\"1200\"\n                                allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\">\n                            </iframe>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n                <div class='card'>\n                    <table width='100%'>\n                        <tr>\n                            <td width='85%' align='left'>\n                                <span class='card-title'>Users' Guide</span>\n                            </td>\n                            <td width='15%'>\n                            </td>\n                        </tr>\n                    </table>\n                    <div class='card-body' align=\"center\">\n                        <div style=\"width: 100%; height: 1200px; overflow:hidden; max-height:1200px;\">\n                            <iframe id=\"iframeId\" src=\"/\" frameborder=\"0\" width=\"100%\" height=\"1200\"\n                                allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\">\n                            </iframe>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>",
         "output": "str",
         "x": 870,
         "y": 580,
@@ -9000,7 +8980,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "App Users' Guide",
+        "template": "Users' Guide",
         "output": "str",
         "x": 590,
         "y": 580,
@@ -9079,7 +9059,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>App Users' Guide</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'>\n                        <img src=\"/img/mirrotron.png\" height=\"75px\"/>\n                    </a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>    </div>",
         "output": "str",
         "x": 1000,
         "y": 580,
