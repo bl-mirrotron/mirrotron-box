@@ -567,9 +567,7 @@
             "6e5fe8f4665ee2fd"
         ],
         "x": 34,
-        "y": 39,
-        "w": 1312,
-        "h": 142
+        "y": 39
     },
     {
         "id": "222f7527456f431b",
@@ -592,9 +590,7 @@
             "c4e92c75751127a2"
         ],
         "x": 34,
-        "y": 219,
-        "w": 1312,
-        "h": 142
+        "y": 219
     },
     {
         "id": "8513d2368ac7161f",
@@ -617,9 +613,7 @@
             "b690e92951ea57f3"
         ],
         "x": 34,
-        "y": 399,
-        "w": 1312,
-        "h": 142
+        "y": 399
     },
     {
         "id": "e02813d59f160a5c",
@@ -642,9 +636,7 @@
             "4f5138b1c21ad771"
         ],
         "x": 34,
-        "y": 579,
-        "w": 1312,
-        "h": 142
+        "y": 579
     },
     {
         "id": "e0c14b4f190836c9",
@@ -667,9 +659,7 @@
             "66ce09a4d677808a"
         ],
         "x": 34,
-        "y": 759,
-        "w": 1312,
-        "h": 142
+        "y": 759
     },
     {
         "id": "674af16debdd8f0f",
@@ -692,9 +682,7 @@
             "6ab0f551657f68ec"
         ],
         "x": 34,
-        "y": 939,
-        "w": 1312,
-        "h": 142
+        "y": 939
     },
     {
         "id": "9e9aab81c0c1e479",
@@ -717,9 +705,7 @@
             "25f8c290f03f8dce"
         ],
         "x": 34,
-        "y": 1119,
-        "w": 1312,
-        "h": 142
+        "y": 1119
     },
     {
         "id": "ff1586c44763ab25",
@@ -742,9 +728,7 @@
             "bb3bc9ccb4b7ccfa"
         ],
         "x": 34,
-        "y": 1299,
-        "w": 1312,
-        "h": 142
+        "y": 1299
     },
     {
         "id": "e61434d43b450009",
@@ -767,9 +751,7 @@
             "ddd27203e99450e3"
         ],
         "x": 34,
-        "y": 1479,
-        "w": 1312,
-        "h": 142
+        "y": 1479
     },
     {
         "id": "8b1ca40e143d36e4",
@@ -792,9 +774,7 @@
             "17ea133e78cd791e"
         ],
         "x": 34,
-        "y": 1659,
-        "w": 1312,
-        "h": 142
+        "y": 1659
     },
     {
         "id": "6ad7c930.1a06b8",
@@ -8217,7 +8197,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"100%\" align=\"center\">\n                    <table width=\"900px\" style=\"border: 5px solid;border-color: var(--color2);\">\n                        <tr>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp01.jpg\" width=\"100%\"/>\n                            </td>\n                            <td width=\"193px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp06.jpg\" width=\"100%\"/>                            \n                            </td>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp04.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp02.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp05.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp03.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td width=\"100%\"  align=\"center\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/appManual\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/manual.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Users' Guide\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                            <td width=\"4%\"></td>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/architecture\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/architecture.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Architecture\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td align=\"center\" style=\"padding-top:20px;\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"100%\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/apps\">\n                                    <table width=\"48%\" align=\"center\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/apps.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Apps\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td  align=\"center\" style=\"padding-top:15px;\">\n                    <span>Powered by <a href=\"https://www.bl-mc.se/\" target=\"_blank\" style=\"color:var(--color1);\">Blinky-Lite</a></span>\n                </td>\n            <tr>\n        </table>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td width=\"100%\" align=\"center\">\n                    <table width=\"900px\" style=\"border: 5px solid;border-color: var(--color2);\">\n                        <tr>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp01.jpg\" width=\"100%\"/>\n                            </td>\n                            <td width=\"193px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp06.jpg\" width=\"100%\"/>                            \n                            </td>\n                            <td width=\"339px\" style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp04.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp02.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp05.jpg\" width=\"100%\"/>\n                            </td>\n                            <td style=\"padding:5px;\">\n                                <img src=\"/img/frontPage/fp03.jpg\" width=\"100%\"/>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td width=\"100%\"  align=\"center\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"https://docs.bl-mirrotron.com/mirrotron-user-guide/\" target=\"_blank\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/manual.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Users' Guide\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                            <td width=\"4%\"></td>\n                            <td width=\"48%\" style=\"padding-top:15px;\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"https://docs.bl-mirrotron.com/\" target=\"_blank\">\n                                    <table width=\"100%\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/architecture.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Architecture\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td align=\"center\" style=\"padding-top:20px;\">\n                    <table width=\"900px\">\n                        <tr>\n                            <td width=\"100%\">\n                                <a class=\"btn btn-block card-button medium-text\" href=\"/apps\">\n                                    <table width=\"48%\" align=\"center\">\n                                        <tr>\n                                            <td width=\"25%\" align='left'>\n                                                <img src=\"/img/apps.png\" height=\"50px\"/>\n                                            </td>\n                                            <td width=\"75%\" align='center'>\n                                                Apps\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n            <tr>\n                <td  align=\"center\" style=\"padding-top:15px;\">\n                    <span>Powered by <a href=\"https://www.bl-mc.se/\" target=\"_blank\" style=\"color:var(--color1);\">Blinky-Lite</a></span>\n                </td>\n            <tr>\n        </table>\n    </div>",
         "output": "str",
         "x": 870,
         "y": 460,
