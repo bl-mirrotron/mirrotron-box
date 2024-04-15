@@ -1,6 +1,6 @@
 # The Mirrotron Application Server
 * <a href="https://github.com/bl-mirrotron/mirrotron-box" target="_blank">Source code</a>
-* [Control system overview](https://docs.bl-mirrotron.com/)
+* [Control system overview](https://bl-mirrotron.github.io/)
 
 ## Table of Contents
 * [Functionality](#fFunctionality)
@@ -81,7 +81,7 @@ In addition to custom applications, the Blinky-Lite<sup>TM</sup> box provides a 
 The Machine Permit system is designed to protect the machine from damage due to a tray malfunctioning, not communicating, or an improper setting. The Machine Permit system uses MQTT for communication so its response time is on the order of 1 second. This is more than adequate for most events. However, for faster timescales such as an RF spark in the cavity, a dedicated loop should be used.
 
 ### Alarm scanning
-If any scalar cube strays outside the LOLO or HIHI alarm range, the machine permit will publish a message in which one or more critical setting cubes that subscribe to the message  can take action. In the case of the Mirrotron RFQ, the critical setting cube turns off the [RF frequency source](https://docs.bl-mirrotron.com/#rf-source).
+If any scalar cube strays outside the LOLO or HIHI alarm range, the machine permit will publish a message in which one or more critical setting cubes that subscribe to the message  can take action. In the case of the Mirrotron RFQ, the critical setting cube turns off the [RF frequency source](https://bl-mirrotron.github.io/#rf-source).
 
 ### Post-mortem buffer
 Also published at the same time is a request for all the trays in the control system to immediately archive their state in the postmortem document collection of the database. This data will be used for the Post-Mortem application.
